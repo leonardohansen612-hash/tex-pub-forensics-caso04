@@ -23,9 +23,9 @@ N6 684034 -> F14-F15
 
 Fotos de níveis bloqueados aparecem como criptografadas e não podem ser abertas.
 
-V8 — INTERFACE IPHONE REALISTA
-Home com wallpaper personalizado de Helena e visual mais próximo do iOS atual.
-Apps decorativos adicionados: FaceTime, Câmera, Relógio, Tempo, Lembretes,
-Calculadora, Instagram, Uber, Saúde e Spotify.
-Spotify contém playlist simples sem relação com o crime.
-Todos os códigos, evidências e progressão de fotos da V7.3 foram preservados.
+V8.1 — DESIGN-ONLY
+==================
+Base funcional restaurada da V7.3.
+Nenhuma lógica de aplicativos, códigos, fotos ou desbloqueios foi alterada.
+Mudanças apenas visuais: home mais limpa, wallpaper discreto, ícones,
+dock, status bar, espaçamento e navegação com aparência mais próxima do iOS.
