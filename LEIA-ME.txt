@@ -1,4 +1,6 @@
-TEX PUB FORENSICS — CASO 04 — V4 DIGITAL
-Todos os módulos digitais foram preenchidos, exceto Fotos.
-Códigos: 0010=N1, 4232=N2, 3142=N3, 9765=N4, 3144=N5, 684034=N6.
-A rota /codigo/ foi preservada. O progresso é salvo no navegador.
+TEX PUB FORENSICS — CASO 04 — V5 IPHONE
+Interface redesenhada para parecer um iPhone real.
+Tela principal, dock, barra de status e apps em estilo iOS.
+Todos os conteúdos digitais da V4 foram preservados, exceto Fotos, que continuam reservadas.
+Códigos: 0010, 4232, 3142, 9765, 3144, 684034.
+Rota /codigo/ preservada.
