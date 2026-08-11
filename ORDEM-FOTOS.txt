@@ -1,0 +1,24 @@
+CASO 04 — ORDEM OFICIAL DA GALERIA
+F01 20:10     Helena sozinha no Tex Pub
+F02 20:18     Helena + companhia/selfie
+F03 20:24     Foto casual / Ricardo visível
+F04 20:31     Registro do salão / personagens ao fundo
+F05 20:36     Bruno chega ao local
+F06 20:38     Helena no celular / Bruno se aproxima
+F07 20:40     Helena e Bruno discutindo
+F08 20:41     Helena segue em direção ao corredor
+F09 20:41:32  Bruno segue na mesma direção
+F10 20:42:05  Foto borrada / duas figuras
+F11 20:42:31  Corredor/depósito + chave de fenda
+F12 20:43:02  Início do apagão
+F13 20:43:26  Silhueta masculina saindo do corredor
+F14 20:44:04  Bruno novamente no salão
+F15 20:44:18  Chave de fenda + elemento associado a Bruno
+
+DESBLOQUEIO:
+0010   -> F01-F02
+4232   -> F03-F05
+3142   -> F06-F07
+9765   -> F08-F10
+3144   -> F11-F13
+684034 -> F14-F15
