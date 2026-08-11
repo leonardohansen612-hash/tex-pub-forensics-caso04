@@ -13,11 +13,7 @@ button,input{font:inherit}button{cursor:pointer}
 #phoneWrap{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:18px;background:radial-gradient(circle at 50% 20%,#383838,#101010 55%,#050505)}
 .phone{position:relative;width:min(430px,100vw);height:min(900px,calc(100vh - 24px));min-height:690px;border:8px solid #1a1a1a;border-radius:52px;overflow:hidden;box-shadow:0 25px 80px #000c;background:#0a0a0a}
 .phone:before{content:"";position:absolute;z-index:40;top:8px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#070707}
-.screen{position:absolute;inset:0;background:
-linear-gradient(160deg,rgba(44,31,83,.25),rgba(8,8,24,.2)),
-radial-gradient(circle at 70% 20%,#923f68 0 10%,transparent 35%),
-radial-gradient(circle at 25% 75%,#2f477d 0 10%,transparent 35%),
-linear-gradient(150deg,#241737,#0f1a30 52%,#151522);color:white}
+.screen{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.16),rgba(0,0,0,.24)),url('assets/wallpaper-helena.jpg') center/cover no-repeat;color:white}
 .status{height:48px;padding:15px 22px 0;display:flex;justify-content:space-between;align-items:flex-start;font-weight:700;font-size:14px;position:relative;z-index:35}
 .status .right{display:flex;gap:7px;align-items:center;font-size:12px}
 .home{position:absolute;inset:48px 0 0;padding:28px 20px 112px;overflow:auto}
@@ -73,6 +69,42 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 .lockedPhoto .photoLock{height:100%;min-height:126px;display:grid;place-items:center;font-size:30px;background:linear-gradient(145deg,#181818,#090909)}
 .lockedPhoto small{position:absolute;right:6px;top:6px;background:#000c;color:#aaa;padding:3px 5px;border-radius:5px;font-size:8px;letter-spacing:.5px}
 
+
+.pageDots{position:absolute;bottom:103px;left:0;right:0;text-align:center;z-index:14}
+.pageDots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#ffffff66;margin:0 3px}
+.pageDots span.active{background:#fff}
+.iosicon{width:62px;height:62px;border-radius:15px;display:grid;place-items:center;font-size:29px;box-shadow:inset 0 0 0 1px #ffffff22,0 3px 12px #0005;overflow:hidden}
+.icon-phone{background:linear-gradient(#5fe46f,#21bd45)}
+.icon-msg{background:linear-gradient(#6ae47d,#28be4b)}
+.icon-safari{background:radial-gradient(circle,#fff 0 55%,#e8f4ff 56%);color:#1677ef}
+.icon-mail{background:linear-gradient(#54b7ff,#1677ef)}
+.icon-photos{background:#fff}
+.icon-maps{background:linear-gradient(135deg,#e9f2ff,#bfe0ff)}
+.icon-notes{background:linear-gradient(#fff56c 0 22%,#fff 22%)}
+.icon-files{background:linear-gradient(#6ebaff,#2377df)}
+.icon-settings{background:linear-gradient(#ececf0,#a9a9af);color:#444}
+.icon-calendar{background:#fff;color:#111}
+.icon-clock{background:#111}
+.icon-camera{background:linear-gradient(#ddd,#fff);color:#222}
+.icon-spotify{background:#1DB954;color:#000;font-weight:900}
+.icon-instagram{background:radial-gradient(circle at 30% 110%,#fdf497 0 10%,#fd5949 35%,#d6249f 62%,#285AEB 90%);color:#fff}
+.icon-uber{background:#000;color:#fff;font-size:14px;font-weight:800}
+.icon-weather{background:linear-gradient(#4ea9ff,#8bd1ff)}
+.icon-calc{background:#1c1c1e;color:#fff}
+.icon-black{background:#111;color:#fff}
+.widgetRow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.widget{height:128px;border-radius:22px;background:rgba(255,255,255,.17);backdrop-filter:blur(18px);padding:14px;color:#fff;box-shadow:0 6px 20px #0004}
+.widget small{opacity:.8}.widget .big{font-size:30px;font-weight:700;margin-top:8px}
+.spotifyHeader{display:flex;gap:14px;align-items:center;margin-bottom:20px}
+.spotifyCover{width:95px;height:95px;border-radius:8px;background:linear-gradient(135deg,#8f6b56,#241d33);display:grid;place-items:center;color:#fff;font-size:34px}
+.spotifyList .track{padding:12px 0;border-bottom:1px solid #2c2c2e}
+.spotifyList .track:last-child{border-bottom:0}
+.spotifyList b{display:block}.spotifyList small{color:#999}
+.blackapp{background:#111;color:#fff}
+.blackapp .appnav{background:#191919;color:#fff;border-color:#2b2b2b}
+.blackapp .appbody{background:#111;color:#fff}
+.blackapp .back{color:#1db954}
+
 </style>
 </head>
 <body>
@@ -80,30 +112,45 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 <div id="phoneWrap">
 <div class="phone">
 <div class="screen" id="homeScreen">
-  <div class="status"><span id="clock">20:44</span><span class="right">●●● ◔ 18%</span></div>
-  <div class="home">
-    <div class="owner"><div class="time">Helena</div><small>iPhone • Caso 04</small></div>
-    <div class="apps">
-      <button class="appbtn" data-app="Telefone"><div class="icon i-green">☎</div><span class="label">Telefone</span></button>
-      <button class="appbtn" data-app="Mensagens"><div class="icon i-green">💬</div><span class="label">Mensagens</span></button>
-      <button class="appbtn" data-app="WhatsApp"><div class="icon i-green"><img src="assets/icon-whatsapp.png"></div><span class="label">WhatsApp</span></button>
-      <button class="appbtn" data-app="Contatos"><div class="icon i-gray">👤</div><span class="label">Contatos</span></button>
-      <button class="appbtn" data-app="Fotos"><div class="icon i-white"><img src="assets/icon-fotos.png"></div><span class="label">Fotos</span></button>
-      <button class="appbtn" data-app="Safari"><div class="icon i-white">🧭</div><span class="label">Safari</span></button>
-      <button class="appbtn" data-app="E-mail"><div class="icon i-blue">✉️</div><span class="label">Mail</span></button>
-      <button class="appbtn" data-app="Mapas"><div class="icon i-gray">🗺️</div><span class="label">Mapas</span></button>
-      <button class="appbtn" data-app="Calendário"><div class="icon i-white">📅</div><span class="label">Calendário</span></button>
-      <button class="appbtn" data-app="Notas"><div class="icon i-yellow">📝</div><span class="label">Notas</span></button>
-      <button class="appbtn" data-app="Arquivos"><div class="icon i-blue">📁</div><span class="label">Arquivos</span></button>
-      <button class="appbtn" data-app="Gravador"><div class="icon i-black">〰️</div><span class="label">Gravador</span></button>
-      <button class="appbtn" data-app="Ajustes"><div class="icon i-gray">⚙️</div><span class="label">Ajustes</span></button>
-      <button class="appbtn" data-app="Arquivos apagados"><div class="icon i-red">♻️</div><span class="label">Apagados</span></button>
-      <button class="appbtn" data-app="Histórico de localização"><div class="icon i-purple">📍</div><span class="label">Localização</span></button>
-      <button class="appbtn" data-app="Linha do tempo"><div class="icon i-orange">🕘</div><span class="label">Timeline</span></button>
-    </div>
+  <div class="status"><span id="clock">21:47</span><span class="right">●●● ◔ 18%</span></div>
+  
+<div class="home">
+  <div class="widgetRow">
+    <div class="widget"><small>TERÇA-FEIRA</small><div class="big">13</div><div style="margin-top:8px">Sem mais eventos hoje</div></div>
+    <div class="widget"><small>FOTOS</small><div class="big">Praga</div><div style="margin-top:8px">mai. de 2024</div></div>
   </div>
-  <div class="dock">
-    <button class="appbtn" data-app="Telefone"><div class="icon i-green">☎</div><span class="label">Telefone</span></button>
+  <div class="apps">
+    <button class="appbtn" data-app="FaceTime"><div class="iosicon icon-phone">📹</div><span class="label">FaceTime</span></button>
+    <button class="appbtn" data-app="Calendário"><div class="iosicon icon-calendar">13</div><span class="label">Calendário</span></button>
+    <button class="appbtn" data-app="Fotos"><div class="iosicon icon-photos"><img src="assets/icon-fotos.png" style="width:100%;height:100%;object-fit:cover"></div><span class="label">Fotos</span></button>
+    <button class="appbtn" data-app="Câmera"><div class="iosicon icon-camera">📷</div><span class="label">Câmera</span></button>
+    <button class="appbtn" data-app="E-mail"><div class="iosicon icon-mail">✉</div><span class="label">Mail</span></button>
+    <button class="appbtn" data-app="Relógio"><div class="iosicon icon-clock">🕘</div><span class="label">Relógio</span></button>
+    <button class="appbtn" data-app="Mapas"><div class="iosicon icon-maps">🗺️</div><span class="label">Mapas</span></button>
+    <button class="appbtn" data-app="Tempo"><div class="iosicon icon-weather">☀️</div><span class="label">Tempo</span></button>
+    <button class="appbtn" data-app="Notas"><div class="iosicon icon-notes">📝</div><span class="label">Notas</span></button>
+    <button class="appbtn" data-app="Lembretes"><div class="iosicon icon-calendar">☑️</div><span class="label">Lembretes</span></button>
+    <button class="appbtn" data-app="Calculadora"><div class="iosicon icon-calc">＋</div><span class="label">Calculadora</span></button>
+    <button class="appbtn" data-app="Ajustes"><div class="iosicon icon-settings">⚙️</div><span class="label">Ajustes</span></button>
+    <button class="appbtn" data-app="Instagram"><div class="iosicon icon-instagram">◎</div><span class="label">Instagram</span></button>
+    <button class="appbtn" data-app="Spotify"><div class="iosicon icon-spotify">◉</div><span class="label">Spotify</span></button>
+    <button class="appbtn" data-app="Uber"><div class="iosicon icon-uber">UBER</div><span class="label">Uber</span></button>
+    <button class="appbtn" data-app="Saúde"><div class="iosicon icon-photos">❤</div><span class="label">Saúde</span></button>
+    <button class="appbtn" data-app="WhatsApp"><div class="iosicon icon-phone"><img src="assets/icon-whatsapp.png" style="width:100%;height:100%;object-fit:cover"></div><span class="label">WhatsApp</span></button>
+    <button class="appbtn" data-app="Arquivos"><div class="iosicon icon-files">📁</div><span class="label">Arquivos</span></button>
+    <button class="appbtn" data-app="Gravador"><div class="iosicon icon-black">〰️</div><span class="label">Gravador</span></button>
+    <button class="appbtn" data-app="Terminal"><div class="iosicon icon-black">⌘</div><span class="label">GrayKey</span></button>
+  </div>
+</div>
+<div class="pageDots"><span class="active"></span><span></span></div>
+
+<div class="dock">
+  <button class="appbtn" data-app="Telefone"><div class="iosicon icon-phone">☎</div><span class="label">Telefone</span></button>
+  <button class="appbtn" data-app="Safari"><div class="iosicon icon-safari">🧭</div><span class="label">Safari</span></button>
+  <button class="appbtn" data-app="Mensagens"><div class="iosicon icon-msg">💬</div><span class="label">Mensagens</span></button>
+  <button class="appbtn" data-app="Spotify"><div class="iosicon icon-spotify">◉</div><span class="label">Spotify</span></button>
+</div>
+<span class="label">Telefone</span></button>
     <button class="appbtn" data-app="Safari"><div class="icon i-white">🧭</div><span class="label">Safari</span></button>
     <button class="appbtn" data-app="Mensagens"><div class="icon i-green">💬</div><span class="label">Mensagens</span></button>
     <button class="appbtn" data-app="Terminal"><div class="icon i-black">⌘</div><span class="label">GrayKey</span></button>
@@ -111,7 +158,7 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 </div>
 
 <div id="appScreen" class="appscreen">
-  <div class="appstatus"><span>20:44</span><span>●●● ◔ 18%</span></div>
+  <div class="appstatus"><span>21:47</span><span>●●● ◔ 18%</span></div>
   <div class="appnav"><button class="back" id="backBtn">‹ Início</button><h2 id="appTitle">App</h2><span class="action"></span></div>
   <div class="appbody" id="appBody"></div>
   <div class="homebar"></div>
@@ -129,17 +176,17 @@ const evidence={
 "Telefone":[[1,"Camila Freitas","20:12 • chamada realizada • 00:41","out"],[2,"Ricardo Alves","19:47 • chamada perdida","miss"],[2,"Marcelo Tavares","18:52 • chamada perdida","miss"],[3,"Ricardo Alves","20:27 • chamada recebida • 01:18","in"],[3,"Marcelo Tavares","20:22 • chamada recebida • 00:34","in"],[3,"Camila Freitas","20:35 • chamada realizada • 00:22","out"],[4,"Bruno Nogueira","20:37 • chamada recebida • 00:16","in"],[5,"Número não salvo","14 JUN • 17:08 • chamada recebida • 02:11","in"]],
 "Mensagens":[[1,"Gustavo Lima","Reserva confirmada para a mesa 07. Até mais tarde."],[2,"Ricardo Alves","Você não precisa me evitar. Só quero conversar."],[2,"Marcelo Tavares","Vi que você vai estar no Tex hoje. Posso passar aí?"],[3,"Camila Freitas","Se ele aparecer, não fica sozinha com isso."],[4,"Gustavo Lima","Sua mesa está pronta. Se precisar de alguma coisa me chama."]],
 "WhatsApp":[[1,"Camila Freitas","20:13 — Cheguei. Te encontro aí dentro."],[2,"Ricardo Alves","19:32 — Eu sei que você não quer falar comigo, mas preciso explicar uma coisa."],[2,"Marcelo Tavares","20:02 — Você não respondeu. Estou indo mesmo assim."],[2,"Bruno Nogueira","18:31 — Ainda dá tempo de resolver isso sem envolver mais ninguém."],[2,"Bruno Nogueira","18:36 — Não escreve mais sobre isso aqui."],[2,"Bruno Nogueira","20:38 — Estou chegando."],[3,"Camila Freitas","20:34 — Você tem certeza desses comprovantes?"],[3,"Helena → Camila","20:35 — Tenho. Os valores não fecham. Hoje eu vou ouvir a versão dele."],[3,"Ricardo Alves","20:29 — Estou do lado de fora. Dois minutos e vou embora."],[3,"Helena → Ricardo","20:30 — Não é uma boa hora."],[4,"Helena → Bruno","20:38 — Mesa 07."],[5,"[RECUPERADA] Helena → Bruno","14 JUN 19:14 — Eu conferi os comprovantes. Quero uma explicação."],[5,"[RECUPERADA] Bruno → Helena","14 JUN 19:16 — Apaga isso. A gente conversa pessoalmente."]],
-"Arquivos":[[1,"reserva_mesa07.pdf","Confirmação de reserva • Mesa 07 • 20h30"],[3,"resumo_projeto.xlsx","Planilha de controle. Quatro lançamentos marcados para conferência."],[4,"comprovantes_junho.zip","Pacote local com comprovantes de repasses."],[5,"comparativo_repasses.pdf","Diferenças entre valores previstos e efetivamente registrados."],[5,"camera_c_log.txt","Falha de gravação: perda de 00:45 na janela crítica."],[5,"quadro_eletrico_log.txt","Evento manual registrado às 20:43:11."],[6,"auditoria_final.csv","Lançamentos divergentes associados ao acesso de Bruno Nogueira."],[6,"integridade_dispositivo.log","20:42 evento crítico → 20:43:11 interrupção elétrica → 20:44:02 retorno."]],
+"Arquivos":[[1,"reserva_mesa07.pdf","Confirmação de reserva • Mesa 07 • 20h30"],[3,"resumo_projeto.xlsx","Planilha de controle. Quatro lançamentos marcados para conferência."],[4,"comprovantes_junho.zip","Pacote local com comprovantes de repasses."],[5,"comparativo_repasses.pdf","Diferenças entre valores previstos e efetivamente registrados."],[5,"camera_c_log.txt","Falha de gravação: perda de 00:45 na janela crítica."],[5,"quadro_eletrico_log.txt","Evento manual registrado às 20:43:11."],[6,"auditoria_final.csv","Lançamentos divergentes associados ao acesso de Bruno Nogueira."],[6,"integridade_dispositivo.log","20:42 evento crítico → 20:43:11 interrupção elétrica → 21:47:02 retorno."]],
 "Notas":[[1,"Hoje","Falar com Camila. Conferir comprovantes. Mesa 07 — 20h30."],[2,"Pendências","Ricardo: encerrar assunto. Marcelo: não responder. Projeto: revisar repasses."],[3,"Sem título","Não quero acusar ninguém sem ter certeza."],[4,"20h40","Ou ele explica hoje ou amanhã eu levo tudo adiante."],[5,"[RECUPERADA]","Se os comprovantes estiverem certos, não foi erro. Foi intencional."]],
 "Calendário":[[1,"15 JUN • 20:30","Tex Pub — Mesa 07"],[2,"16 JUN • 09:00","Revisão financeira — documentos"],[3,"16 JUN • 11:30","Ligação — consultoria contábil"],[5,"16 JUN • 14:00","Reunião reservada — assunto: repasses"]],
-"Mapas":[[1,"Tex Pub","Destino salvo • chegada aproximada 20:10"],[3,"Trajeto recente","Deslocamento encerrado nas proximidades do Tex Pub"],[4,"Local significativo","Tex Pub • permanência registrada durante a janela do incidente"],[5,"Histórico reconstruído","Dispositivo permaneceu no local entre 20:10 e 20:44"]],
+"Mapas":[[1,"Tex Pub","Destino salvo • chegada aproximada 20:10"],[3,"Trajeto recente","Deslocamento encerrado nas proximidades do Tex Pub"],[4,"Local significativo","Tex Pub • permanência registrada durante a janela do incidente"],[5,"Histórico reconstruído","Dispositivo permaneceu no local entre 20:10 e 21:47"]],
 "E-mail":[[1,"Reserva — Tex Pub","Mesa 07 confirmada para hoje."],[3,"Assunto: conferência de lançamentos","Helena enviou para si mesma quatro referências de transações para revisar."],[4,"Rascunho não enviado","Assunto: divergências nos repasses — “Preciso formalizar isso amanhã.”"],[5,"Contabilidade — retorno","Os valores indicados não correspondem aos comprovantes anexados."],[6,"[RECUPERADO] Encaminhamento agendado","Pacote de documentos preparado para envio na manhã seguinte."]],
 "Gravador":[[2,"Memo 14 JUN • 00:19","Helena: “Eu preciso resolver isso sem fazer acusação precipitada.”"],[3,"Memo 15 JUN • 00:31","Ruído de bar. Helena: “A Camila sabe onde estão os arquivos.”"],[4,"Memo 15 JUN • 00:17","Voz masculina ao fundo; trecho incompleto. Helena: “...não é atraso, Bruno.”"],[5,"Memo recuperado • 00:12","Helena: “Se acontecer alguma coisa, os comprovantes estão salvos.”"],[6,"Trecho recuperado • 00:08","Ruído no corredor; voz masculina indistinta seguida de impacto. Horário de criação: 20:42."]],
 "Safari":[[1,"Histórico","texpub.com.br • mapas • e-mail"],[2,"Pesquisa","como organizar comprovantes bancários"],[3,"Pesquisa","como identificar transferência alterada em comprovante"],[4,"Pesquisa","como formalizar denúncia de desvio financeiro"],[5,"Pesquisa apagada","validade de logs e comprovantes digitais"]],
-"Ajustes":[[1,"iPhone 14","iOS 18.x • Helena Duarte • bateria 18%"],[1,"Privacidade","Serviços de localização ativados"],[3,"Face ID e Código","Último desbloqueio normal registrado antes do incidente"],[4,"Bateria","Queda de atividade entre 20:42 e 20:44"],[5,"Análise","Sincronização interrompida durante queda de energia"]],
+"Ajustes":[[1,"iPhone 14","iOS 18.x • Helena Duarte • bateria 18%"],[1,"Privacidade","Serviços de localização ativados"],[3,"Face ID e Código","Último desbloqueio normal registrado antes do incidente"],[4,"Bateria","Queda de atividade entre 20:42 e 21:47"],[5,"Análise","Sincronização interrompida durante queda de energia"]],
 "Arquivos apagados":[[5,"msg_cache_041.bin","Fragmentos de conversa Helena × Bruno recuperados."],[5,"repasse_04.pdf","Comprovante excluído; metadados preservados."],[6,"audit_access.log","Acesso aos registros financeiros vinculado às credenciais de Bruno."],[6,"memo_corridor.m4a","Fragmento de áudio criado às 20:42."]],
-"Histórico de localização":[[5,"20:10","Dispositivo de Helena entra no perímetro do Tex Pub."],[5,"20:41","Precisão reduzida; dispositivo permanece dentro do estabelecimento."],[6,"20:42–20:44","Sem deslocamento externo registrado durante crime/apagão."]],
-"Linha do tempo":[[1,"20:10","Helena chega ao Tex Pub."],[3,"20:18 / 20:24 / 20:31","Chegam Camila, Marcelo e Ricardo."],[4,"20:36","Bruno chega."],[4,"20:40","Discussão entre Helena e Bruno."],[6,"20:42","Janela estimada do ataque."],[6,"20:43","Interrupção elétrica provocada."],[6,"20:44","Energia retorna."]]
+"Histórico de localização":[[5,"20:10","Dispositivo de Helena entra no perímetro do Tex Pub."],[5,"20:41","Precisão reduzida; dispositivo permanece dentro do estabelecimento."],[6,"20:42–21:47","Sem deslocamento externo registrado durante crime/apagão."]],
+"Linha do tempo":[[1,"20:10","Helena chega ao Tex Pub."],[3,"20:18 / 20:24 / 20:31","Chegam Camila, Marcelo e Ricardo."],[4,"20:36","Bruno chega."],[4,"20:40","Discussão entre Helena e Bruno."],[6,"20:42","Janela estimada do ataque."],[6,"20:43","Interrupção elétrica provocada."],[6,"21:47","Energia retorna."]]
 };
 const appScreen=$('#appScreen'),appTitle=$('#appTitle'),appBody=$('#appBody');
 function initials(name){return name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
@@ -189,9 +236,39 @@ function renderPhotoGallery(){
 function openPhoto(src,label){
  appBody.innerHTML=`<div class="photoFull"><button class="photoClose" onclick="openApp('Fotos')">‹ Fotos</button><img src="${src}" alt="${label}"><div class="photoCaption">${label}</div></div>`;
 }
+
+function renderSpotify(){
+ return `<div class="spotifyHeader"><div class="spotifyCover">☕</div><div><small style="color:#aaa">PLAYLIST</small><h2 style="margin:4px 0">Foco & Café</h2><div style="color:#aaa">Helena • 18 músicas</div></div></div>
+ <div class="spotifyList">
+   <div class="track"><b>Sunset Lover</b><small>Petit Biscuit</small></div>
+   <div class="track"><b>A Moment Apart</b><small>ODESZA</small></div>
+   <div class="track"><b>The Nights</b><small>Avicii</small></div>
+   <div class="track"><b>Holocene</b><small>Bon Iver</small></div>
+   <div class="track"><b>Ilha</b><small>Lagum</small></div>
+   <div class="track"><b>Lisboa</b><small>ANAVITÓRIA</small></div>
+   <div class="track"><b>Budapest</b><small>George Ezra</small></div>
+ </div>`;
+}
+function renderSimpleApp(name){
+ const data={
+  "FaceTime":"Nenhuma chamada recente.",
+  "Câmera":"Câmera indisponível durante a extração forense.",
+  "Relógio":"Alarmes: 07:10 • 07:20 • 08:00",
+  "Tempo":"Jundiaí • 22°C • Parcialmente nublado",
+  "Lembretes":"Comprar vinho • Responder Camila • Revisar comprovantes",
+  "Calculadora":"0",
+  "Instagram":"Feed não armazenado nesta extração.",
+  "Uber":"Última corrida: Centro → residência • ontem, 23:14",
+  "Saúde":"Dados de atividade disponíveis apenas localmente."
+ };
+ return `<div class="iosgroup"><div class="iosrow"><div class="main"><b>${name}</b><p>${data[name]||"Sem dados relevantes."}</p></div></div></div>`;
+}
 function openApp(name){
- appScreen.classList.remove('forensic');appTitle.textContent=name;
- if(name==="Fotos") appBody.innerHTML=renderPhotoGallery();
+ appScreen.classList.remove('forensic','blackapp');appTitle.textContent=name;
+ if(name==='Spotify') appScreen.classList.add('blackapp');
+ if(name==="Spotify") appBody.innerHTML=renderSpotify();
+ else if(["FaceTime","Câmera","Relógio","Tempo","Lembretes","Calculadora","Instagram","Uber","Saúde"].includes(name)) appBody.innerHTML=renderSimpleApp(name);
+ else if(name==="Fotos") appBody.innerHTML=renderPhotoGallery();
  else if(name==="Telefone") appBody.innerHTML=renderPhone();
  else if(name==="Mensagens"||name==="WhatsApp") appBody.innerHTML=renderMessages(name);
  else if(name==="E-mail") appBody.innerHTML=renderMail();
@@ -212,7 +289,7 @@ function openApp(name){
  }
 }
 document.querySelectorAll('[data-app]').forEach(b=>b.onclick=()=>openApp(b.dataset.app));
-$('#backBtn').onclick=()=>{appScreen.classList.remove('open','forensic');appBody.innerHTML=''};
+$('#backBtn').onclick=()=>{appScreen.classList.remove('open','forensic','blackapp');appBody.innerHTML=''};
 </script>
 </body>
 </html>
