@@ -19,3 +19,5 @@ Arquivos apagados, Galeria recuperada, Histórico de localização, Linha do tem
 
 OBSERVAÇÃO
 Esta é uma base estrutural. Nenhum PIN de investigação foi ativado ainda.
+
+ROTA EXTRA: /codigo/ — puzzle físico/digital para QR Code.

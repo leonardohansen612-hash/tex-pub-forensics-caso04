@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050505">
+<title>Tex Pub Forensics — Fragmento de Código</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#030303;color:#eee;font-family:Arial,Helvetica,sans-serif}body{background:radial-gradient(circle at 50% -10%,#351010 0,#0a0707 28%,#020202 72%);padding:22px}.wrap{width:min(920px,100%);margin:0 auto}.top{display:flex;align-items:center;gap:14px;border-bottom:1px solid #2c2c2c;padding:8px 0 18px}.logo{width:62px;height:62px;object-fit:contain}.eyebrow{font:700 10px Consolas,monospace;letter-spacing:1.8px;color:#d05b5b}.top h1{font-size:20px;margin:4px 0 0}.status{margin-left:auto;font:700 10px Consolas,monospace;color:#6ddb88;border:1px solid #285d38;border-radius:999px;padding:7px 10px}.card{margin-top:18px;border:1px solid #292929;border-radius:18px;background:linear-gradient(145deg,#171717,#090909);box-shadow:0 24px 70px #000a;overflow:hidden}.head{padding:18px 20px;border-bottom:1px solid #292929;display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.head h2{margin:3px 0 5px;font-size:18px}.head p{margin:0;color:#999;font-size:12px;line-height:1.45}.tag{white-space:nowrap;font:700 10px Consolas,monospace;letter-spacing:1px;color:#e09292;border:1px solid #5c2d2d;background:#1d0d0d;padding:7px 9px;border-radius:8px}.instruction{margin:16px 20px 0;padding:12px 14px;border:1px solid #493d20;background:#17140b;border-radius:11px;color:#d8ca91;font:12px/1.55 Consolas,monospace}.instruction b{color:#fff}.diagram{padding:25px 18px 12px;overflow:auto}.panel{min-width:700px;border:1px solid #313131;background:repeating-linear-gradient(0deg,#080808 0,#080808 28px,#0c0c0c 29px),repeating-linear-gradient(90deg,transparent 0,transparent 28px,#101010 29px);border-radius:14px;padding:24px;position:relative}.panel:before{content:"RECOVERY MAP // NODE TRACE";position:absolute;top:8px;right:12px;color:#4d4d4d;font:9px Consolas,monospace;letter-spacing:1px}.channels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}.channel{border:1px solid #2b2b2b;background:#0b0b0be8;border-radius:12px;padding:16px 12px 14px;min-height:330px;position:relative}.channel h3{text-align:center;margin:0 0 18px;color:#858585;font:700 11px Consolas,monospace;letter-spacing:2px}.core{width:54px;height:54px;border:2px solid #b84a4a;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;box-shadow:0 0 24px #8e222244;color:#e26b6b;font:700 11px Consolas,monospace;position:relative}.core:after{content:"";position:absolute;width:2px;height:27px;background:#704040;bottom:-28px;left:50%}.nodes{margin:24px auto 0;display:grid;gap:14px;width:92px}.node{height:36px;border:1px solid #5e5e5e;border-radius:8px;background:#141414;display:flex;align-items:center;justify-content:center;position:relative}.node:before{content:"";width:8px;height:8px;border-radius:50%;background:#d65b5b;box-shadow:0 0 12px #d65b5b99}.node:after{content:"";position:absolute;width:2px;height:15px;background:#565656;top:-15px;left:50%}.noise{height:36px;border:1px dashed #2a2a2a;border-radius:8px;display:grid;place-items:center;color:#333;font:10px Consolas,monospace}.foot{padding:13px 20px 19px;display:flex;justify-content:space-between;gap:16px;align-items:center;color:#666;font:10px Consolas,monospace}.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#c64d4d;box-shadow:0 0 10px #c64d4d;margin-right:6px}.hint{margin:0 20px 20px;border-top:1px solid #222;padding-top:14px;color:#777;font-size:11px;line-height:1.5}.hint strong{color:#aaa}@media(max-width:620px){body{padding:12px}.logo{width:50px;height:50px}.status{display:none}.head{display:block}.tag{display:inline-block;margin-top:10px}.diagram{padding:18px 8px 10px}.instruction{margin:12px 12px 0}.hint{margin:0 12px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <img class="logo" src="../assets/logo-tex-pub.png" alt="Tex Pub">
+  <div><div class="eyebrow">TEX PUB FORENSICS // ARQUIVO EXTERNO</div><h1>Fragmento de Reconstrução</h1></div>
+  <div class="status">● INTEGRIDADE 82%</div>
+</header>
+<section class="card">
+  <div class="head">
+    <div><div class="eyebrow">FRAGMENTO C-03</div><h2>Mapa de nós ativos</h2><p>Arquivo recuperado de um bloco de dados parcialmente corrompido.</p></div>
+    <div class="tag">ACESSO RESTRITO</div>
+  </div>
+  <div class="instruction"><b>INSTRUÇÃO RECUPERADA:</b> leia os quatro canais da esquerda para a direita. Considere apenas os <b>nós ativos ligados ao núcleo</b>. Ruído de memória deve ser ignorado.</div>
+  <div class="diagram">
+    <div class="panel">
+      <div class="channels">
+        <div class="channel"><h3>CANAL I</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="noise">CRC ERR</div></div></div>
+        <div class="channel"><h3>CANAL II</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="noise">NULL</div><div class="noise">NULL</div><div class="noise">CRC ERR</div></div></div>
+        <div class="channel"><h3>CANAL III</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div></div></div>
+        <div class="channel"><h3>CANAL IV</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hint"><strong>Nota técnica:</strong> o valor de cada canal é determinado pela quantidade de conexões válidas preservadas no fragmento.</div>
+  <div class="foot"><span><i class="pulse"></i>TRACE ONLINE</span><span>CASE TEX-C04 // READ ONLY</span></div>
+</section>
+</div>
+</body>
+</html>
