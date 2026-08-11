@@ -155,7 +155,7 @@ function renderTerminal(){
  return `<div class="terminalbox"><b>GrayKey Bridge — Caso 04</b><p style="color:#aaa;font-size:13px">Insira um código encontrado no Tex Pub.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=Array.from({length:15},(_,i)=>`assets/photos/F${String(i+1).padStart(2,'0')}.png`);
+const casePhotos=Array.from({length:15},(_,i)=>`assets/photos/F${String(i+1).padStart(2,'0')}.jpg`);
 function renderPhotos(){return `<div class="photoGrid">${casePhotos.map((src,i)=>`<button class="photoTile" data-photo="${i}"><img src="${src}" loading="lazy" alt="F${String(i+1).padStart(2,'0')}"><span>F${String(i+1).padStart(2,'0')}</span></button>`).join('')}</div><div class="photoViewer" id="photoViewer"><div class="photoViewerBar"><button id="photoClose">‹ Fotos</button><b id="photoName">F01</b><span class="photoCount" id="photoCount">1 de 15</span></div><img id="photoFull" alt="Foto ampliada"></div>`}
 function bindPhotos(){document.querySelectorAll('[data-photo]').forEach(b=>b.onclick=()=>{const i=+b.dataset.photo,v=$('#photoViewer');$('#photoFull').src=casePhotos[i];$('#photoName').textContent=`F${String(i+1).padStart(2,'0')}`;$('#photoCount').textContent=`${i+1} de ${casePhotos.length}`;v.classList.add('open')});const c=$('#photoClose');if(c)c.onclick=()=>$('#photoViewer').classList.remove('open')}
 
