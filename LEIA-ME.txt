@@ -1,23 +1,4 @@
-TEX PUB FORENSICS — CASO 04 — O BRINDE FINAL
-VERSÃO: estrutura inicial do celular / V1
-
-OBJETIVO DESTA VERSÃO
-- Estabelecer a estrutura técnica do celular de Helena Duarte.
-- Preservar a identidade visual e a ideia de perícia móvel do projeto anterior.
-- NÃO reutilizar conteúdo narrativo, personagens, fotos, PINs, evidências ou textos do Caso 03.
-
-PERSONAGENS OFICIAIS DO CASO 04
-Vítima: Helena Duarte
-Testemunha: Gustavo Lima
-Suspeitos: Ricardo Alves, Camila Freitas, Bruno Nogueira e Marcelo Tavares
-
-MÓDULOS VISÍVEIS
-Telefone, Mensagens, WhatsApp, Fotos, Arquivos, Notas, Calendário, Mapas, E-mail, Gravador, Safari e Ajustes.
-
-MÓDULOS FORENSES
-Arquivos apagados, Galeria recuperada, Histórico de localização, Linha do tempo, Terminal de recuperação e Painel administrativo.
-
-OBSERVAÇÃO
-Esta é uma base estrutural. Nenhum PIN de investigação foi ativado ainda.
-
-ROTA EXTRA: /codigo/ — puzzle físico/digital para QR Code.
+TEX PUB FORENSICS — CASO 04 — V4 DIGITAL
+Todos os módulos digitais foram preenchidos, exceto Fotos.
+Códigos: 0010=N1, 4232=N2, 3142=N3, 9765=N4, 3144=N5, 684034=N6.
+A rota /codigo/ foi preservada. O progresso é salvo no navegador.
