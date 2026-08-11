@@ -4,3 +4,9 @@ Tela principal, dock, barra de status e apps em estilo iOS.
 Todos os conteúdos digitais da V4 foram preservados, exceto Fotos, que continuam reservadas.
 Códigos: 0010, 4232, 3142, 9765, 3144, 684034.
 Rota /codigo/ preservada.
+
+
+V7 OTIMIZADA PARA GITHUB WEB
+Fotos F01-F15 convertidas de PNG para JPEG de alta qualidade.
+A página /codigo/ original foi preservada.
+Extraia o ZIP e envie os arquivos/pastas para a raiz do repositório.

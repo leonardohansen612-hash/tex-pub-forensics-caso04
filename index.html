@@ -66,6 +66,8 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 .emptyPhotos{height:100%;display:grid;place-items:center;text-align:center;color:#8e8e93;padding:30px}
 .emptyPhotos .ph{font-size:70px;margin-bottom:14px}
 @media(max-width:460px){#phoneWrap{padding:0}.phone{width:100vw;height:100vh;min-height:0;border:0;border-radius:0}.phone:before{top:8px}}
+
+.photoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px;background:#fff}.photoTile{border:0;padding:0;background:#111;aspect-ratio:1/1;overflow:hidden;cursor:pointer;position:relative}.photoTile img{width:100%;height:100%;object-fit:cover;display:block}.photoTile span{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.65);color:#fff;font-size:11px;font-weight:700;padding:3px 6px;border-radius:5px}.photoViewer{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column}.photoViewer.open{display:flex}.photoViewerBar{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:#fff;background:#050505}.photoViewerBar button{border:0;background:none;color:#0a84ff;font-size:16px}.photoViewer img{width:100%;height:calc(100% - 54px);object-fit:contain}.photoCount{font-size:13px;color:#aaa}
 </style>
 </head>
 <body>
@@ -152,9 +154,14 @@ function renderTerminal(){
  const labels=["0010 — Cronômetro","4232 — Bexigas","3142 — Quiz","9765 — Comanda","3144 — QR / diagrama","684034 — Padrões TEX PUB"];
  return `<div class="terminalbox"><b>GrayKey Bridge — Caso 04</b><p style="color:#aaa;font-size:13px">Insira um código encontrado no Tex Pub.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
+
+const casePhotos=Array.from({length:15},(_,i)=>`assets/photos/F${String(i+1).padStart(2,'0')}.png`);
+function renderPhotos(){return `<div class="photoGrid">${casePhotos.map((src,i)=>`<button class="photoTile" data-photo="${i}"><img src="${src}" loading="lazy" alt="F${String(i+1).padStart(2,'0')}"><span>F${String(i+1).padStart(2,'0')}</span></button>`).join('')}</div><div class="photoViewer" id="photoViewer"><div class="photoViewerBar"><button id="photoClose">‹ Fotos</button><b id="photoName">F01</b><span class="photoCount" id="photoCount">1 de 15</span></div><img id="photoFull" alt="Foto ampliada"></div>`}
+function bindPhotos(){document.querySelectorAll('[data-photo]').forEach(b=>b.onclick=()=>{const i=+b.dataset.photo,v=$('#photoViewer');$('#photoFull').src=casePhotos[i];$('#photoName').textContent=`F${String(i+1).padStart(2,'0')}`;$('#photoCount').textContent=`${i+1} de ${casePhotos.length}`;v.classList.add('open')});const c=$('#photoClose');if(c)c.onclick=()=>$('#photoViewer').classList.remove('open')}
+
 function openApp(name){
  appScreen.classList.remove('forensic');appTitle.textContent=name;
- if(name==="Fotos") appBody.innerHTML=`<div class="emptyPhotos"><div><div class="ph">🌈</div><h3>Fotos</h3><p>Galeria preservada. As fotografias serão inseridas na próxima etapa.</p></div></div>`;
+ if(name==="Fotos") appBody.innerHTML=renderPhotos();
  else if(name==="Telefone") appBody.innerHTML=renderPhone();
  else if(name==="Mensagens"||name==="WhatsApp") appBody.innerHTML=renderMessages(name);
  else if(name==="E-mail") appBody.innerHTML=renderMail();
@@ -166,6 +173,7 @@ function openApp(name){
  else if(name==="Terminal") appBody.innerHTML=renderTerminal();
  else appBody.innerHTML=genericRows(name);
  appScreen.classList.add('open');
+ if(name==="Fotos") bindPhotos();
  if(name==="Terminal") {
    setTimeout(()=>{
     $('#pinBtn').onclick=()=>{const v=$('#pinInput').value.trim(),l=codes[v];if(!l){$('#pinResult').innerHTML='<p class="bad">Código inválido.</p>';return}if(!has(l)){unlocked.push(l);unlocked.sort();save()}openApp("Terminal")};
