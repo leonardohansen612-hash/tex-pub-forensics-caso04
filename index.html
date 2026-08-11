@@ -68,6 +68,11 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 @media(max-width:460px){#phoneWrap{padding:0}.phone{width:100vw;height:100vh;min-height:0;border:0;border-radius:0}.phone:before{top:8px}}
 
 .photoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px;background:#fff}.photoTile{border:0;padding:0;background:#111;aspect-ratio:1/1;overflow:hidden;cursor:pointer;position:relative}.photoTile img{width:100%;height:100%;object-fit:cover;display:block}.photoTile span{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.65);color:#fff;font-size:11px;font-weight:700;padding:3px 6px;border-radius:5px}.photoViewer{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column}.photoViewer.open{display:flex}.photoViewerBar{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:#fff;background:#050505}.photoViewerBar button{border:0;background:none;color:#0a84ff;font-size:16px}.photoViewer img{width:100%;height:calc(100% - 54px);object-fit:contain}.photoCount{font-size:13px;color:#aaa}
+
+.lockedPhoto{background:#151515!important;color:#aaa!important;cursor:not-allowed!important;position:relative}
+.lockedPhoto .photoLock{height:100%;min-height:126px;display:grid;place-items:center;font-size:30px;background:linear-gradient(145deg,#181818,#090909)}
+.lockedPhoto small{position:absolute;right:6px;top:6px;background:#000c;color:#aaa;padding:3px 5px;border-radius:5px;font-size:8px;letter-spacing:.5px}
+
 </style>
 </head>
 <body>
@@ -156,12 +161,37 @@ function renderTerminal(){
 }
 
 const casePhotos=Array.from({length:15},(_,i)=>`assets/photos/F${String(i+1).padStart(2,'0')}.jpg`);
-function renderPhotos(){return `<div class="photoGrid">${casePhotos.map((src,i)=>`<button class="photoTile" data-photo="${i}"><img src="${src}" loading="lazy" alt="F${String(i+1).padStart(2,'0')}"><span>F${String(i+1).padStart(2,'0')}</span></button>`).join('')}</div><div class="photoViewer" id="photoViewer"><div class="photoViewerBar"><button id="photoClose">‹ Fotos</button><b id="photoName">F01</b><span class="photoCount" id="photoCount">1 de 15</span></div><img id="photoFull" alt="Foto ampliada"></div>`}
-function bindPhotos(){document.querySelectorAll('[data-photo]').forEach(b=>b.onclick=()=>{const i=+b.dataset.photo,v=$('#photoViewer');$('#photoFull').src=casePhotos[i];$('#photoName').textContent=`F${String(i+1).padStart(2,'0')}`;$('#photoCount').textContent=`${i+1} de ${casePhotos.length}`;v.classList.add('open')});const c=$('#photoClose');if(c)c.onclick=()=>$('#photoViewer').classList.remove('open')}
-
+const photoLevels={
+  1:1,2:1,
+  3:2,4:2,5:2,
+  6:3,7:3,
+  8:4,9:4,10:4,
+  11:5,12:5,13:5,
+  14:6,15:6
+};
+function renderPhotoGallery(){
+ const cards=casePhotos.map((src,i)=>{
+   const num=i+1,label=`F${String(num).padStart(2,'0')}`,lvl=photoLevels[num];
+   if(!has(lvl)){
+     return `<button class="photoTile lockedPhoto" disabled title="Foto criptografada — Nível ${lvl}">
+       <div class="photoLock">🔒</div>
+       <span>${label}</span>
+       <small>NÍVEL ${lvl}</small>
+     </button>`;
+   }
+   return `<button class="photoTile" onclick="openPhoto('${src}','${label}')">
+     <img src="${src}" alt="${label}">
+     <span>${label}</span>
+   </button>`;
+ }).join('');
+ return `<div class="photosGrid">${cards}</div>`;
+}
+function openPhoto(src,label){
+ appBody.innerHTML=`<div class="photoFull"><button class="photoClose" onclick="openApp('Fotos')">‹ Fotos</button><img src="${src}" alt="${label}"><div class="photoCaption">${label}</div></div>`;
+}
 function openApp(name){
  appScreen.classList.remove('forensic');appTitle.textContent=name;
- if(name==="Fotos") appBody.innerHTML=renderPhotos();
+ if(name==="Fotos") appBody.innerHTML=renderPhotoGallery();
  else if(name==="Telefone") appBody.innerHTML=renderPhone();
  else if(name==="Mensagens"||name==="WhatsApp") appBody.innerHTML=renderMessages(name);
  else if(name==="E-mail") appBody.innerHTML=renderMail();
