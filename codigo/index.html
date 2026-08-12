@@ -14,25 +14,25 @@
 <header class="top">
   <img class="logo" src="../assets/logo-tex-pub.png" alt="Tex Pub">
   <div><div class="eyebrow">TEX PUB FORENSICS // ARQUIVO EXTERNO</div><h1>Fragmento de Reconstrução</h1></div>
-  <div class="status">● INTEGRIDADE 82%</div>
+  <div class="status">● INTEGRIDADE 76%</div>
 </header>
 <section class="card">
   <div class="head">
-    <div><div class="eyebrow">FRAGMENTO C-03</div><h2>Mapa de nós ativos</h2><p>Arquivo recuperado de um bloco de dados parcialmente corrompido.</p></div>
+    <div><div class="eyebrow">FRAGMENTO C-03</div><h2>Mapa de reconstrução de canais</h2><p>Arquivo recuperado de um bloco de dados parcialmente corrompido.</p></div>
     <div class="tag">ACESSO RESTRITO</div>
   </div>
-  <div class="instruction"><b>INSTRUÇÃO RECUPERADA:</b> leia os quatro canais da esquerda para a direita. Considere apenas os <b>nós ativos ligados ao núcleo</b>. Ruído de memória deve ser ignorado.</div>
+  <div class="instruction"><b>INSTRUÇÃO RECUPERADA:</b> o fragmento não preservou a ordem original dos canais. Reconstrua a sequência pela <b>latência crescente</b>. Em cada canal, somente conexões <b>contínuas até o CORE</b> preservam valor. Ramificações interrompidas, NULL e CRC são resíduos de memória.</div>
   <div class="diagram">
     <div class="panel">
       <div class="channels">
-        <div class="channel"><h3>CANAL I</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="noise">CRC ERR</div></div></div>
-        <div class="channel"><h3>CANAL II</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="noise">NULL</div><div class="noise">NULL</div><div class="noise">CRC ERR</div></div></div>
-        <div class="channel"><h3>CANAL III</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div></div></div>
-        <div class="channel"><h3>CANAL IV</h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div></div></div>
+        <div class="channel"><h3>CANAL C <span style="color:#555">// 41ms</span></h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="noise">CRC ERR</div><div class="noise">LINK LOST</div></div></div>
+        <div class="channel"><h3>CANAL A <span style="color:#555">// 12ms</span></h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="noise">NULL</div><div class="noise">CRC ERR</div></div></div>
+        <div class="channel"><h3>CANAL D <span style="color:#555">// 58ms</span></h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="noise">NULL</div></div></div>
+        <div class="channel"><h3>CANAL B <span style="color:#555">// 27ms</span></h3><div class="core">CORE</div><div class="nodes"><div class="node"></div><div class="noise">LINK LOST</div><div class="noise">NULL</div><div class="noise">CRC ERR</div><div class="noise">ORPHAN</div></div></div>
       </div>
     </div>
   </div>
-  <div class="hint"><strong>Nota técnica:</strong> o valor de cada canal é determinado pela quantidade de conexões válidas preservadas no fragmento.</div>
+  <div class="hint"><strong>Nota técnica:</strong> LAT é o tempo de resposta registrado antes da corrupção. O valor de um canal corresponde à quantidade de nós que ainda mantêm uma rota íntegra até o núcleo. A posição visual dos canais não representa a sequência.</div>
   <div class="foot"><span><i class="pulse"></i>TRACE ONLINE</span><span>CASE TEX-C04 // READ ONLY</span></div>
 </section>
 </div>

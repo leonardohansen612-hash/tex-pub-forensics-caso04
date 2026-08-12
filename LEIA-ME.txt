@@ -13,3 +13,6 @@ A trilha de Bruno permanece: divergências financeiras → manutenção/chave de
 
 
 v8.5 — Spotify simulado, Snake 97 funcional, Calculadora, Clima e Relógio.
+
+
+v8.6 — Enigma QR/diagrama revisado: canais fora de ordem, latência crescente e resíduos de memória. PIN final preservado: 3144.
