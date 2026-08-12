@@ -211,6 +211,18 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
   .apps{gap:21px 11px}
 }
 
+
+/* v8.5 — ambientação do aparelho */
+.i-spotify{background:#111;color:#1ed760;font-weight:900}.i-spotify .spot{width:43px;height:43px;border-radius:50%;background:#1ed760;color:#111;display:grid;place-items:center;font-size:25px}
+.i-snake{background:linear-gradient(145deg,#26371d,#111b0d);color:#c8ff77;font-family:monospace;font-weight:900}.i-calc{background:#1c1c1e;color:#fff;font-size:25px}.i-weather{background:linear-gradient(#5ab6ff,#cfeaff);color:#fff}.i-clock{background:#fff;color:#111}
+.spotifyApp{background:#121212;color:#fff;min-height:100%;margin:-14px -14px -42px;padding:18px 16px 55px}.spotifyHero{padding:14px 2px 18px}.spotifyHero h1{margin:0 0 5px;font-size:28px}.spotifyHero p{margin:0;color:#aaa}.spotifySection{font-size:19px;margin:18px 0 10px}
+.spotifyRow{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid #242424}.album{width:54px;height:54px;border-radius:5px;background:linear-gradient(135deg,#3d3d3d,#111);display:grid;place-items:center;font-size:22px;flex:none}.spotifyRow .meta{min-width:0}.spotifyRow b{display:block;font-size:14px}.spotifyRow small{display:block;color:#aaa;margin-top:4px}
+.playlistGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.playlist{background:#202020;border-radius:9px;padding:10px;font-size:13px}.playlist .cover{height:88px;border-radius:6px;background:linear-gradient(145deg,#595959,#1d1d1d);display:grid;place-items:center;font-size:32px;margin-bottom:8px}
+.snakeWrap{max-width:330px;margin:auto;text-align:center}.snakeHud{display:flex;justify-content:space-between;margin:4px 0 10px;font-weight:800}#snakeCanvas{width:100%;max-width:320px;aspect-ratio:1;background:#10180c;border:5px solid #27351f;border-radius:12px;image-rendering:pixelated;display:block;margin:auto}.snakeMsg{height:28px;padding-top:8px;font-size:13px;color:#666}
+.snakeControls{display:grid;grid-template-columns:repeat(3,58px);grid-template-rows:repeat(2,52px);justify-content:center;gap:7px;margin-top:12px}.snakeControls button{border:0;border-radius:12px;background:#dedee3;font-size:22px;font-weight:800}.snakeControls .up{grid-column:2}.snakeControls .left{grid-column:1;grid-row:2}.snakeControls .down{grid-column:2;grid-row:2}.snakeControls .right{grid-column:3;grid-row:2}
+.calcDisplay{background:#000;color:#fff;border-radius:16px;padding:20px 16px;text-align:right;font-size:38px;min-height:82px;overflow:hidden;margin-bottom:10px}.calcGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.calcGrid button{border:0;border-radius:50%;aspect-ratio:1;font-size:20px;background:#d1d1d6}.calcGrid button.op{background:#ff9f0a;color:white}.calcGrid button.dark{background:#505050;color:white}
+.weatherCard{border-radius:22px;padding:22px;background:linear-gradient(#4ca8ef,#92cff8);color:#fff;text-align:center;box-shadow:0 8px 24px #0002}.weatherCard .temp{font-size:64px;font-weight:300}.weatherCard .city{font-size:23px;font-weight:700}.weatherHours{display:flex;justify-content:space-between;margin-top:22px;border-top:1px solid #ffffff55;padding-top:16px;font-size:12px}
+.clockFace{width:220px;height:220px;border-radius:50%;background:#fff;border:7px solid #111;margin:20px auto;position:relative;box-shadow:0 6px 18px #0002}.hand{position:absolute;left:50%;bottom:50%;transform-origin:50% 100%;border-radius:5px}.hourHand{width:6px;height:57px;background:#111;margin-left:-3px;transform:rotate(252deg)}.minHand{width:4px;height:78px;background:#111;margin-left:-2px;transform:rotate(264deg)}.secHand{width:2px;height:85px;background:#e33;margin-left:-1px}.clockDot{position:absolute;width:12px;height:12px;border-radius:50%;background:#111;left:50%;top:50%;transform:translate(-50%,-50%)}.clockDigital{text-align:center;font-size:28px;font-weight:700}
 </style>
 </head>
 <body>
@@ -234,6 +246,11 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
       <button class="appbtn" data-app="Notas"><div class="icon i-yellow">📝</div><span class="label">Notas</span></button>
       <button class="appbtn" data-app="Arquivos"><div class="icon i-blue">📁</div><span class="label">Arquivos</span></button>
       <button class="appbtn" data-app="Gravador"><div class="icon i-black">〰️</div><span class="label">Gravador</span></button>
+      <button class="appbtn" data-app="Spotify"><div class="icon i-spotify"><div class="spot">≋</div></div><span class="label">Spotify</span></button>
+      <button class="appbtn" data-app="Snake 97"><div class="icon i-snake">▦</div><span class="label">Snake 97</span></button>
+      <button class="appbtn" data-app="Calculadora"><div class="icon i-calc">＋−</div><span class="label">Calculadora</span></button>
+      <button class="appbtn" data-app="Clima"><div class="icon i-weather">☀️</div><span class="label">Clima</span></button>
+      <button class="appbtn" data-app="Relógio"><div class="icon i-clock">🕘</div><span class="label">Relógio</span></button>
       <button class="appbtn" data-app="Ajustes"><div class="icon i-gray">⚙️</div><span class="label">Ajustes</span></button>
       <button class="appbtn" data-app="Arquivos apagados"><div class="icon i-red">♻️</div><span class="label">Apagados</span></button>
       <button class="appbtn" data-app="Histórico de localização"><div class="icon i-purple">📍</div><span class="label">Localização</span></button>
@@ -367,7 +384,23 @@ function renderPhotoGallery(){
 function openPhoto(src,label){
  appBody.innerHTML=`<div class="photoFull"><button class="photoClose" onclick="openApp('Fotos')">‹ Fotos</button><img src="${src}" alt="${label}"><div class="photoCaption">${label}</div></div>`;
 }
+
+function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Helena</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
+let snakeTimer=null,snake=[],snakeDir={x:1,y:0},snakeNext={x:1,y:0},snakeFood={x:10,y:8},snakeScore=0,snakeBest=Number(localStorage.getItem("texSnakeBest")||0);
+function renderSnake(){return `<div class="snakeWrap"><div class="snakeHud"><span>PONTOS <b id="snakeScore">0</b></span><span>RECORDE <b id="snakeBest">${snakeBest}</b></span></div><canvas id="snakeCanvas" width="320" height="320"></canvas><div class="snakeMsg" id="snakeMsg">Setas, WASD, swipe ou botões.</div><div class="snakeControls"><button class="up" data-dir="U">▲</button><button class="left" data-dir="L">◀</button><button class="down" data-dir="D">▼</button><button class="right" data-dir="R">▶</button></div><button id="snakeRestart" style="margin-top:13px;border:0;border-radius:12px;padding:11px 18px;font-weight:800">NOVO JOGO</button></div>`}
+function snakePlaceFood(){do{snakeFood={x:Math.floor(Math.random()*16),y:Math.floor(Math.random()*16)}}while(snake.some(p=>p.x===snakeFood.x&&p.y===snakeFood.y))}
+function snakeDraw(){const c=document.querySelector("#snakeCanvas");if(!c)return;const x=c.getContext("2d");x.fillStyle="#10180c";x.fillRect(0,0,320,320);x.fillStyle="#c8ff77";snake.forEach(p=>x.fillRect(p.x*20+2,p.y*20+2,16,16));x.fillStyle="#ff675c";x.fillRect(snakeFood.x*20+3,snakeFood.y*20+3,14,14);document.querySelector("#snakeScore").textContent=snakeScore;document.querySelector("#snakeBest").textContent=snakeBest}
+function snakeTick(){snakeDir=snakeNext;const h={x:snake[0].x+snakeDir.x,y:snake[0].y+snakeDir.y};if(h.x<0||h.y<0||h.x>=16||h.y>=16||snake.some(p=>p.x===h.x&&p.y===h.y)){clearInterval(snakeTimer);document.querySelector("#snakeMsg").textContent="GAME OVER — toque em NOVO JOGO.";return}snake.unshift(h);if(h.x===snakeFood.x&&h.y===snakeFood.y){snakeScore+=10;if(snakeScore>snakeBest){snakeBest=snakeScore;localStorage.setItem("texSnakeBest",snakeBest)}snakePlaceFood()}else snake.pop();snakeDraw()}
+function snakeStart(){clearInterval(snakeTimer);snake=[{x:8,y:8},{x:7,y:8},{x:6,y:8}];snakeDir={x:1,y:0};snakeNext={x:1,y:0};snakeScore=0;snakePlaceFood();snakeDraw();snakeTimer=setInterval(snakeTick,125);const setDir=d=>{const m={U:{x:0,y:-1},D:{x:0,y:1},L:{x:-1,y:0},R:{x:1,y:0}}[d];if(m&&!(m.x===-snakeDir.x&&m.y===-snakeDir.y))snakeNext=m};document.querySelectorAll("[data-dir]").forEach(b=>b.onclick=()=>setDir(b.dataset.dir));window._snakeKey=e=>{const k=e.key.toLowerCase(),map={arrowup:"U",w:"U",arrowdown:"D",s:"D",arrowleft:"L",a:"L",arrowright:"R",d:"R"};if(map[k]){e.preventDefault();setDir(map[k])}};document.addEventListener("keydown",window._snakeKey);let sx=0,sy=0,c=document.querySelector("#snakeCanvas");c.ontouchstart=e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY};c.ontouchend=e=>{let dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))>18)setDir(Math.abs(dx)>Math.abs(dy)?(dx>0?"R":"L"):(dy>0?"D":"U"))};document.querySelector("#snakeRestart").onclick=snakeStart}
+function renderCalc(){return `<div class="calcDisplay" id="calcDisplay">0</div><div class="calcGrid">${["C","±","%","÷","7","8","9","×","4","5","6","−","1","2","3","+","0",".","="].map(v=>`<button data-calc="${v}" class="${["÷","×","−","+","="].includes(v)?"op":(["C","±","%"].includes(v)?"dark":"")}">${v}</button>`).join("")}</div>`}
+let calcExpr="";
+function bindCalc(){document.querySelectorAll("[data-calc]").forEach(b=>b.onclick=()=>{let v=b.dataset.calc,d=document.querySelector("#calcDisplay");if(v==="C"){calcExpr="";d.textContent="0";return}if(v==="±"){if(calcExpr)calcExpr=calcExpr.startsWith("-")?calcExpr.slice(1):"-"+calcExpr;d.textContent=calcExpr||"0";return}if(v==="%"){let n=parseFloat(calcExpr);if(!isNaN(n)){calcExpr=String(n/100);d.textContent=calcExpr}return}if(v==="="){try{let e=calcExpr.replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-");let r=Function('"use strict";return ('+e+')')();calcExpr=String(Math.round(r*1e8)/1e8);d.textContent=calcExpr}catch{d.textContent="Erro";calcExpr=""}return}calcExpr+=v;d.textContent=calcExpr})}
+function renderWeather(){return `<div class="weatherCard"><div class="city">Jundiaí</div><div>Parcialmente nublado</div><div class="temp">19°</div><div>Máx. 24° &nbsp; Mín. 15°</div><div class="weatherHours"><span>21h<br>☁️<br>19°</span><span>22h<br>☁️<br>18°</span><span>23h<br>☁️<br>18°</span><span>00h<br>☁️<br>17°</span></div></div><div class="notecard"><b>Condições</b><p>Umidade 71% • Vento 9 km/h</p><p style="color:#8e8e93">Dados armazenados no último cache do aparelho.</p></div>`}
+function renderClock(){return `<div class="clockFace"><div class="hand hourHand"></div><div class="hand minHand"></div><div class="hand secHand"></div><div class="clockDot"></div></div><div class="clockDigital">20:44</div><div class="iosgroup" style="margin-top:24px"><div class="iosrow"><div class="main"><b>Alarmes</b><p>07:10 • dias úteis</p></div></div><div class="iosrow"><div class="main"><b>Timer</b><p>Nenhum timer ativo</p></div></div></div>`}
+function stopAmbientApps(){clearInterval(snakeTimer);if(window._snakeKey){document.removeEventListener("keydown",window._snakeKey);window._snakeKey=null}}
+
 function openApp(name){
+ stopAmbientApps();
  appScreen.classList.remove('forensic');appTitle.textContent=name;
  if(name==="Fotos") appBody.innerHTML=renderPhotoGallery();
  else if(name==="Telefone") appBody.innerHTML=renderPhone();
@@ -380,9 +413,16 @@ function openApp(name){
  else if(name==="Gravador") appBody.innerHTML=renderVoice();
  else if(name==="Arquivos") appBody.innerHTML=renderFiles();
  else if(name==="Terminal") appBody.innerHTML=renderTerminal();
+ else if(name==="Spotify") appBody.innerHTML=renderSpotify();
+ else if(name==="Snake 97") appBody.innerHTML=renderSnake();
+ else if(name==="Calculadora") appBody.innerHTML=renderCalc();
+ else if(name==="Clima") appBody.innerHTML=renderWeather();
+ else if(name==="Relógio") appBody.innerHTML=renderClock();
  else appBody.innerHTML=genericRows(name);
  appScreen.classList.add('open');
  if(name==="Fotos") bindPhotos();
+ if(name==="Snake 97") setTimeout(snakeStart,0);
+ if(name==="Calculadora") setTimeout(bindCalc,0);
  if(name==="Terminal") {
    setTimeout(()=>{
     $('#pinBtn').onclick=()=>{const v=$('#pinInput').value.trim(),l=codes[v];if(!l){$('#pinResult').innerHTML='<p class="bad">Código inválido.</p>';return}if(!has(l)){unlocked.push(l);unlocked.sort();save()}openApp("Terminal")};
@@ -391,7 +431,7 @@ function openApp(name){
  }
 }
 document.querySelectorAll('[data-app]').forEach(b=>b.onclick=()=>openApp(b.dataset.app));
-$('#backBtn').onclick=()=>{appScreen.classList.remove('open','forensic');appBody.innerHTML=''};
+$('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','forensic');appBody.innerHTML=''};
 </script>
 </body>
 </html>
