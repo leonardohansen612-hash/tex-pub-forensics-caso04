@@ -1,31 +1,12 @@
-TEX PUB FORENSICS — CASO 04 — V5 IPHONE
-Interface redesenhada para parecer um iPhone real.
-Tela principal, dock, barra de status e apps em estilo iOS.
-Todos os conteúdos digitais da V4 foram preservados, exceto Fotos, que continuam reservadas.
-Códigos: 0010, 4232, 3142, 9765, 3144, 684034.
-Rota /codigo/ preservada.
+CASO 04 — O BRINDE FINAL — v8.4
 
+Base: v8.3, preservando WhatsApp em conversas e trilha financeira/arma.
 
-V7 OTIMIZADA PARA GITHUB WEB
-Fotos F01-F15 convertidas de PNG para JPEG de alta qualidade.
-A página /codigo/ original foi preservada.
-Extraia o ZIP e envie os arquivos/pastas para a raiz do repositório.
+NOVO NA v8.4 — EFEITO DE DÚVIDA / RICARDO
+- N4: chamada perdida de Ricardo às 20:39.
+- N4: mensagens recuperadas da noite anterior tornam o término mais tenso e colocam Ricardo como suspeito plausível.
+- N4: registro_estacionamento.pdf mostra o veículo de Ricardo nas proximidades e deixa a saída inconclusiva.
+- N5: nova mensagem de Ricardo dizendo que está indo embora.
+- N5: comprovante_saida_ricardo.pdf recupera a saída às 20:33 e leitura do veículo a 1,8 km às 20:36, enfraquecendo gradualmente a hipótese sem apagar o conflito real.
 
-V7.2 — GALERIA POR NÍVEL
-========================
-As fotos agora são liberadas conforme os códigos físicos:
-N1 0010   -> F01-F02
-N2 4232   -> F03-F05
-N3 3142   -> F06-F07
-N4 9765   -> F08-F10
-N5 3144   -> F11-F13
-N6 684034 -> F14-F15
-
-Fotos de níveis bloqueados aparecem como criptografadas e não podem ser abertas.
-
-V8.1 — DESIGN-ONLY
-==================
-Base funcional restaurada da V7.3.
-Nenhuma lógica de aplicativos, códigos, fotos ou desbloqueios foi alterada.
-Mudanças apenas visuais: home mais limpa, wallpaper discreto, ícones,
-dock, status bar, espaçamento e navegação com aparência mais próxima do iOS.
+A trilha de Bruno permanece: divergências financeiras → manutenção/chave de fenda → comparativo → quadro elétrico → auditoria final → F15.
