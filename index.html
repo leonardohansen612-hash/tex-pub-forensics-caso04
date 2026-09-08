@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111">
-<title>Helena — iPhone</title>
+<title>Luiz — iPhone • Caso 05</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;background:#111;color:#111}
 button,input{font:inherit}button{cursor:pointer}
@@ -232,7 +232,7 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 <div class="screen" id="homeScreen">
   <div class="status"><span id="clock">20:44</span><span class="right">●●● ◔ 18%</span></div>
   <div class="home">
-    <div class="owner"><div class="time">Helena</div><small>iPhone de Helena</small></div>
+    <div class="owner"><div class="time">Luiz</div><small>iPhone de Luiz • Caso 05</small></div>
     <div class="apps">
       <button class="appbtn" data-app="Telefone"><div class="icon i-green">☎</div><span class="label">Telefone</span></button>
       <button class="appbtn" data-app="Mensagens"><div class="icon i-green">💬</div><span class="label">Mensagens</span></button>
@@ -277,42 +277,78 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 <script>
 const $=s=>document.querySelector(s);
 let p=0;const boot=$('#boot'),bar=$('#bootBar'),bt=$('#bootText');const timer=setInterval(()=>{p+=12;if(p>=100){p=100;clearInterval(timer);setTimeout(()=>boot.style.display='none',180)}bar.style.width=p+'%';bt.textContent=p<55?'Montando imagem forense...':'Carregando dispositivo...'},90);
-const codes={"0010":1,"4232":2,"3142":3,"9765":4,"3144":5,"684034":6};
-let unlocked=JSON.parse(localStorage.getItem("texC04Levels")||"[]");const save=()=>localStorage.setItem("texC04Levels",JSON.stringify(unlocked));const has=l=>unlocked.includes(l);
+const codes={"5012":1,"6841":2,"3144":3,"4761":4,"2231":5};
+let unlocked=JSON.parse(localStorage.getItem("texC05Levels")||"[]");const save=()=>localStorage.setItem("texC05Levels",JSON.stringify(unlocked));const has=l=>unlocked.includes(l);
 const evidence={
-"Contatos":[[1,"Camila Freitas","Melhor amiga de Helena • favorito"],[1,"Ricardo Alves","Ex-namorado • contato salvo"],[1,"Bruno Nogueira","Sócio/parceiro profissional • contato salvo"],[1,"Marcelo Tavares","Conhecido • contato salvo"],[1,"Gustavo Lima","Garçom / Tex Pub • contato salvo"]],
-"Telefone":[[1,"Camila Freitas","20:12 • chamada realizada • 00:41","out"],[2,"Ricardo Alves","19:47 • chamada perdida","miss"],[2,"Marcelo Tavares","18:52 • chamada perdida","miss"],[3,"Ricardo Alves","20:27 • chamada recebida • 01:18","in"],[4,"Ricardo Alves","20:39 • chamada perdida","miss"],[3,"Marcelo Tavares","20:22 • chamada recebida • 00:34","in"],[3,"Camila Freitas","20:35 • chamada realizada • 00:22","out"],[4,"Bruno Nogueira","20:37 • chamada recebida • 00:16","in"],[5,"Número não salvo","14 JUN • 17:08 • chamada recebida • 02:11","in"]],
-"Mensagens":[[1,"Gustavo Lima","Reserva confirmada para a mesa 07. Até mais tarde."],[2,"Ricardo Alves","Você não precisa me evitar. Só quero conversar."],[2,"Marcelo Tavares","Vi que você vai estar no Tex hoje. Posso passar aí?"],[3,"Camila Freitas","Se ele aparecer, não fica sozinha com isso."],[4,"Gustavo Lima","Sua mesa está pronta. Se precisar de alguma coisa me chama."]],
-"WhatsApp":[
-[1,"Camila Freitas","in","20:13","Cheguei. Te encontro aí dentro."],
-[2,"Ricardo Alves","in","19:32","Eu sei que você não quer falar comigo, mas preciso explicar uma coisa."],
-[2,"Marcelo Tavares","in","20:02","Você não respondeu. Estou indo mesmo assim."],
-[2,"Bruno Nogueira","in","18:31","Ainda dá tempo de resolver isso sem envolver mais ninguém."],
-[2,"Bruno Nogueira","in","18:36","Não escreve mais sobre isso aqui."],
-[2,"Bruno Nogueira","in","20:38","Estou chegando."],
-[3,"Camila Freitas","in","20:34","Você tem certeza desses comprovantes?"],
-[3,"Camila Freitas","out","20:35","Tenho. Os valores não fecham. Hoje eu vou ouvir a versão dele."],
-[3,"Ricardo Alves","in","20:29","Estou do lado de fora. Dois minutos e vou embora."],
-[3,"Ricardo Alves","out","20:30","Não é uma boa hora."],
-[4,"Ricardo Alves","in","14 JUN 23:48","Você não pode simplesmente terminar tudo e fingir que eu não existo.","rec"],
-[4,"Ricardo Alves","out","14 JUN 23:51","Não aparece no meu trabalho. Não vem atrás de mim.","rec"],
-[4,"Ricardo Alves","in","14 JUN 23:53","Então atende quando eu ligar. Eu não vou deixar isso terminar assim.","rec"],
-[5,"Ricardo Alves","in","20:31","Estou indo embora. Era só isso que eu queria dizer."],
-[4,"Bruno Nogueira","out","20:38","Mesa 07."],
-[5,"Bruno Nogueira","out","14 JUN 19:14","Eu conferi os comprovantes. Quero uma explicação.","rec"],
-[5,"Bruno Nogueira","in","14 JUN 19:16","Apaga isso. A gente conversa pessoalmente.","rec"]
+"Contatos":[
+[1,"João","Barman • Tex Pub"],[1,"Giovana","Cliente / amiga"],[1,"Leo","Sócio • Tex Pub"],[1,"Jefferson","Sócio • Tex Pub"]
 ],
-"Arquivos":[[1,"reserva_mesa07.pdf","Confirmação de reserva • Mesa 07 • 20h30"],[3,"relatorio_repasses_maio_junho.pdf","Conferência preliminar aponta quatro divergências e prejuízo acumulado."],[3,"resumo_projeto.xlsx","Planilha de controle. Quatro lançamentos marcados para conferência."],[4,"comprovantes_junho.zip","Pacote local com comprovantes de repasses."],[4,"controle_manutencao.pdf","Registro de retirada do kit de manutenção do Tex Pub."],[4,"registro_estacionamento.pdf","Registro parcial mostra o veículo de Ricardo nas proximidades do Tex Pub."],[5,"comparativo_repasses.pdf","Cruzamento dos comprovantes aproxima as divergências do acesso de Bruno."],[5,"comprovante_saida_ricardo.pdf","Registro recuperado ajuda a reconstruir a saída de Ricardo antes da janela crítica."],[5,"camera_c_log.txt","Falha de gravação: perda de 00:45 na janela crítica."],[5,"quadro_eletrico_log.txt","Evento manual registrado às 20:43:11."],[6,"auditoria_final.csv","Lançamentos divergentes associados ao acesso de Bruno Nogueira."],[6,"integridade_dispositivo.log","20:42 evento crítico → 20:43:11 interrupção elétrica → 20:44:02 retorno."]],
-"Notas":[[1,"Hoje","Falar com Camila. Conferir comprovantes. Mesa 07 — 20h30."],[2,"Pendências","Ricardo: encerrar assunto. Marcelo: não responder. Projeto: revisar repasses."],[3,"Sem título","Não quero acusar ninguém sem ter certeza."],[4,"20h40","Ou ele explica hoje ou amanhã eu levo tudo adiante."],[5,"[RECUPERADA]","Se os comprovantes estiverem certos, não foi erro. Foi intencional."]],
-"Calendário":[[1,"15 JUN • 20:30","Tex Pub — Mesa 07"],[2,"16 JUN • 09:00","Revisão financeira — documentos"],[3,"16 JUN • 11:30","Ligação — consultoria contábil"],[5,"16 JUN • 14:00","Reunião reservada — assunto: repasses"]],
-"Mapas":[[1,"Tex Pub","Destino salvo • chegada aproximada 20:10"],[3,"Trajeto recente","Deslocamento encerrado nas proximidades do Tex Pub"],[4,"Local significativo","Tex Pub • permanência registrada durante a janela do incidente"],[5,"Histórico reconstruído","Dispositivo permaneceu no local entre 20:10 e 20:44"]],
-"E-mail":[[1,"Reserva — Tex Pub","Mesa 07 confirmada para hoje."],[3,"Assunto: conferência de lançamentos","Helena enviou para si mesma quatro referências de transações para revisar."],[4,"Rascunho não enviado","Assunto: divergências nos repasses — “Preciso formalizar isso amanhã.”"],[5,"Contabilidade — retorno","Os valores indicados não correspondem aos comprovantes anexados."],[6,"[RECUPERADO] Encaminhamento agendado","Pacote de documentos preparado para envio na manhã seguinte."]],
-"Gravador":[[2,"Memo 14 JUN • 00:19","Helena: “Eu preciso resolver isso sem fazer acusação precipitada.”"],[3,"Memo 15 JUN • 00:31","Ruído de bar. Helena: “A Camila sabe onde estão os arquivos.”"],[4,"Memo 15 JUN • 00:17","Voz masculina ao fundo; trecho incompleto. Helena: “...não é atraso, Bruno.”"],[5,"Memo recuperado • 00:12","Helena: “Se acontecer alguma coisa, os comprovantes estão salvos.”"],[6,"Trecho recuperado • 00:08","Ruído no corredor; voz masculina indistinta seguida de impacto. Horário de criação: 20:42."]],
-"Safari":[[1,"Histórico","texpub.com.br • mapas • e-mail"],[2,"Pesquisa","como organizar comprovantes bancários"],[3,"Pesquisa","como identificar transferência alterada em comprovante"],[4,"Pesquisa","como formalizar denúncia de desvio financeiro"],[5,"Pesquisa apagada","validade de logs e comprovantes digitais"]],
-"Ajustes":[[1,"iPhone 14","iOS 18.x • Helena Duarte • bateria 18%"],[1,"Privacidade","Serviços de localização ativados"],[3,"Face ID e Código","Último desbloqueio normal registrado antes do incidente"],[4,"Bateria","Queda de atividade entre 20:42 e 20:44"],[5,"Análise","Sincronização interrompida durante queda de energia"]],
-"Arquivos apagados":[[5,"msg_cache_041.bin","Fragmentos de conversa Helena × Bruno recuperados."],[5,"repasse_04.pdf","Comprovante excluído; metadados preservados."],[6,"audit_access.log","Acesso aos registros financeiros vinculado às credenciais de Bruno."],[6,"memo_corridor.m4a","Fragmento de áudio criado às 20:42."]],
-"Histórico de localização":[[5,"20:10","Dispositivo de Helena entra no perímetro do Tex Pub."],[5,"20:41","Precisão reduzida; dispositivo permanece dentro do estabelecimento."],[6,"20:42–20:44","Sem deslocamento externo registrado durante crime/apagão."]],
-"Linha do tempo":[[1,"20:10","Helena chega ao Tex Pub."],[3,"20:18 / 20:24 / 20:31","Chegam Camila, Marcelo e Ricardo."],[4,"20:36","Bruno chega."],[4,"20:40","Discussão entre Helena e Bruno."],[6,"20:42","Janela estimada do ataque."],[6,"20:43","Interrupção elétrica provocada."],[6,"20:44","Energia retorna."]]
+"Telefone":[],
+"Mensagens":[],
+"WhatsApp":[
+[1,"João","out","03 SET 16:42","E aí, quando vai começar a me ensinar direito?"],
+[1,"João","in","03 SET 16:44","Ensinar o quê? kkkkk"],
+[1,"João","out","03 SET 16:45","Bar, porra. Tô falando sério."],
+[1,"João","in","03 SET 16:47","Então começa estudando 😂"],
+[1,"Contato a identificar","out","21:41","O João passou dos limites hoje."],
+[1,"Contato a identificar","out","21:41","Depois eu te conto."],
+[2,"Giovana","out","22:05","Tá com aquilo?"],
+[2,"Giovana","in","22:05","Tá."],
+[2,"Giovana","out","22:06","Não entrega pra ninguém."],
+[2,"Giovana","in","22:06","Eu ainda não entendi por que eu tô com isso."],
+[2,"Giovana","out","22:06","Depois te explico."],
+[2,"Giovana","out","22:07","Principalmente pro Jefferson."],
+[2,"Giovana","in","22:07","Tá bom."],
+[3,"Leo","out","20:18","A gente precisa conversar sobre aquilo."],
+[3,"Leo","in","20:19","Não por mensagem."],
+[3,"Leo","out","20:19","O Jefferson sabe?"],
+[3,"Leo","in","20:20","Ainda não."],
+[3,"Leo","in","20:20","E deixa assim até eu falar com ele."]
+],
+"Arquivos":[
+[1,"depoimento_joao.txt","E08 • Depoimento inicial de João sobre as discussões com Luiz."],
+[2,"registro_bar_2229_2233.txt","E10/E12 • Operações atribuídas a João no bar às 22:29 e 22:33."],
+[2,"depoimento_giovana.txt","E15 • Giovana relata que Luiz pediu que guardasse algumas coisas."],
+[3,"alteracao_societaria.pdf","E16 • Documentação referente à retirada de Leo da sociedade do Tex Pub."],
+[3,"apreensao_caixa.pdf","E18 • Relatório de apreensão de uma caixa encontrada nos fundos do Tex Pub."],
+[3,"laudo_balistica.pdf","E19 • Resultado pericial da arma encontrada na caixa."],
+[4,"comparativo_caixas.txt","E23 • Nota técnica para conferência dos identificadores das duas caixas."],
+[4,"depoimento_leo.txt","E28 • Trecho do depoimento de Leo sobre seus últimos contatos com Luiz."],
+[4,"alteracao_societaria_completa.pdf","E29 • Versão ampliada da documentação societária."],
+[5,"trajetoria_projétil.pdf","E32 • Reconstrução técnica da direção do disparo."],
+[5,"camera_access_log.txt","E37 • Registro de consulta ao sistema de câmeras do Tex Pub."]
+],
+"Notas":[
+[1,"Hoje","Preciso entender o que está acontecendo antes de falar com mais alguém."],
+[2,"22:05","Confirmar se a Giovana ainda está com aquilo."],
+[3,"Documentos","Não deixar isso virar uma confusão antes do Leo falar com o Jefferson."]
+],
+"Calendário":[[1,"08 SET","Turno — Tex Pub"]],
+"Mapas":[[1,"Tex Pub","Local de trabalho • Jundiaí / SP"]],
+"E-mail":[
+[5,"Alteração contratual — Tex Pub","Registro recuperado indica abertura às 20:10 de mensagem relacionada à retirada de Leo da sociedade."]
+],
+"Gravador":[
+[1,"Depoimento de testemunha • 00:18","E05 • “Eu vi os dois discutindo. O João estava bem bravo. Ouvi ele falar algo como: continua se metendo no que não é da sua conta pra você ver o que acontece.”"],
+[5,"Registro técnico • 22:31","E31 • Fragmento recuperado marca um evento sonoro abrupto às 22:31. A origem exata do registro ainda será confrontada com a perícia."]
+],
+"Safari":[
+[1,"Pesquisa • 18:07","como fazer old fashioned"],
+[1,"Pesquisa • 18:09","old fashioned ingredientes proporção"],
+[1,"Histórico","Tex Pub • WhatsApp Web • pesquisa de coquetéis clássicos"]
+],
+"Ajustes":[[1,"iPhone de Luiz","Extração forense • Caso 05 • 08/09/2026"]],
+"Arquivos apagados":[],
+"Histórico de localização":[],
+"Linha do tempo":[
+[1,"18:00","Primeira discussão entre Luiz e João."],
+[1,"21:35","Segunda discussão entre Luiz e João."],
+[2,"22:05","Luiz confirma com Giovana que ela ainda está com “aquilo”."],
+[4,"22:20","Leo segue para o estoque."],
+[4,"22:23","Luiz segue para o estoque."],
+[4,"22:40","Leo deixa o estoque."],
+[5,"22:31","Horário técnico do disparo."]
+]
 };
 const appScreen=$('#appScreen'),appTitle=$('#appTitle'),appBody=$('#appBody');
 function initials(name){return name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
@@ -332,60 +368,43 @@ function openWhatsChat(person){
 }
 
 const fileDetails={
-"relatorio_repasses_maio_junho.pdf":`<div class="notecard"><b>CONFERÊNCIA PRELIMINAR DE REPASSES</b><p>Período analisado: maio / junho</p><p>Foram identificados <b>4 lançamentos</b> com divergência entre o valor recebido e o valor registrado.</p><p>Diferença acumulada identificada: <b>R$ 8.740,00</b>.</p><p>Os lançamentos foram realizados utilizando um mesmo perfil operacional.</p><p style="margin-top:18px">Responsável pela conferência: <b>Helena Duarte</b></p><p style="color:#8e8e93">Status: conferência preliminar — não formalizada.</p></div>`,
-"registro_estacionamento.pdf":`<div class="notecard"><b>REGISTRO DE ESTACIONAMENTO — CÂMERA LATERAL</b><p>Leitura automática de placa / acesso da rua.</p><p>20:24:37 — veículo associado a <b>Ricardo Alves</b> registrado nas proximidades do Tex Pub.</p><p>20:31:52 — último registro visual do veículo na área de embarque.</p><p style="color:#8e8e93">Registro incompleto: câmera perdeu sincronização antes da confirmação de saída.</p></div>`,
-"comprovante_saida_ricardo.pdf":`<div class="notecard"><b>REGISTRO RECUPERADO — SAÍDA / ESTACIONAMENTO</b><p>Fragmento sincronizado após recuperação do cache.</p><p>20:33:18 — veículo associado a <b>Ricardo Alves</b> deixa a área lateral.</p><p>20:36:04 — leitura do mesmo veículo a aproximadamente 1,8 km do Tex Pub.</p><p style="color:#8e8e93">O registro reduz a probabilidade de permanência de Ricardo no local durante a janela estimada do ataque, mas não esclarece o motivo da visita.</p></div>`,
-"controle_manutencao.pdf":`<div class="notecard"><b>CONTROLE DE MANUTENÇÃO — TEX PUB</b><p>Kit de manutenção / retirada temporária</p><p>Alicate universal — <b>OK</b><br>Chave Phillips — <b>OK</b><br>Chave de fenda 6 mm — <b>RETIRADA</b></p><p>Motivo informado: ajuste no quadro / câmera do corredor.</p><p>Retirada: <b>Bruno Nogueira — 19:58</b><br>Devolução: <b>não registrada</b></p></div>`,
-"comparativo_repasses.pdf":`<div class="notecard"><b>COMPARATIVO DE REPASSES</b><p>Os quatro comprovantes separados por Helena apresentam valores diferentes dos lançamentos registrados no controle interno.</p><p>As divergências ocorreram em períodos nos quais o acesso administrativo estava sob responsabilidade de <b>Bruno Nogueira</b>.</p><p style="color:#8e8e93">Recomendação: conferir os comprovantes originais antes de formalizar qualquer acusação.</p></div>`,
-"quadro_eletrico_log.txt":`<div class="notecard"><b>QUADRO_ELÉTRICO.LOG</b><p>20:43:11 — interrupção de alimentação.</p><p>Origem: <b>acionamento/intervenção manual</b>.</p><p>20:44:02 — alimentação restabelecida.</p></div>`,
-"auditoria_final.csv":`<div class="notecard"><b>AUDITORIA FINAL</b><p>Validação concluída: os lançamentos divergentes estão associados às <b>credenciais de Bruno Nogueira</b>.</p><p>Os valores dos registros internos não correspondem aos comprovantes originais preservados por Helena.</p></div>`
+"depoimento_joao.txt":`<div class="notecard"><b>E08 — DEPOIMENTO INICIAL • JOÃO</b><p>“Foi uma discussão besta de trabalho. O Luiz queria fazer algumas coisas do bar e eu falei que não era hora. Não teve ameaça nem nada.”</p><p style="color:#8e8e93">Observação: o relato será confrontado com testemunhas e imagens.</p></div>`,
+"registro_bar_2229_2233.txt":`<div class="notecard"><b>E10/E12 — REGISTRO OPERACIONAL DO BAR</b><p>22:29 — operação registrada no terminal do bar • usuário: <b>João</b>.</p><p>22:33 — nova operação registrada • usuário: <b>João</b>.</p><p style="color:#8e8e93">O registro comprova uso do terminal; deve ser cruzado com evidência visual.</p></div>`,
+"depoimento_giovana.txt":`<div class="notecard"><b>E15 — DEPOIMENTO INICIAL • GIOVANA</b><p>“O Luiz me pediu para guardar umas coisas dele. Eu não sabia direito o que era e não achei que tivesse relação com o que aconteceu.”</p></div>`,
+"alteracao_societaria.pdf":`<div class="notecard"><b>E16 — DOCUMENTAÇÃO SOCIETÁRIA</b><p>Minuta referente à <b>retirada de Leonardo da sociedade do Tex Pub</b>.</p><p>O material indica preparação de alteração contratual e transferência/regularização das responsabilidades societárias.</p><p style="color:#8e8e93">Documento ainda sujeito à conferência de integridade e assinaturas.</p></div>`,
+"apreensao_caixa.pdf":`<div class="notecard"><b>E18 — RELATÓRIO DE APREENSÃO</b><p>Uma caixa foi localizada na área dos fundos do Tex Pub.</p><p>No interior foi encontrada <b>uma arma de fogo</b>, encaminhada para perícia.</p><p>A aparência externa da caixa é compatível, em análise preliminar, com o objeto observado em gravações anteriores.</p></div>`,
+"laudo_balistica.pdf":`<div class="notecard"><b>E19 — LAUDO BALÍSTICO</b><p>O exame pericial confirma que a arma apreendida na caixa é <b>compatível com o disparo que atingiu Luiz</b>.</p><p style="color:#8e8e93">A conclusão balística identifica a arma; não determina quem efetuou o disparo.</p></div>`,
+"comparativo_caixas.txt":`<div class="notecard"><b>E23 — CONFERÊNCIA DE IDENTIFICADORES</b><p>Orientação pericial: comparar cuidadosamente os elementos de fabricação visíveis na caixa registrada às <b>18:55</b> e na caixa apreendida após o crime.</p><p><b>Objetos visualmente semelhantes não são necessariamente o mesmo objeto.</b></p><p style="color:#8e8e93">A característica objetiva definitiva será incorporada quando o material fotográfico for produzido.</p></div>`,
+"depoimento_leo.txt":`<div class="notecard"><b>E28 — DEPOIMENTO • LEO</b><p>Trecho preservado para confronto com a cronologia das câmeras.</p><p>Leo minimiza a extensão de sua conversa com Luiz e não descreve integralmente o período passado no estoque.</p><p style="color:#8e8e93">A redação final do depoimento será fechada após a definição do encobrimento entre 22:31 e 22:40.</p></div>`,
+"alteracao_societaria_completa.pdf":`<div class="notecard"><b>E29 — DOCUMENTAÇÃO SOCIETÁRIA • VERSÃO AMPLIADA</b><p>O conjunto confirma que Luiz teve contato com informações sobre a saída de Leo antes de Jefferson ser oficialmente comunicado.</p><p>O sigilo da mudança societária passa a ser um elemento central da investigação.</p></div>`,
+"trajetoria_projétil.pdf":`<div class="notecard"><b>E32 — RECONSTRUÇÃO DE TRAJETÓRIA</b><p>A direção do projétil indica que a posição de Luiz deve ser analisada em relação às demais pessoas presentes no estoque.</p><p><b>A trajetória, isoladamente, não confirma que Luiz fosse o alvo pretendido.</b></p><p style="color:#8e8e93">Cruze este laudo com as imagens e posições recuperadas.</p></div>`,
+"camera_access_log.txt":`<div class="notecard"><b>E37 — CAMERA_ACCESS.LOG</b><p>O sistema registra consulta a gravações anteriores do Tex Pub.</p><p>Entre os trechos acessados está a janela das <b>18:55</b>, horário em que Luiz entrega uma caixa a Giovana.</p><p style="color:#8e8e93">A identificação final do acesso deve ser cruzada com os registros administrativos liberados neste nível.</p></div>`
 };
 function renderFiles(){const [v,h]=visible("Arquivos");return `<div class="sectionlabel">No meu iPhone</div><div class="iosgroup">${v.map(r=>`<div class="iosrow" ${fileDetails[r[1]]?`onclick="openFile('${r[1]}')" style="cursor:pointer"`:''}><div class="avatar">${r[1].endsWith('.pdf')?'PDF':'▤'}</div><div class="main"><b>${r[1]} <span class="level">N${r[0]}</span></b><p>${r[2]}</p></div>${fileDetails[r[1]]?'<span class="chev">›</span>':''}</div>`).join('')}</div>${lockMsg(h.length)}`}
 function openFile(name){appTitle.textContent=name;appBody.innerHTML=`<button class="back" onclick="openApp('Arquivos')" style="margin-bottom:12px">‹ Arquivos</button>${fileDetails[name]||''}`}
 
-function renderMail(){const [v,h]=visible("E-mail");return `<div class="sectionlabel">Caixa de Entrada</div>${v.map(r=>`<div class="mailrow"><b>${r[1]}</b><div class="sub">Helena Duarte</div><p>${r[2]}</p></div>`).join('')}${lockMsg(h.length)}`}
+function renderMail(){const [v,h]=visible("E-mail");return `<div class="sectionlabel">Caixa de Entrada</div>${v.map(r=>`<div class="mailrow"><b>${r[1]}</b><div class="sub">Extração forense</div><p>${r[2]}</p></div>`).join('')}${lockMsg(h.length)}`}
 function renderNotes(){const [v,h]=visible("Notas");return v.map(r=>`<div class="notecard"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')+lockMsg(h.length)}
 function renderSafari(){const [v,h]=visible("Safari");return `<div class="safariTop"><div class="address">🔒 Histórico e Pesquisas</div></div>${v.map(r=>`<div class="searchitem"><small>${r[1]}</small><div style="margin-top:6px;font-size:15px">${r[2]}</div></div>`).join('')}${lockMsg(h.length)}`}
 function renderMaps(){const [v,h]=visible("Mapas");return `<div class="mapmock"><div class="pin">📍</div></div><div class="iosgroup">${v.map(r=>`<div class="iosrow"><div class="main"><b>${r[1]}</b><p>${r[2]}</p></div></div>`).join('')}</div>${lockMsg(h.length)}`}
-function renderCalendar(){const [v,h]=visible("Calendário");return `<div class="calday"><div class="date">DOMINGO, 15 DE JUNHO</div>${v.map(r=>`<div class="event"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')}</div>${lockMsg(h.length)}`}
+function renderCalendar(){const [v,h]=visible("Calendário");return `<div class="calday"><div class="date">TERÇA-FEIRA, 8 DE SETEMBRO</div>${v.map(r=>`<div class="event"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')}</div>${lockMsg(h.length)}`}
 function renderVoice(){const [v,h]=visible("Gravador");return v.map(r=>`<div class="voiceitem"><b>${r[1]}</b><div class="wave"></div><p style="color:#666;font-size:13px">${r[2]}</p></div>`).join('')+lockMsg(h.length)}
 function renderTerminal(){
  appScreen.classList.add('forensic');
- const labels=["0010 — Cronômetro","4232 — Bexigas","3142 — Quiz","9765 — Comanda","3144 — QR / diagrama","684034 — Padrões TEX PUB"];
- return `<div class="terminalbox"><b>GrayKey Bridge — Caso 04</b><p style="color:#aaa;font-size:13px">Insira um código encontrado no Tex Pub.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
+ const labels=["Old Fashioned","Comanda / autorização","Documentos / caixa","Comparação das caixas","Reconstrução do estoque"];
+ return `<div class="terminalbox"><b>GrayKey Bridge — Caso 05</b><p style="color:#aaa;font-size:13px">Insira um código encontrado no Tex Pub.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=Array.from({length:15},(_,i)=>`assets/photos/F${String(i+1).padStart(2,'0')}.jpg`);
-const photoLevels={
-  1:1,2:1,
-  3:2,4:2,5:2,
-  6:3,7:3,
-  8:4,9:4,10:4,
-  11:5,12:5,13:5,
-  14:6,15:6
-};
+const casePhotos=[];
+const photoLevels={};
 function renderPhotoGallery(){
- const cards=casePhotos.map((src,i)=>{
-   const num=i+1,label=`F${String(num).padStart(2,'0')}`,lvl=photoLevels[num];
-   if(!has(lvl)){
-     return `<button class="photoTile lockedPhoto" disabled title="Foto criptografada — Nível ${lvl}">
-       <div class="photoLock">🔒</div>
-       <span>${label}</span>
-       <small>NÍVEL ${lvl}</small>
-     </button>`;
-   }
-   return `<button class="photoTile" onclick="openPhoto('${src}','${label}')">
-     <img src="${src}" alt="${label}">
-     <span>${label}</span>
-   </button>`;
- }).join('');
- return `<div class="photosGrid">${cards}</div>`;
+ return `<div class="notecard"><b>FOTOS — CASO 05</b><p>Os registros fotográficos serão incorporados ao aparelho conforme forem produzidos e aprovados.</p><p style="color:#8e8e93">Nenhuma fotografia do Caso 05 é exibida nesta versão.</p></div>`;
 }
 function openPhoto(src,label){
  appBody.innerHTML=`<div class="photoFull"><button class="photoClose" onclick="openApp('Fotos')">‹ Fotos</button><img src="${src}" alt="${label}"><div class="photoCaption">${label}</div></div>`;
 }
 
-function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Helena</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
+function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Luiz</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
 let snakeTimer=null,snake=[],snakeDir={x:1,y:0},snakeNext={x:1,y:0},snakeFood={x:10,y:8},snakeScore=0,snakeBest=Number(localStorage.getItem("texSnakeBest")||0);
 function renderSnake(){return `<div class="snakeWrap"><div class="snakeHud"><span>PONTOS <b id="snakeScore">0</b></span><span>RECORDE <b id="snakeBest">${snakeBest}</b></span></div><canvas id="snakeCanvas" width="320" height="320"></canvas><div class="snakeMsg" id="snakeMsg">Setas, WASD, swipe ou botões.</div><div class="snakeControls"><button class="up" data-dir="U">▲</button><button class="left" data-dir="L">◀</button><button class="down" data-dir="D">▼</button><button class="right" data-dir="R">▶</button></div><button id="snakeRestart" style="margin-top:13px;border:0;border-radius:12px;padding:11px 18px;font-weight:800">NOVO JOGO</button></div>`}
 function snakePlaceFood(){do{snakeFood={x:Math.floor(Math.random()*16),y:Math.floor(Math.random()*16)}}while(snake.some(p=>p.x===snakeFood.x&&p.y===snakeFood.y))}

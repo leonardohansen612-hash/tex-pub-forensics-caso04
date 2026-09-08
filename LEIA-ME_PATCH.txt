@@ -1,0 +1,15 @@
+CASO 05 — PATCH 01
+
+Substitua na raiz do repositório apenas:
+- index.html
+
+Não envie assets/photos do Caso 04 para esta atualização. A galeria do Caso 05 fica temporariamente sem fotos até produzirmos as novas imagens.
+
+Códigos configurados nesta versão:
+N1 5012
+N2 6841
+N3 3144
+N4 4761
+N5 2231 (PROVISÓRIO — será trocado quando fecharmos a reconstrução física final do estoque)
+
+O localStorage mudou para texC05Levels, então o Caso 05 começa sem desbloqueios herdados do Caso 04.
