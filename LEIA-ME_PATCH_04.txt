@@ -1,0 +1,18 @@
+CASO 05 — PATCH 04
+
+Objetivo: ampliar o conteúdo do celular sem adicionar novas fotos.
+
+ALTERAÇÕES:
+- Mais ligações em Telefone
+- Mais SMS/iMessage em Mensagens
+- Conversas adicionais no WhatsApp
+- Novas notas
+- Mais e-mails
+- Histórico e pesquisas Safari ampliados
+- Arquivos apagados recuperados
+- Pequenos registros extras no Calendário
+
+Mantidos: códigos, níveis, fotos, PATCH 02/03.1 e estrutura assets/Caso05.
+
+SUBIDA:
+Substitua somente o index.html da raiz do projeto.
