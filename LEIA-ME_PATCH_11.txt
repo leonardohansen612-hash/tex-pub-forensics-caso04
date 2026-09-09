@@ -1,0 +1,16 @@
+CASO 05 — PATCH 11
+Substituir somente index.html.
+
+ALTERAÇÃO DO MINIGAME:
+- continua oculto até o código 4761;
+- horários agora ficam FIXOS nas quatro colunas: 22:04, 22:13, 22:22 e 22:31;
+- jogador escolhe somente PESSOA + LOCAL;
+- 8 pistas calibradas para uma resolução mais fluida;
+- sem botão de ajuda;
+- solução única:
+  22:04 Mauro / Bar
+  22:13 Clara / Escritório
+  22:22 Renato / Corredor
+  22:31 Bianca / Estoque
+- conclusão revela 22:31 -> código 2231;
+- nenhuma foto/assets alterada.

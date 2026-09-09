@@ -618,8 +618,8 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
     <div class="recon-badge">ARQUIVO 17</div>
     <h2>O Envelope Desaparecido</h2>
     <p>Quatro pessoas foram registradas em quatro setores diferentes, em horários diferentes. Um envelope confidencial desapareceu durante uma dessas movimentações.</p>
-    <p class="recon-muted">Reconstrua os quatro registros. Cada pessoa, local e horário pode ser utilizado <strong>uma única vez</strong>.</p>
-    <p class="recon-small">Tempo médio de resolução: 4–7 minutos.</p>
+    <p class="recon-muted">Reconstrua os quatro registros. Os horários já estão em ordem; descubra <strong>quem</strong> estava em cada local.</p>
+    <p class="recon-small">Tempo médio de resolução: 2–4 minutos.</p>
     <button class="recon-primary" id="recon-start-btn">ABRIR ARQUIVO</button>
    </div>
   </div>
@@ -629,43 +629,38 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
     <div class="recon-panel">
      <h3>PISTAS DO ARQUIVO</h3>
      <ol class="recon-clues">
-      <li>Mauro não esteve no <strong>Escritório</strong> nem no <strong>Estoque</strong>.</li>
-      <li>Clara foi registrada exatamente <strong>9 minutos depois</strong> de Mauro.</li>
-      <li>Renato passou pelo <strong>Corredor</strong>.</li>
-      <li>O registro do <strong>Bar</strong> aconteceu antes do registro do Escritório.</li>
-      <li>Bianca foi registrada <strong>depois de Clara</strong>.</li>
-      <li>O <strong>Estoque</strong> foi o último dos quatro locais registrados.</li>
-      <li>Entre o registro de Mauro e o de Renato houve exatamente <strong>uma movimentação</strong>.</li>
-      <li>Clara não esteve no <strong>Bar</strong> nem no <strong>Corredor</strong>.</li>
+      <li><strong>Renato</strong> passou pelo Corredor.</li>
       <li>O <strong>Corredor</strong> foi registrado às <strong>22:22</strong>.</li>
+      <li><strong>Clara</strong> foi registrada exatamente <strong>9 minutos depois</strong> de Mauro.</li>
+      <li><strong>Mauro</strong> não esteve no Escritório nem no Estoque.</li>
+      <li><strong>Bianca</strong> foi registrada depois de Clara.</li>
+      <li>Clara não esteve no <strong>Bar</strong> nem no <strong>Corredor</strong>.</li>
+      <li>O <strong>Estoque</strong> foi o último local registrado.</li>
       <li>A pessoa que passou pelo <strong>Estoque</strong> estava com o envelope.</li>
      </ol>
-     <div class="recon-note">Os horários disponíveis são 22:04, 22:13, 22:22 e 22:31. Use cada opção apenas uma vez.</div>
+     <div class="recon-note">Cada pessoa e cada local aparece uma única vez. Os horários já estão organizados em ordem cronológica.</div>
     </div>
 
     <div class="recon-panel">
      <h3>RECONSTRUÇÃO DOS REGISTROS</h3>
      <div class="recon-board-wrap">
       <div class="recon-board">
-       <div class="recon-record"><div class="recon-record-head">REGISTRO 1</div>
+       <div class="recon-record" data-time="22:04">
+        <div class="recon-record-head">22:04</div>
         <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
         <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
-       </div>
-       <div class="recon-record"><div class="recon-record-head">REGISTRO 2</div>
+       </div><div class="recon-record" data-time="22:13">
+        <div class="recon-record-head">22:13</div>
         <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
         <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
-       </div>
-       <div class="recon-record"><div class="recon-record-head">REGISTRO 3</div>
+       </div><div class="recon-record" data-time="22:22">
+        <div class="recon-record-head">22:22</div>
         <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
         <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
-       </div>
-       <div class="recon-record"><div class="recon-record-head">REGISTRO 4</div>
+       </div><div class="recon-record" data-time="22:31">
+        <div class="recon-record-head">22:31</div>
         <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
         <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
        </div>
       </div>
      </div>
@@ -705,10 +700,10 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  const recs=[...document.querySelectorAll('.recon-record')];
  document.getElementById('recon-clear').onclick=()=>{recs.forEach(r=>r.querySelectorAll('select').forEach(s=>s.value=''));fb.textContent='';};
  document.getElementById('recon-submit').onclick=()=>{
-   const got=recs.map(r=>[r.querySelector('.r-person').value,r.querySelector('.r-place').value,r.querySelector('.r-time').value]);
-   if(got.some(r=>r.some(v=>!v))){fb.textContent='Preencha os quatro registros antes de verificar.';return;}
-   for(let c=0;c<3;c++){const vals=got.map(r=>r[c]);if(new Set(vals).size!==4){fb.textContent='Cada pessoa, local e horário deve aparecer uma única vez.';return;}}
-   const sol=[['Mauro','Bar','22:04'],['Clara','Escritório','22:13'],['Renato','Corredor','22:22'],['Bianca','Estoque','22:31']];
+   const got=recs.map(r=>[r.querySelector('.r-person').value,r.querySelector('.r-place').value]);
+   if(got.some(r=>r.some(v=>!v))){fb.textContent='Preencha pessoa e local nos quatro horários antes de verificar.';return;}
+   for(let c=0;c<2;c++){const vals=got.map(r=>r[c]);if(new Set(vals).size!==4){fb.textContent='Cada pessoa e cada local deve aparecer uma única vez.';return;}}
+   const sol=[['Mauro','Bar'],['Clara','Escritório'],['Renato','Corredor'],['Bianca','Estoque']];
    const ok=got.every((r,i)=>r.every((v,j)=>v===sol[i][j]));
    if(ok){fb.textContent='✓ Reconstrução consistente com todas as pistas.';setTimeout(()=>show('done'),650);}
    else fb.textContent='✕ Há pelo menos uma contradição. Revise as pistas e tente novamente.';
