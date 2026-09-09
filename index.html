@@ -256,6 +256,30 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 @media(max-width:760px){.recon-layout{grid-template-columns:1fr}.recon-time{font-size:50px}}
 </style>
 
+
+<style>
+.dossier-overlay{position:absolute;inset:0;z-index:10020;background:rgba(7,7,9,.985);overflow:auto;padding:14px}
+.dossier-shell{max-width:900px;margin:0 auto;color:#f3f0e8;font-family:Arial,Helvetica,sans-serif}
+.dossier-top{display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid #414141;padding:8px 0 14px;margin-bottom:14px}
+.dossier-kicker{font-size:11px;letter-spacing:.16em;color:#aaa}.dossier-title{font-size:24px;font-weight:900;letter-spacing:.05em}
+.dossier-close{border:1px solid #555;background:#171717;color:#fff;border-radius:10px;width:44px;height:44px;font-size:28px}
+.dossier-paper{background:#151515;border:1px solid #383838;border-radius:14px;padding:20px}
+.dossier-stamp{display:inline-block;border:1px solid #777;border-radius:999px;padding:6px 10px;font-size:11px;letter-spacing:.12em;color:#ccc}
+.dossier-paper h2{font-size:28px;margin:10px 0}.dossier-copy{color:#c7c7c7;line-height:1.55;max-width:760px}
+.dossier-field{margin-top:17px}.dossier-field label{display:block;font-size:11px;letter-spacing:.09em;color:#aaa;margin-bottom:7px}
+.dossier-field input,.dossier-field textarea{box-sizing:border-box;width:100%;background:#0d0d0d;color:#fff;border:1px solid #505050;border-radius:9px;padding:11px;font:inherit}
+.dossier-field input{min-height:45px}.dossier-field textarea{min-height:290px;resize:vertical;line-height:1.5}
+.dossier-count{text-align:right;color:#888;font-size:11px;margin-top:5px}
+.dossier-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:16px}
+.dossier-primary,.dossier-secondary{min-height:44px;padding:10px 15px;border-radius:9px;font-weight:900;letter-spacing:.04em}
+.dossier-primary{border:0;background:#f1ede2;color:#111}.dossier-secondary{border:1px solid #555;background:#202020;color:#fff}
+.dossier-feedback{min-height:25px;margin-top:10px;font-weight:800}
+.dossier-receipt{text-align:center;max-width:650px;margin:28px auto;background:#151515;border:1px solid #383838;border-radius:14px;padding:22px}
+.dossier-protocol{font-size:28px;font-weight:900;letter-spacing:.08em;margin:16px 0}
+.dossier-muted{color:#aaa;line-height:1.5}
+@media(max-width:650px){.dossier-paper{padding:15px}.dossier-paper h2{font-size:24px}.dossier-field textarea{min-height:240px}}
+</style>
+
 </head>
 <body>
 <div id="boot"><img src="assets/logo-tex-pub.png"><b>TEX PUB FORENSICS</b><span id="bootText">Montando imagem...</span><div id="bootTrack"><i id="bootBar"></i></div></div>
@@ -279,6 +303,9 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
       <button class="appbtn" data-app="Arquivos"><div class="icon i-blue">📁</div><span class="label">Arquivos</span></button>
       <button class="appbtn" data-app="Reconstrução" id="recon-app-btn" style="display:none">
         <div class="icon i-red">🕵️</div><span class="label">Reconstrução</span>
+      </button>
+      <button class="appbtn" data-app="Dossiê Final" id="dossier-app-btn" style="display:none">
+        <div class="icon i-gray">📁</div><span class="label">Dossiê Final</span>
       </button>
       <button class="appbtn" data-app="Gravador"><div class="icon i-black">〰️</div><span class="label">Gravador</span></button>
       <button class="appbtn" data-app="Spotify"><div class="icon i-spotify"><div class="spot">≋</div></div><span class="label">Spotify</span></button>
@@ -709,6 +736,122 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    else fb.textContent='✕ Há pelo menos uma contradição. Revise as pistas e tente novamente.';
  };
  refresh();new MutationObserver(refresh).observe(document.body,{childList:true,subtree:true,attributes:true});setInterval(refresh,1000);
+})();
+</script>
+
+
+<div id="dossier-overlay" class="dossier-overlay" style="display:none" aria-hidden="true">
+ <div class="dossier-shell">
+  <div class="dossier-top">
+   <div><div class="dossier-kicker">NOITE DO MISTÉRIO • CASO 05</div><div class="dossier-title">DOSSIÊ FINAL</div></div>
+   <button type="button" class="dossier-close" id="dossier-close">×</button>
+  </div>
+
+  <div id="dossier-form" class="dossier-paper">
+   <div class="dossier-stamp">RELATÓRIO DOS INVESTIGADORES</div>
+   <h2>Reconstrução Final do Caso</h2>
+   <div class="dossier-copy">
+    A investigação está completa. Vocês tiveram acesso ao material recuperado do Caso 05.
+    Reconstruam os acontecimentos e apresentem sua conclusão de forma suficientemente completa
+    para que a sequência do crime possa ser compreendida.<br><br>
+    <strong>Nenhuma informação adicional será fornecida.</strong>
+   </div>
+
+   <div class="dossier-field">
+    <label for="dossier-team">EQUIPE</label>
+    <input id="dossier-team" maxlength="80" placeholder="Nome da equipe">
+   </div>
+
+   <div class="dossier-field">
+    <label for="dossier-report">RELATÓRIO DOS INVESTIGADORES</label>
+    <textarea id="dossier-report" maxlength="5000" placeholder="Escreva aqui a reconstrução completa do caso..."></textarea>
+    <div class="dossier-count"><span id="dossier-count">0</span>/5000</div>
+   </div>
+
+   <div class="dossier-actions">
+    <button type="button" class="dossier-secondary" id="dossier-save">SALVAR RASCUNHO</button>
+    <button type="button" class="dossier-primary" id="dossier-submit">ENTREGAR DOSSIÊ</button>
+   </div>
+   <div class="dossier-feedback" id="dossier-feedback"></div>
+  </div>
+
+  <div id="dossier-receipt" class="dossier-receipt" style="display:none">
+   <div class="dossier-stamp">DOSSIÊ ENTREGUE</div>
+   <h2>Relatório registrado</h2>
+   <p class="dossier-muted">Equipe</p>
+   <strong id="dossier-receipt-team"></strong>
+   <div class="dossier-protocol" id="dossier-protocol"></div>
+   <p class="dossier-muted">Aguardem a validação do investigador responsável.</p>
+   <button type="button" class="dossier-primary" id="dossier-return">VOLTAR AO CELULAR</button>
+  </div>
+ </div>
+</div>
+
+
+<script>
+(function(){
+ const btn=document.getElementById('dossier-app-btn'),ov=document.getElementById('dossier-overlay');
+ if(!btn||!ov)return;
+ const form=document.getElementById('dossier-form'),receipt=document.getElementById('dossier-receipt');
+ const team=document.getElementById('dossier-team'),report=document.getElementById('dossier-report');
+ const count=document.getElementById('dossier-count'),fb=document.getElementById('dossier-feedback');
+
+ function refreshDossier(){
+   try{
+     const a=(typeof unlocked!=="undefined"&&Array.isArray(unlocked))?unlocked:[];
+     btn.style.display=a.includes(5)?'':'none';
+   }catch(e){btn.style.display='none';}
+ }
+ function closeDossier(){ov.style.display='none';ov.setAttribute('aria-hidden','true');}
+ function saveDraft(){
+   try{
+     localStorage.setItem('caso05_dossier_team',team.value);
+     localStorage.setItem('caso05_dossier_report',report.value);
+     fb.textContent='Rascunho salvo neste dispositivo.';
+   }catch(e){fb.textContent='Não foi possível salvar o rascunho neste dispositivo.';}
+ }
+ function loadDraft(){
+   try{
+     team.value=localStorage.getItem('caso05_dossier_team')||'';
+     report.value=localStorage.getItem('caso05_dossier_report')||'';
+     count.textContent=report.value.length;
+   }catch(e){}
+ }
+ function protocol(){
+   const n=Math.floor(1000+Math.random()*9000);
+   return 'CASO05-'+n;
+ }
+
+ btn.addEventListener('click',function(e){
+   e.preventDefault();e.stopPropagation();refreshDossier();
+   if(btn.style.display==='none')return;
+   loadDraft();form.style.display='';receipt.style.display='none';
+   ov.style.display='';ov.setAttribute('aria-hidden','false');
+ },true);
+
+ document.getElementById('dossier-close').onclick=closeDossier;
+ document.getElementById('dossier-return').onclick=closeDossier;
+ report.addEventListener('input',()=>count.textContent=report.value.length);
+ document.getElementById('dossier-save').onclick=saveDraft;
+
+ document.getElementById('dossier-submit').onclick=()=>{
+   const t=team.value.trim(),r=report.value.trim();
+   if(!t){fb.textContent='Informe o nome da equipe.';return;}
+   if(r.length<80){fb.textContent='O relatório está curto demais para registrar uma reconstrução completa.';return;}
+   saveDraft();
+   const p=protocol();
+   try{
+     localStorage.setItem('caso05_dossier_protocol',p);
+     localStorage.setItem('caso05_dossier_submitted','1');
+   }catch(e){}
+   document.getElementById('dossier-receipt-team').textContent=t;
+   document.getElementById('dossier-protocol').textContent=p;
+   form.style.display='none';receipt.style.display='';
+ };
+
+ refreshDossier();
+ new MutationObserver(refreshDossier).observe(document.body,{childList:true,subtree:true,attributes:true});
+ setInterval(refreshDossier,1000);
 })();
 </script>
 

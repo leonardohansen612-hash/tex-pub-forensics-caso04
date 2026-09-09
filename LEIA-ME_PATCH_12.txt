@@ -1,0 +1,15 @@
+CASO 05 — PATCH 12
+Substituir somente index.html.
+
+DOSSIÊ FINAL:
+- novo app "Dossiê Final";
+- fica 100% oculto até o nível 5 / código 2231;
+- não apresenta perguntas, alternativas, suspeitos, alvo, encobrimento ou qualquer pista;
+- pede apenas nome da equipe + reconstrução livre e completa do caso;
+- botão SALVAR RASCUNHO salva localmente no dispositivo;
+- ENTREGAR DOSSIÊ exige relatório mínimo de 80 caracteres;
+- após entrega gera protocolo CASO05-XXXX;
+- informa que a equipe deve aguardar validação do investigador responsável;
+- não corrige automaticamente nem revela a solução;
+- nenhuma foto/assets foi alterada;
+- minigame do PATCH 11 preservado.
