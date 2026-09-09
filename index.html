@@ -316,6 +316,69 @@ window.CASO05_FIREBASE_CONFIG = {
 .dossier-result{border:1px solid #555;border-radius:12px;padding:15px;margin-top:15px;text-align:center}
 </style>
 
+
+<style id="caso05-photo-viewer-fix">
+/* PATCH 16 — visualizador de fotos sem zoom exagerado */
+.photoFull{
+  height:100%;
+  min-height:0;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow:hidden;
+  background:#0b0b0d;
+}
+.photoFull .photoClose{
+  flex:0 0 auto;
+  align-self:stretch;
+  width:100%;
+  box-sizing:border-box;
+  padding:10px 14px;
+  border:0;
+  border-bottom:1px solid #2b2b2e;
+  background:#f2f2f7;
+  color:#007aff;
+  text-align:left;
+  font-size:15px;
+  cursor:pointer;
+}
+.photoFull img{
+  display:block;
+  flex:1 1 auto;
+  min-height:0;
+  min-width:0;
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:calc(100% - 86px) !important;
+  object-fit:contain !important;
+  margin:auto;
+  background:#0b0b0d;
+}
+.photoFull .photoCaption{
+  flex:0 0 auto;
+  width:100%;
+  box-sizing:border-box;
+  padding:9px 12px 11px;
+  background:#111;
+  color:#e5e5e7;
+  text-align:center;
+  font-size:12px;
+  line-height:1.35;
+  border-top:1px solid #2a2a2a;
+}
+@media (max-width:600px){
+  .photoFull img{
+    max-height:calc(100% - 82px) !important;
+  }
+  .photoFull .photoCaption{
+    font-size:11px;
+    padding:7px 9px 9px;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="boot"><img src="assets/logo-tex-pub.png"><b>TEX PUB FORENSICS</b><span id="bootText">Montando imagem...</span><div id="bootTrack"><i id="bootBar"></i></div></div>
