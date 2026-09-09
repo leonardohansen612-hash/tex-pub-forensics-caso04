@@ -226,50 +226,34 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 </style>
 
 
+
 <style>
-.recon-overlay{position:absolute;inset:0;z-index:9999;background:rgba(7,7,9,.98);overflow:auto;padding:14px}
-.recon-shell{max-width:980px;margin:0 auto;color:#f2efe7;font-family:Arial,Helvetica,sans-serif}
-.recon-topbar{display:flex;justify-content:space-between;gap:14px;align-items:center;border-bottom:1px solid #414141;padding:8px 0 14px;margin-bottom:14px}
-.recon-kicker{font-size:11px;letter-spacing:.16em;color:#aaa}
-.recon-title{font-size:24px;font-weight:900;letter-spacing:.05em}
+.recon-overlay{position:absolute;inset:0;z-index:9999;background:rgba(7,7,9,.985);overflow:auto;padding:14px}
+.recon-shell{max-width:1080px;margin:0 auto;color:#f3f0e8;font-family:Arial,Helvetica,sans-serif}
+.recon-topbar{display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid #414141;padding:8px 0 14px;margin-bottom:14px}
+.recon-kicker{font-size:11px;letter-spacing:.16em;color:#aaa}.recon-title{font-size:24px;font-weight:900;letter-spacing:.05em}
 .recon-close{border:1px solid #555;background:#171717;color:#fff;border-radius:10px;width:44px;height:44px;font-size:28px}
-.recon-screen{padding:6px 0 24px}
-.recon-card,.recon-panel{background:#151515;border:1px solid #353535;border-radius:14px;padding:17px}
-.recon-intro{max-width:650px;margin:20px auto;text-align:center}
-.recon-intro h2{font-size:28px;margin:8px 0 12px}
+.recon-card,.recon-panel{background:#151515;border:1px solid #383838;border-radius:14px;padding:18px}
+.recon-intro{max-width:650px;margin:24px auto;text-align:center}.recon-intro h2{font-size:29px;margin:8px 0 12px}
 .recon-badge{display:inline-block;border:1px solid #666;border-radius:999px;padding:6px 10px;font-size:11px;letter-spacing:.12em}
-.recon-muted{color:#aaa;line-height:1.45}
-.recon-primary,.recon-secondary{min-height:44px;padding:10px 14px;border-radius:9px;font-weight:800;letter-spacing:.04em}
-.recon-primary{border:0;background:#f1ede2;color:#111}
-.recon-secondary{border:1px solid #555;background:#202020;color:#fff}
-.recon-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);gap:12px;align-items:start}
-.recon-panel h3{margin:0 0 10px;font-size:15px;letter-spacing:.06em}
-.recon-clues{margin:0;padding-left:22px;line-height:1.48}
-.recon-clues li{margin:0 0 10px}
-.recon-grid-wrap{overflow-x:auto;padding-bottom:4px}
-.logic-grid{border-collapse:collapse;width:100%;min-width:470px;font-size:12px}
-.logic-grid th,.logic-grid td{border:1px solid #444;padding:7px;text-align:center}
-.logic-grid th{background:#202020;color:#ddd}
-.logic-grid th:first-child{position:sticky;left:0;background:#202020;z-index:1;text-align:left}
-.logic-grid td:first-child{position:sticky;left:0;background:#151515;text-align:left;font-weight:800}
-.logic-cell{width:42px;height:38px;border:0;background:transparent;color:#ddd;font-size:18px;font-weight:900;cursor:pointer}
-.logic-cell[data-state="x"]{color:#c6c6c6}
-.logic-cell[data-state="yes"]{color:#fff;background:#303030;border-radius:7px}
-.recon-section-label{font-size:12px;color:#aaa;margin:14px 0 7px;letter-spacing:.08em}
+.recon-muted{color:#aaa;line-height:1.5}.recon-small{font-size:12px;color:#8f8f8f}
+.recon-primary,.recon-secondary{min-height:44px;padding:10px 15px;border-radius:9px;font-weight:900;letter-spacing:.04em}
+.recon-primary{border:0;background:#f1ede2;color:#111}.recon-secondary{border:1px solid #555;background:#202020;color:#fff}
+.recon-layout{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.6fr);gap:12px;align-items:start}
+.recon-panel h3{margin:0 0 12px;font-size:15px;letter-spacing:.06em}.recon-clues{margin:0;padding-left:23px;line-height:1.48}
+.recon-clues li{margin:0 0 10px}.recon-board-wrap{overflow-x:auto;padding-bottom:4px}
+.recon-board{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:9px;min-width:660px}
+.recon-record{border:1px solid #454545;background:#101010;border-radius:12px;padding:11px}
+.recon-record-head{text-align:center;font-size:11px;color:#aaa;letter-spacing:.1em;border-bottom:1px solid #333;padding-bottom:9px;margin-bottom:10px}
+.recon-field{margin-bottom:10px}.recon-field:last-child{margin-bottom:0}
+.recon-field label{display:block;font-size:10px;color:#8f8f8f;letter-spacing:.08em;margin-bottom:5px}
+.recon-field select{width:100%;min-height:42px;background:#181818;color:#fff;border:1px solid #4a4a4a;border-radius:8px;padding:7px;font-size:14px}
 .recon-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px}
-.recon-submit{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
-.recon-field label{display:block;font-size:11px;color:#aaa;margin-bottom:5px;letter-spacing:.06em}
-.recon-field select{width:100%;min-height:44px;background:#0e0e0e;color:#fff;border:1px solid #555;border-radius:8px;padding:8px;font-size:16px}
-.recon-feedback{min-height:26px;margin-top:12px;font-weight:800}
-.recon-time{font-size:68px;font-weight:900;letter-spacing:.07em;margin:18px 0}
-.recon-time span{opacity:.55}
-.recon-done{text-align:center;max-width:600px;margin:25px auto}
-.recon-small{font-size:12px;color:#8f8f8f}
-@media(max-width:720px){
- .recon-layout{grid-template-columns:1fr}
- .recon-submit{grid-template-columns:1fr}
- .recon-time{font-size:50px}
-}
+.recon-feedback{min-height:27px;margin-top:12px;font-weight:800;line-height:1.35}
+.recon-note{border-left:3px solid #777;padding:9px 11px;margin-top:14px;background:#101010;color:#bbb;font-size:12px;line-height:1.4}
+.recon-time{font-size:68px;font-weight:900;letter-spacing:.07em;margin:18px 0}.recon-time span{opacity:.55}
+.recon-done{text-align:center;max-width:620px;margin:28px auto}
+@media(max-width:760px){.recon-layout{grid-template-columns:1fr}.recon-time{font-size:50px}}
 </style>
 
 </head>
@@ -621,188 +605,115 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 </script>
 
 
+
 <div id="recon-overlay" class="recon-overlay" style="display:none" aria-hidden="true">
-  <div class="recon-shell">
-    <div class="recon-topbar">
-      <div>
-        <div class="recon-kicker">ARQUIVO DE TREINAMENTO</div>
-        <div class="recon-title">DESAFIO DE DEDUÇÃO</div>
-      </div>
-      <button type="button" class="recon-close" id="recon-close" aria-label="Fechar">×</button>
-    </div>
-
-    <div id="recon-intro" class="recon-screen">
-      <div class="recon-card recon-intro">
-        <div class="recon-badge">ARQUIVO 17</div>
-        <h2>O Envelope Desaparecido</h2>
-        <p>Quatro pessoas circularam por quatro setores do prédio em quatro horários diferentes. Um envelope confidencial desapareceu.</p>
-        <p class="recon-muted">Descubra onde cada pessoa esteve e em qual horário. A pessoa que esteve no <strong>ESTOQUE</strong> estava com o envelope.</p>
-        <p class="recon-small">Tempo médio de resolução: 5 minutos.</p>
-        <button type="button" class="recon-primary" id="recon-start-btn">ABRIR ARQUIVO</button>
-      </div>
-    </div>
-
-    <div id="recon-game" class="recon-screen" style="display:none">
-      <div class="recon-layout">
-        <div class="recon-panel">
-          <h3>PISTAS DO ARQUIVO</h3>
-          <ol class="recon-clues">
-            <li>Mauro esteve no <strong>Bar</strong>.</li>
-            <li>Clara foi vista exatamente <strong>9 minutos depois</strong> de Mauro.</li>
-            <li>Renato não esteve no <strong>Estoque</strong> nem no <strong>Bar</strong>.</li>
-            <li>Quem passou pelo <strong>Corredor</strong> foi visto às <strong>22:22</strong>.</li>
-            <li>Bianca foi vista <strong>depois de Clara</strong>.</li>
-            <li>A pessoa do <strong>Escritório</strong> foi vista antes da pessoa do Corredor.</li>
-            <li>Bianca não esteve no <strong>Bar</strong>.</li>
-            <li>Renato foi visto <strong>depois de Clara</strong>.</li>
-          </ol>
-          <p class="recon-muted">Toque nos quadrados das grades para marcar: vazio → ✕ → ✓.</p>
-        </div>
-
-        <div class="recon-panel">
-          <div class="recon-section-label">PESSOA × LOCAL</div>
-          <div class="recon-grid-wrap">
-            <table class="logic-grid" id="grid-location">
-              <thead><tr><th>Pessoa</th><th>Bar</th><th>Corredor</th><th>Escritório</th><th>Estoque</th></tr></thead>
-              <tbody>
-                <tr><td>Bianca</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-                <tr><td>Clara</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-                <tr><td>Mauro</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-                <tr><td>Renato</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="recon-section-label">PESSOA × HORÁRIO</div>
-          <div class="recon-grid-wrap">
-            <table class="logic-grid" id="grid-time">
-              <thead><tr><th>Pessoa</th><th>22:04</th><th>22:13</th><th>22:22</th><th>22:31</th></tr></thead>
-              <tbody>
-                <tr><td>Bianca</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-                <tr><td>Clara</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-                <tr><td>Mauro</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-                <tr><td>Renato</td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td><td><button class="logic-cell"></button></td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="recon-submit">
-            <div class="recon-field">
-              <label for="recon-who">QUEM ESTAVA COM O ENVELOPE?</label>
-              <select id="recon-who">
-                <option value="">Selecione</option>
-                <option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option>
-              </select>
-            </div>
-            <div class="recon-field">
-              <label for="recon-when">EM QUAL HORÁRIO?</label>
-              <select id="recon-when">
-                <option value="">Selecione</option>
-                <option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="recon-actions">
-            <button type="button" class="recon-secondary" id="recon-clear">LIMPAR GRADE</button>
-            <button type="button" class="recon-primary" id="recon-submit">APRESENTAR SOLUÇÃO</button>
-          </div>
-          <div class="recon-feedback" id="recon-feedback" aria-live="polite"></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="recon-done" class="recon-screen" style="display:none">
-      <div class="recon-card recon-done">
-        <div class="recon-badge">ARQUIVO 17 SOLUCIONADO</div>
-        <h2>Registro correspondente</h2>
-        <div class="recon-time">22<span>:</span>31</div>
-        <p>Utilize o registro para prosseguir na investigação principal.</p>
-        <p class="recon-muted">Digite o horário sem os dois-pontos.</p>
-        <button type="button" class="recon-primary" id="recon-finish">VOLTAR AO CELULAR</button>
-      </div>
-    </div>
+ <div class="recon-shell">
+  <div class="recon-topbar">
+   <div><div class="recon-kicker">ARQUIVO DE TREINAMENTO</div><div class="recon-title">DESAFIO DE DEDUÇÃO</div></div>
+   <button type="button" class="recon-close" id="recon-close">×</button>
   </div>
+
+  <div id="recon-intro">
+   <div class="recon-card recon-intro">
+    <div class="recon-badge">ARQUIVO 17</div>
+    <h2>O Envelope Desaparecido</h2>
+    <p>Quatro pessoas foram registradas em quatro setores diferentes, em horários diferentes. Um envelope confidencial desapareceu durante uma dessas movimentações.</p>
+    <p class="recon-muted">Reconstrua os quatro registros. Cada pessoa, local e horário pode ser utilizado <strong>uma única vez</strong>.</p>
+    <p class="recon-small">Tempo médio de resolução: 4–7 minutos.</p>
+    <button class="recon-primary" id="recon-start-btn">ABRIR ARQUIVO</button>
+   </div>
+  </div>
+
+  <div id="recon-game" style="display:none">
+   <div class="recon-layout">
+    <div class="recon-panel">
+     <h3>PISTAS DO ARQUIVO</h3>
+     <ol class="recon-clues">
+      <li>Mauro não esteve no <strong>Escritório</strong> nem no <strong>Estoque</strong>.</li>
+      <li>Clara foi registrada exatamente <strong>9 minutos depois</strong> de Mauro.</li>
+      <li>Renato passou pelo <strong>Corredor</strong>.</li>
+      <li>O registro do <strong>Bar</strong> aconteceu antes do registro do Escritório.</li>
+      <li>Bianca foi registrada <strong>depois de Clara</strong>.</li>
+      <li>O <strong>Estoque</strong> foi o último dos quatro locais registrados.</li>
+      <li>Entre o registro de Mauro e o de Renato houve exatamente <strong>uma movimentação</strong>.</li>
+      <li>Clara não esteve no <strong>Bar</strong> nem no <strong>Corredor</strong>.</li>
+      <li>O <strong>Corredor</strong> foi registrado às <strong>22:22</strong>.</li>
+      <li>A pessoa que passou pelo <strong>Estoque</strong> estava com o envelope.</li>
+     </ol>
+     <div class="recon-note">Os horários disponíveis são 22:04, 22:13, 22:22 e 22:31. Use cada opção apenas uma vez.</div>
+    </div>
+
+    <div class="recon-panel">
+     <h3>RECONSTRUÇÃO DOS REGISTROS</h3>
+     <div class="recon-board-wrap">
+      <div class="recon-board">
+       <div class="recon-record"><div class="recon-record-head">REGISTRO 1</div>
+        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
+        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
+        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
+       </div>
+       <div class="recon-record"><div class="recon-record-head">REGISTRO 2</div>
+        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
+        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
+        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
+       </div>
+       <div class="recon-record"><div class="recon-record-head">REGISTRO 3</div>
+        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
+        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
+        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
+       </div>
+       <div class="recon-record"><div class="recon-record-head">REGISTRO 4</div>
+        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
+        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
+        <div class="recon-field"><label>HORÁRIO</label><select class="r-time"><option value="">—</option><option>22:04</option><option>22:13</option><option>22:22</option><option>22:31</option></select></div>
+       </div>
+      </div>
+     </div>
+     <div class="recon-actions">
+      <button class="recon-secondary" id="recon-clear">LIMPAR</button>
+      <button class="recon-primary" id="recon-submit">VERIFICAR RECONSTRUÇÃO</button>
+     </div>
+     <div class="recon-feedback" id="recon-feedback"></div>
+    </div>
+   </div>
+  </div>
+
+  <div id="recon-done" style="display:none">
+   <div class="recon-card recon-done">
+    <div class="recon-badge">ARQUIVO 17 SOLUCIONADO</div>
+    <h2>Registro associado ao desaparecimento</h2>
+    <div class="recon-time">22<span>:</span>31</div>
+    <p>Utilize o registro para prosseguir na investigação principal.</p>
+    <p class="recon-muted">Digite o horário sem os dois-pontos.</p>
+    <button class="recon-primary" id="recon-finish">VOLTAR AO CELULAR</button>
+   </div>
+  </div>
+ </div>
 </div>
 
 
 <script>
 (function(){
-  const btn=document.getElementById('recon-app-btn');
-  const overlay=document.getElementById('recon-overlay');
-  if(!btn||!overlay) return;
-
-  const intro=document.getElementById('recon-intro');
-  const game=document.getElementById('recon-game');
-  const done=document.getElementById('recon-done');
-  const feedback=document.getElementById('recon-feedback');
-
-  function refresh(){
-    try{
-      const arr=(typeof unlocked!=="undefined" && Array.isArray(unlocked))?unlocked:[];
-      btn.style.display=arr.includes(4)?'':'none';
-    }catch(e){btn.style.display='none';}
-  }
-  function show(which){
-    intro.style.display=which==='intro'?'':'none';
-    game.style.display=which==='game'?'':'none';
-    done.style.display=which==='done'?'':'none';
-  }
-  function openGame(){
-    refresh();
-    if(btn.style.display==='none') return;
-    overlay.style.display='';
-    overlay.setAttribute('aria-hidden','false');
-    show('intro');
-  }
-  function closeGame(){
-    overlay.style.display='none';
-    overlay.setAttribute('aria-hidden','true');
-  }
-
-  btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openGame();},true);
-  document.getElementById('recon-close').addEventListener('click',closeGame);
-  document.getElementById('recon-finish').addEventListener('click',closeGame);
-  document.getElementById('recon-start-btn').addEventListener('click',()=>show('game'));
-
-  const cells=[...document.querySelectorAll('.logic-cell')];
-  cells.forEach(cell=>{
-    cell.dataset.state='';
-    cell.textContent='';
-    cell.addEventListener('click',()=>{
-      const s=cell.dataset.state;
-      if(s===''){cell.dataset.state='x';cell.textContent='✕';}
-      else if(s==='x'){cell.dataset.state='yes';cell.textContent='✓';}
-      else{cell.dataset.state='';cell.textContent='';}
-    });
-  });
-
-  document.getElementById('recon-clear').addEventListener('click',()=>{
-    cells.forEach(c=>{c.dataset.state='';c.textContent='';});
-    document.getElementById('recon-who').value='';
-    document.getElementById('recon-when').value='';
-    feedback.textContent='';
-  });
-
-  document.getElementById('recon-submit').addEventListener('click',()=>{
-    const who=document.getElementById('recon-who').value;
-    const when=document.getElementById('recon-when').value;
-    if(!who||!when){
-      feedback.textContent='Selecione uma pessoa e um horário antes de apresentar a solução.';
-      return;
-    }
-    if(who==='Bianca' && when==='22:31'){
-      feedback.textContent='✓ Solução consistente com todas as pistas.';
-      setTimeout(()=>show('done'),650);
-    }else{
-      feedback.textContent='✕ A reconstrução contém uma contradição. Revise as pistas.';
-    }
-  });
-
-  refresh();
-  const obs=new MutationObserver(refresh);
-  obs.observe(document.body,{childList:true,subtree:true,attributes:true});
-  setInterval(refresh,1000);
+ const btn=document.getElementById('recon-app-btn'), overlay=document.getElementById('recon-overlay');
+ if(!btn||!overlay)return;
+ const intro=document.getElementById('recon-intro'),game=document.getElementById('recon-game'),done=document.getElementById('recon-done'),fb=document.getElementById('recon-feedback');
+ function refresh(){try{const a=(typeof unlocked!=="undefined"&&Array.isArray(unlocked))?unlocked:[];btn.style.display=a.includes(4)?'':'none';}catch(e){btn.style.display='none';}}
+ function show(x){intro.style.display=x==='intro'?'':'none';game.style.display=x==='game'?'':'none';done.style.display=x==='done'?'':'none';}
+ function close(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true');}
+ btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();refresh();if(btn.style.display==='none')return;overlay.style.display='';overlay.setAttribute('aria-hidden','false');show('intro');},true);
+ document.getElementById('recon-close').onclick=close;document.getElementById('recon-finish').onclick=close;document.getElementById('recon-start-btn').onclick=()=>show('game');
+ const recs=[...document.querySelectorAll('.recon-record')];
+ document.getElementById('recon-clear').onclick=()=>{recs.forEach(r=>r.querySelectorAll('select').forEach(s=>s.value=''));fb.textContent='';};
+ document.getElementById('recon-submit').onclick=()=>{
+   const got=recs.map(r=>[r.querySelector('.r-person').value,r.querySelector('.r-place').value,r.querySelector('.r-time').value]);
+   if(got.some(r=>r.some(v=>!v))){fb.textContent='Preencha os quatro registros antes de verificar.';return;}
+   for(let c=0;c<3;c++){const vals=got.map(r=>r[c]);if(new Set(vals).size!==4){fb.textContent='Cada pessoa, local e horário deve aparecer uma única vez.';return;}}
+   const sol=[['Mauro','Bar','22:04'],['Clara','Escritório','22:13'],['Renato','Corredor','22:22'],['Bianca','Estoque','22:31']];
+   const ok=got.every((r,i)=>r.every((v,j)=>v===sol[i][j]));
+   if(ok){fb.textContent='✓ Reconstrução consistente com todas as pistas.';setTimeout(()=>show('done'),650);}
+   else fb.textContent='✕ Há pelo menos uma contradição. Revise as pistas e tente novamente.';
+ };
+ refresh();new MutationObserver(refresh).observe(document.body,{childList:true,subtree:true,attributes:true});setInterval(refresh,1000);
 })();
 </script>
 

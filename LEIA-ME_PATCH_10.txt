@@ -1,0 +1,13 @@
+CASO 05 — PATCH 10
+Substituir somente index.html.
+
+Minigame Reconstrução:
+- continua totalmente oculto antes do 4761;
+- substitui as duas grades do PATCH 09 por uma única reconstrução cronológica;
+- 4 registros lado a lado;
+- cada registro recebe Pessoa + Local + Horário;
+- 10 pistas, sem botão de ajuda;
+- dificuldade intermediária;
+- solução: Mauro/Bar/22:04, Clara/Escritório/22:13, Renato/Corredor/22:22, Bianca/Estoque/22:31;
+- conclusão revela 22:31, que deve ser digitado como 2231 no sistema principal;
+- nenhuma foto/assets foi alterada.
