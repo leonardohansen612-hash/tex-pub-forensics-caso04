@@ -397,14 +397,33 @@ function renderTerminal(){
  return `<div class="terminalbox"><b>GrayKey Bridge — Caso 05</b><p style="color:#aaa;font-size:13px">Insira um código encontrado no Tex Pub.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=[];
-const photoLevels={};
+const casePhotos=[
+ {id:"E04",level:0,src:"assets/caso05/E04.png",label:"E04 — Registro do estoque • 22:29"},
+ {id:"E06",level:1,src:"assets/caso05/E06.png",label:"E06 — Discussão João × Luiz • 21:35"},
+ {id:"E11",level:2,src:"assets/caso05/E11.png",label:"E11 — Registro de João no bar • 22:31"},
+ {id:"E13",level:2,src:"assets/caso05/E13.png",label:"E13 — Luiz entrega a caixa a Giovana • 18:55"},
+ {id:"E20",level:3,src:"assets/caso05/E20.png",label:"E20 — Caixa apreendida com a arma"},
+ {id:"E21",level:3,src:"assets/caso05/E21.png",label:"E21 — Ampliação da caixa registrada às 18:55"},
+ {id:"E22",level:3,src:"assets/caso05/E22.png",label:"E22 — Giovana no corredor • 22:16"},
+ {id:"E25",level:4,src:"assets/caso05/E25.png",label:"E25 — Leo entra no estoque • 22:20"},
+ {id:"E26",level:4,src:"assets/caso05/E26.png",label:"E26 — Luiz entra no estoque • 22:23"},
+ {id:"E27",level:4,src:"assets/caso05/E27.png",label:"E27 — Leo sai do estoque • 22:40"},
+ {id:"E33",level:5,src:"assets/caso05/E33.png",label:"E33 — Releitura da posição no estoque"},
+ {id:"E34",level:5,src:"assets/caso05/E34.png",label:"E34 — Documento encontrado no chão do estoque"},
+ {id:"E35",level:5,src:"assets/caso05/E35.png",label:"E35 — Jefferson entra no estoque • 22:27"}
+];
+const photoLevels=Object.fromEntries(casePhotos.map(p=>[p.id,p.level]));
 function renderPhotoGallery(){
- return `<div class="notecard"><b>FOTOS — CASO 05</b><p>Os registros fotográficos serão incorporados ao aparelho conforme forem produzidos e aprovados.</p><p style="color:#8e8e93">Nenhuma fotografia do Caso 05 é exibida nesta versão.</p></div>`;
+ const unlockedPhotos=casePhotos.filter(p=>p.level===0||has(p.level));
+ const lockedCount=casePhotos.length-unlockedPhotos.length;
+ return `<div class="sectionlabel">Registros recuperados</div>
+ <div class="photoGrid">${unlockedPhotos.map(p=>`<button class="photoTile" onclick="openPhoto('${p.src}','${p.label.replace(/'/g,"\\'")}')"><img src="${p.src}" alt="${p.label}"><span>${p.id}</span></button>`).join('')}</div>
+ ${lockedCount?`<div class="notecard"><b>${lockedCount} registro${lockedCount>1?'s':''} ainda bloqueado${lockedCount>1?'s':''}</b><p style="color:#8e8e93">Novas fotografias serão liberadas conforme os níveis da investigação forem desbloqueados.</p></div>`:''}`;
 }
 function openPhoto(src,label){
  appBody.innerHTML=`<div class="photoFull"><button class="photoClose" onclick="openApp('Fotos')">‹ Fotos</button><img src="${src}" alt="${label}"><div class="photoCaption">${label}</div></div>`;
 }
+function bindPhotos(){}
 
 function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Luiz</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
 let snakeTimer=null,snake=[],snakeDir={x:1,y:0},snakeNext={x:1,y:0},snakeFood={x:10,y:8},snakeScore=0,snakeBest=Number(localStorage.getItem("texSnakeBest")||0);

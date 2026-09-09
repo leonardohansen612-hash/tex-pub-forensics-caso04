@@ -1,0 +1,21 @@
+CASO 05 — PATCH 03
+
+Conteúdo:
+- index.html atualizado
+- pasta assets/caso05 com as fotos E04, E06, E11, E13, E20, E21, E22, E25, E26, E27, E33, E34 e E35
+
+INSTALAÇÃO
+1. Substitua o index.html da raiz pelo deste patch.
+2. Copie a pasta assets/caso05 inteira para assets/caso05 no projeto.
+3. Não apague os outros arquivos/pastas de assets já existentes.
+4. Faça novo deploy.
+
+LIBERAÇÃO DAS FOTOS
+- Inicial: E04
+- Código 1: E06
+- Código 2: E11, E13
+- Código 3: E20, E21, E22
+- Código 4: E25, E26, E27
+- Código 5: E33, E34, E35
+
+Observação: o Patch 03 mantém as alterações textuais do Patch 02.
