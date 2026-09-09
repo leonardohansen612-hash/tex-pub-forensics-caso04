@@ -926,14 +926,13 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 (function(){
  const COLLECTION='caso05_dossiers';
  const ADMIN_PIN='1700';
- let db=null,unsubscribe=null,currentId=null;
+ let db=null,unsubscribe=null,currentId=null,teamUnsub=null;
 
  function initDB(){
    try{
      if(typeof firebase==='undefined') return null;
      if(firebase.apps && firebase.apps.length){db=firebase.firestore();return db;}
-     let cfg=null;
-     if(window.CASO05_FIREBASE_CONFIG) cfg=window.CASO05_FIREBASE_CONFIG;
+     let cfg=window.CASO05_FIREBASE_CONFIG||null;
      if(!cfg){
        try{const raw=localStorage.getItem('caso05_firebase_config');if(raw)cfg=JSON.parse(raw);}catch(e){}
      }
@@ -945,59 +944,156 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 
  function teamDeviceId(){
    let id=localStorage.getItem('caso05_device_id');
-   if(!id){id='dev_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9);localStorage.setItem('caso05_device_id',id);}
+   if(!id){
+     id='dev_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9);
+     localStorage.setItem('caso05_device_id',id);
+   }
    return id;
  }
 
- // Replace dossier submit behavior with Firestore submission when configured.
+ function getEls(){
+   return {
+     ov:document.getElementById('dossier-overlay'),
+     form:document.getElementById('dossier-form'),
+     receipt:document.getElementById('dossier-receipt'),
+     team:document.getElementById('dossier-team'),
+     report:document.getElementById('dossier-report'),
+     fb:document.getElementById('dossier-feedback')
+   };
+ }
+
+ function ensureLiveBox(){
+   const e=getEls();
+   if(!e.receipt)return null;
+   let box=document.getElementById('dossier-live-result');
+   if(!box){
+     box=document.createElement('div');
+     box.id='dossier-live-result';
+     box.className='dossier-result';
+     const ret=document.getElementById('dossier-return');
+     e.receipt.insertBefore(box,ret||null);
+   }
+   return box;
+ }
+
+ function showPending(x){
+   const e=getEls(), box=ensureLiveBox();
+   if(!e.receipt||!box)return;
+   e.form.style.display='none';
+   e.receipt.style.display='';
+   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso05_dossier_team')||'Equipe';
+   box.innerHTML='<strong>⏳ DOSSIÊ ENVIADO</strong><p>Aguardando validação do investigador responsável.</p>';
+ }
+
+ function showApproved(x){
+   const e=getEls(), box=ensureLiveBox();
+   if(!e.receipt||!box)return;
+   e.form.style.display='none';
+   e.receipt.style.display='';
+   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso05_dossier_team')||'Equipe';
+   box.innerHTML='<strong style="font-size:20px">✓ DOSSIÊ VALIDADO</strong><p style="font-size:18px"><b>CASO 05 — SOLUCIONADO</b></p><p>Reconstrução aceita pelo investigador responsável.</p>';
+ }
+
+ function showRejected(x){
+   const e=getEls();
+   if(!e.form)return;
+   e.receipt.style.display='none';
+   e.form.style.display='';
+   if(x.team)e.team.value=x.team;
+   if(x.report)e.report.value=x.report;
+   const count=document.getElementById('dossier-count');
+   if(count)count.textContent=e.report.value.length;
+   e.fb.innerHTML='<div class="dossier-result"><strong style="font-size:18px">✕ DOSSIÊ NÃO VALIDADO</strong><p>A reconstrução apresentada ainda possui inconsistências.</p><p><b>Retomem a investigação, corrijam o relatório e enviem novamente.</b></p></div>';
+ }
+
+ function applyStatus(x){
+   if(!x)return;
+   if(x.status==='approved') showApproved(x);
+   else if(x.status==='rejected') showRejected(x);
+   else showPending(x);
+ }
+
+ function watchTeamResult(id){
+   const d=initDB(); if(!d||!id)return;
+   if(teamUnsub){try{teamUnsub();}catch(e){}}
+   teamUnsub=d.collection(COLLECTION).doc(id).onSnapshot(s=>{
+     if(!s.exists)return;
+     applyStatus(s.data());
+   },err=>console.error('Dossiê listener:',err));
+ }
+
+ async function restoreCurrentSubmission(){
+   const id=localStorage.getItem('caso05_dossier_doc');
+   if(!id)return;
+   const d=initDB(); if(!d)return;
+   try{
+     const s=await d.collection(COLLECTION).doc(id).get();
+     if(s.exists)applyStatus(s.data());
+     watchTeamResult(id);
+   }catch(e){console.error(e);}
+ }
+
+ // Open dossier: always restore current server status instead of blindly reopening old form.
+ const dossierBtn=document.getElementById('dossier-app-btn');
+ if(dossierBtn){
+   dossierBtn.addEventListener('click',()=>{
+     setTimeout(restoreCurrentSubmission,0);
+   },true);
+ }
+
  const submit=document.getElementById('dossier-submit');
  if(submit){
    submit.onclick=async()=>{
-     const team=document.getElementById('dossier-team'),report=document.getElementById('dossier-report');
-     const fb=document.getElementById('dossier-feedback'),form=document.getElementById('dossier-form'),receipt=document.getElementById('dossier-receipt');
-     const t=team.value.trim(),r=report.value.trim();
-     if(!t){fb.textContent='Informe o nome da equipe.';return;}
-     if(r.length<80){fb.textContent='O relatório está curto demais para registrar uma reconstrução completa.';return;}
+     const e=getEls();
+     const t=e.team.value.trim(),r=e.report.value.trim();
+     if(!t){e.fb.textContent='Informe o nome da equipe.';return;}
+     if(r.length<80){e.fb.textContent='O relatório está curto demais para registrar uma reconstrução completa.';return;}
      const d=initDB();
-     if(!d){fb.textContent='Firebase ainda não configurado neste site. O dossiê não foi enviado.';return;}
-     fb.textContent='Enviando dossiê...';
+     if(!d){e.fb.textContent='Firebase ainda não configurado neste site. O dossiê não foi enviado.';return;}
+     e.fb.textContent='Enviando dossiê...';
      try{
-       const deviceId=teamDeviceId();
-       const ref=await d.collection(COLLECTION).add({
-         team:t,report:r,status:'pending',adminNote:'',deviceId:deviceId,
-         submittedAt:firebase.firestore.FieldValue.serverTimestamp(),
-         updatedAt:firebase.firestore.FieldValue.serverTimestamp()
-       });
+       const oldId=localStorage.getItem('caso05_dossier_doc');
+       let ref;
+       // Reenvio após "incompleto": atualiza o mesmo dossiê para manter uma única equipe no painel.
+       if(oldId){
+         const old=await d.collection(COLLECTION).doc(oldId).get();
+         if(old.exists && old.data().status==='rejected'){
+           ref=d.collection(COLLECTION).doc(oldId);
+           await ref.update({
+             team:t,report:r,status:'pending',adminNote:'',
+             resubmittedAt:firebase.firestore.FieldValue.serverTimestamp(),
+             updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+           });
+         }
+       }
+       if(!ref){
+         ref=await d.collection(COLLECTION).add({
+           team:t,report:r,status:'pending',adminNote:'',deviceId:teamDeviceId(),
+           submittedAt:firebase.firestore.FieldValue.serverTimestamp(),
+           updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+         });
+       }
        localStorage.setItem('caso05_dossier_doc',ref.id);
        localStorage.setItem('caso05_dossier_team',t);
        localStorage.setItem('caso05_dossier_report',r);
        const p='CASO05-'+ref.id.slice(0,6).toUpperCase();
        document.getElementById('dossier-receipt-team').textContent=t;
        document.getElementById('dossier-protocol').textContent=p;
-       form.style.display='none';receipt.style.display='';
+       e.fb.textContent='';
+       showPending({team:t,report:r,status:'pending'});
        watchTeamResult(ref.id);
-     }catch(e){console.error(e);fb.textContent='Falha no envio. Verifique a conexão e a configuração do Firestore.';}
+     }catch(err){
+       console.error(err);
+       e.fb.textContent='Falha no envio. Verifique a conexão e as regras do Firestore.';
+     }
    };
  }
 
- function watchTeamResult(id){
-   const d=initDB(); if(!d||!id)return;
-   d.collection(COLLECTION).doc(id).onSnapshot(s=>{
-     if(!s.exists)return; const x=s.data();
-     const receipt=document.getElementById('dossier-receipt');
-     if(!receipt)return;
-     let box=document.getElementById('dossier-live-result');
-     if(!box){box=document.createElement('div');box.id='dossier-live-result';box.className='dossier-result';receipt.insertBefore(box,document.getElementById('dossier-return'));}
-     if(x.status==='approved') box.innerHTML='<strong>✓ DOSSIÊ VALIDADO</strong><p>CASO 05 SOLUCIONADO</p>';
-     else if(x.status==='rejected') box.innerHTML='<strong>DOSSIÊ NÃO VALIDADO</strong><p>A reconstrução ainda possui inconsistências. Retomem a investigação e enviem um novo dossiê.</p>';
-     else box.innerHTML='<strong>AGUARDANDO VALIDAÇÃO</strong><p>O investigador responsável ainda está analisando o relatório.</p>';
-   });
- }
- const existing=localStorage.getItem('caso05_dossier_doc');if(existing)setTimeout(()=>watchTeamResult(existing),500);
+ // Restore listener after refresh.
+ setTimeout(restoreCurrentSubmission,500);
 
  // Admin panel
  const abtn=document.getElementById('investigator-app-btn'),aov=document.getElementById('admin-overlay');
- // Admin icon is deliberately hidden from normal players; open with ?investigador=1 or #investigador.
  const adminMode=new URLSearchParams(location.search).get('investigador')==='1'||location.hash==='#investigador';
  if(abtn)abtn.style.display=adminMode?'':'none';
  if(abtn)abtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();aov.style.display='';},true);
@@ -1005,7 +1101,9 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  document.getElementById('admin-enter').onclick=()=>{
    if(document.getElementById('admin-pin').value!==ADMIN_PIN){document.getElementById('admin-login-msg').textContent='PIN incorreto.';return;}
    if(!initDB()){document.getElementById('admin-login-msg').textContent='Firebase não configurado.';return;}
-   document.getElementById('admin-login').style.display='none';document.getElementById('admin-home').style.display='';listenAdmin();
+   document.getElementById('admin-login').style.display='none';
+   document.getElementById('admin-home').style.display='';
+   listenAdmin();
  };
  document.getElementById('admin-refresh').onclick=()=>listenAdmin();
 
@@ -1023,10 +1121,12 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
        el.querySelector('.admin-team').textContent=x.team||'Equipe';
        el.onclick=()=>openDetail(doc.id,x);list.appendChild(el);
      });
-   },e=>{document.getElementById('admin-list').innerHTML='<div class="admin-card">Erro ao carregar dossiês: '+e.message+'</div>';});
+   },err=>{document.getElementById('admin-list').innerHTML='<div class="admin-card">Erro ao carregar dossiês: '+err.message+'</div>';});
  }
+
  function openDetail(id,x){
-   currentId=id;document.getElementById('admin-home').style.display='none';
+   currentId=id;
+   document.getElementById('admin-home').style.display='none';
    const det=document.getElementById('admin-detail');det.style.display='';
    det.innerHTML='<div class="admin-card"><button class="admin-btn admin-back" id="admin-back">← VOLTAR</button><h2 id="detail-team"></h2><div class="admin-report" id="detail-report"></div><label class="admin-meta">OBSERVAÇÃO DO INVESTIGADOR (opcional)</label><textarea class="admin-note" id="detail-note" rows="3"></textarea><div class="admin-actions"><button class="admin-btn admin-no" id="detail-reject">INVESTIGAÇÃO INCOMPLETA</button><button class="admin-btn admin-ok" id="detail-approve">CASO SOLUCIONADO</button></div><div class="admin-msg" id="detail-msg"></div></div>';
    document.getElementById('detail-team').textContent=x.team||'Equipe';
@@ -1036,11 +1136,21 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    document.getElementById('detail-approve').onclick=()=>setStatus('approved');
    document.getElementById('detail-reject').onclick=()=>setStatus('rejected');
  }
+
  async function setStatus(status){
    try{
-     await db.collection(COLLECTION).doc(currentId).update({status:status,adminNote:document.getElementById('detail-note').value.trim(),reviewedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
-     document.getElementById('detail-msg').textContent=status==='approved'?'Dossiê validado. A equipe receberá a confirmação em tempo real.':'Marcado como incompleto. A equipe receberá o retorno em tempo real.';
-   }catch(e){document.getElementById('detail-msg').textContent='Erro ao atualizar: '+e.message;}
+     await db.collection(COLLECTION).doc(currentId).update({
+       status:status,
+       adminNote:document.getElementById('detail-note').value.trim(),
+       reviewedAt:firebase.firestore.FieldValue.serverTimestamp(),
+       updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+     });
+     document.getElementById('detail-msg').textContent=status==='approved'
+       ?'Dossiê validado. A equipe recebeu a confirmação em tempo real.'
+       :'Marcado como incompleto. A equipe recebeu o retorno e poderá corrigir o mesmo dossiê.';
+   }catch(e){
+     document.getElementById('detail-msg').textContent='Erro ao atualizar: '+e.message;
+   }
  }
 })();
 </script>
