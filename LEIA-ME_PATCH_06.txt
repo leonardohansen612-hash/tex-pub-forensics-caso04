@@ -1,0 +1,17 @@
+CASO 05 — PATCH 06
+Substituir somente o index.html da raiz.
+
+Base: PATCH 05.
+
+Alterações do código N3 (3144), liberadas após 6841:
+- WhatsApp Luiz × Giovana:
+  Luiz comenta sobre coisas que estão no mesmo lugar desde que o pub abriu;
+  cita "aquele relógio horroroso".
+- Nota:
+  Título: "31."
+  Texto: "O resto está onde todo mundo olha várias vezes por noite, mas ninguém presta atenção."
+- O 31 é obtido fisicamente no protocolo interno 31/2026.
+- O 44 é obtido fisicamente na etiqueta PATRIMÔNIO 044 colada no relógio.
+- Código N3 permanece 3144.
+- Nenhuma foto foi alterada.
+- Caminhos das fotos permanecem assets/caso05/.
