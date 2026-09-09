@@ -1,0 +1,23 @@
+CASO 05 — PATCH 14 — FIREBASE CONECTADO
+
+Substituir somente index.html.
+
+Configuração Firebase incorporada:
+projectId: noite-do-misterio
+Firestore: (default), São Paulo
+
+Mantém:
+- progressão e minigame do Patch 11;
+- Dossiê Final oculto até 2231;
+- envio do relatório ao Firestore;
+- painel do investigador;
+- validação em tempo real.
+
+PAINEL:
+Abra o endereço do jogo com ?investigador=1
+PIN: 1700
+
+Exemplo:
+https://SEU-SITE.vercel.app/?investigador=1
+
+As regras do Firestore já foram publicadas manualmente no console.
