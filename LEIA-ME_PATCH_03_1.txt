@@ -1,0 +1,26 @@
+CASO 05 — PATCH 03.1
+
+SUBIR NA RAIZ DO PROJETO:
+- index.html
+- pasta assets/Caso05 inteira
+
+Correções deste patch:
+1. Caminhos das imagens ajustados para assets/Caso05/ (C maiúsculo), compatível com a pasta usada no projeto.
+2. E20 substituída por versão com data 08/09/2026.
+3. Mantidas todas as alterações e evidências do PATCH 03.
+
+Estrutura esperada:
+/index.html
+/assets/Caso05/E04.png
+/assets/Caso05/E06.png
+/assets/Caso05/E11.png
+/assets/Caso05/E13.png
+/assets/Caso05/E20.png
+/assets/Caso05/E21.png
+/assets/Caso05/E22.png
+/assets/Caso05/E25.png
+/assets/Caso05/E26.png
+/assets/Caso05/E27.png
+/assets/Caso05/E33.png
+/assets/Caso05/E34.png
+/assets/Caso05/E35.png
