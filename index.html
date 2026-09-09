@@ -315,6 +315,7 @@ const evidence={
 [4,"comparativo_caixas.txt","E23 • Nota técnica para conferência dos identificadores das duas caixas."],
 [4,"depoimento_leo.txt","E28 • Trecho do depoimento de Leo sobre seus últimos contatos com Luiz."],
 [4,"alteracao_societaria_completa.pdf","E29 • Versão ampliada da documentação societária."],
+[4,"log_exclusao_cftv.txt","E30 • Registro administrativo de exclusão manual de um segmento da câmera interna do estoque."],
 [5,"trajetoria_projétil.pdf","E32 • Reconstrução técnica da direção do disparo."],
 [5,"camera_access_log.txt","E37 • Registro de consulta ao sistema de câmeras do Tex Pub."]
 ],
@@ -330,7 +331,7 @@ const evidence={
 ],
 "Gravador":[
 [1,"Depoimento de testemunha • 00:18","E05 • “Eu vi os dois discutindo. O João estava bem bravo. Ouvi ele falar algo como: continua se metendo no que não é da sua conta pra você ver o que acontece.”"],
-[5,"Registro técnico • 22:31","E31 • Fragmento recuperado marca um evento sonoro abrupto às 22:31. A origem exata do registro ainda será confrontada com a perícia."]
+[5,"Análise de áudio • CAM 04 / Corredor","E31 • 22:31:08 — pico acústico abrupto, duração aproximada de 0,18 s, com características compatíveis com estampido de arma de fogo em ambiente fechado. Origem estimada: setor do estoque."]
 ],
 "Safari":[
 [1,"Pesquisa • 18:07","como fazer old fashioned"],
@@ -374,9 +375,10 @@ const fileDetails={
 "alteracao_societaria.pdf":`<div class="notecard"><b>E16 — DOCUMENTAÇÃO SOCIETÁRIA</b><p>Minuta referente à <b>retirada de Leonardo da sociedade do Tex Pub</b>.</p><p>O material indica preparação de alteração contratual e transferência/regularização das responsabilidades societárias.</p><p style="color:#8e8e93">Documento ainda sujeito à conferência de integridade e assinaturas.</p></div>`,
 "apreensao_caixa.pdf":`<div class="notecard"><b>E18 — RELATÓRIO DE APREENSÃO</b><p>Uma caixa foi localizada na área dos fundos do Tex Pub.</p><p>No interior foi encontrada <b>uma arma de fogo</b>, encaminhada para perícia.</p><p>A aparência externa da caixa é compatível, em análise preliminar, com o objeto observado em gravações anteriores.</p></div>`,
 "laudo_balistica.pdf":`<div class="notecard"><b>E19 — LAUDO BALÍSTICO</b><p>O exame pericial confirma que a arma apreendida na caixa é <b>compatível com o disparo que atingiu Luiz</b>.</p><p style="color:#8e8e93">A conclusão balística identifica a arma; não determina quem efetuou o disparo.</p></div>`,
-"comparativo_caixas.txt":`<div class="notecard"><b>E23 — CONFERÊNCIA DE IDENTIFICADORES</b><p>Orientação pericial: comparar cuidadosamente os elementos de fabricação visíveis na caixa registrada às <b>18:55</b> e na caixa apreendida após o crime.</p><p><b>Objetos visualmente semelhantes não são necessariamente o mesmo objeto.</b></p><p style="color:#8e8e93">A característica objetiva definitiva será incorporada quando o material fotográfico for produzido.</p></div>`,
-"depoimento_leo.txt":`<div class="notecard"><b>E28 — DEPOIMENTO • LEO</b><p>Trecho preservado para confronto com a cronologia das câmeras.</p><p>Leo minimiza a extensão de sua conversa com Luiz e não descreve integralmente o período passado no estoque.</p><p style="color:#8e8e93">A redação final do depoimento será fechada após a definição do encobrimento entre 22:31 e 22:40.</p></div>`,
+"comparativo_caixas.txt":`<div class="notecard"><b>E23 — ANÁLISE COMPARATIVA DE IMAGENS</b><p>A caixa registrada pelas câmeras às <b>18:55</b> apresenta <b>deformação triangular permanente no canto superior direito da tampa</b>.</p><p>A caixa posteriormente apreendida nos fundos do estabelecimento <b>não apresenta a referida deformação</b>.</p><p>Considerando a posição, extensão e características da dobra observada no registro original, conclui-se que <b>os dois registros não apresentam o mesmo objeto físico</b>.</p></div>`,
+"depoimento_leo.txt":`<div class="notecard"><b>E28 — DEPOIMENTO • LEO</b><p>“Eu fui até o estoque buscar alguns documentos. O Luiz apareceu pouco depois porque queria continuar aquela conversa sobre a minha saída. A gente conversou por alguns minutos e eu saí.</p><p><b>Quando deixei o estoque, o Luiz estava vivo. Não vi mais ninguém entrando enquanto eu estava lá.</b>”</p><p style="color:#8e8e93">Trecho separado para confronto com os registros de câmera e a cronologia pericial.</p></div>`,
 "alteracao_societaria_completa.pdf":`<div class="notecard"><b>E29 — DOCUMENTAÇÃO SOCIETÁRIA • VERSÃO AMPLIADA</b><p>O conjunto confirma que Luiz teve contato com informações sobre a saída de Leo antes de Jefferson ser oficialmente comunicado.</p><p>O sigilo da mudança societária passa a ser um elemento central da investigação.</p></div>`,
+"log_exclusao_cftv.txt":`<div class="notecard"><b>E30 — SISTEMA DE CFTV • LOG DE ADMINISTRAÇÃO</b><p><b>08/09/2026 — 22:38:14</b></p><p>Câmera: <b>ESTOQUE_INTERNA</b><br>Ação: <b>exclusão manual de segmento</b><br>Intervalo removido: <b>22:25:00–22:40:00</b><br>Usuário autenticado: <b>LEONARDO_ADMIN</b></p><p style="color:#8e8e93">O log registra a ação administrativa. O conteúdo do segmento excluído não foi recuperado neste arquivo.</p></div>`,
 "trajetoria_projétil.pdf":`<div class="notecard"><b>E32 — RECONSTRUÇÃO DE TRAJETÓRIA</b><p>A direção do projétil indica que a posição de Luiz deve ser analisada em relação às demais pessoas presentes no estoque.</p><p><b>A trajetória, isoladamente, não confirma que Luiz fosse o alvo pretendido.</b></p><p style="color:#8e8e93">Cruze este laudo com as imagens e posições recuperadas.</p></div>`,
 "camera_access_log.txt":`<div class="notecard"><b>E37 — CAMERA_ACCESS.LOG</b><p>O sistema registra consulta a gravações anteriores do Tex Pub.</p><p>Entre os trechos acessados está a janela das <b>18:55</b>, horário em que Luiz entrega uma caixa a Giovana.</p><p style="color:#8e8e93">A identificação final do acesso deve ser cruzada com os registros administrativos liberados neste nível.</p></div>`
 };

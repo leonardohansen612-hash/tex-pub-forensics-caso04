@@ -1,0 +1,11 @@
+CASO 05 — PATCH 02
+
+Substitua SOMENTE o arquivo index.html da raiz do projeto pelo index.html deste patch.
+
+Alterações:
+- E23: texto definitivo da comparação das caixas (dobra triangular no canto superior direito da caixa original; ausente na caixa apreendida).
+- E28: depoimento definitivo de Leo, incluindo as duas afirmações falsas confrontáveis com a cronologia.
+- E30: nova evidência digital adicionada ao Código 4 — log_exclusao_cftv.txt, registrando exclusão manual da câmera interna do estoque às 22:38:14 pelo usuário LEONARDO_ADMIN.
+- E31: registro técnico definitivo atualizado para análise de áudio da CAM 04 / Corredor, fixando o disparo às 22:31:08.
+
+Nenhuma outra evidência, código ou mecânica foi alterada neste patch.
