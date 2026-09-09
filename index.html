@@ -278,7 +278,7 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 const $=s=>document.querySelector(s);
 let p=0;const boot=$('#boot'),bar=$('#bootBar'),bt=$('#bootText');const timer=setInterval(()=>{p+=12;if(p>=100){p=100;clearInterval(timer);setTimeout(()=>boot.style.display='none',180)}bar.style.width=p+'%';bt.textContent=p<55?'Montando imagem forense...':'Carregando dispositivo...'},90);
 const codes={"5012":1,"6841":2,"3144":3,"4761":4,"2231":5};
-let unlocked=JSON.parse(localStorage.getItem("texC05Levels")||"[]");const save=()=>localStorage.setItem("texC05Levels",JSON.stringify(unlocked));const has=l=>unlocked.includes(l);
+let unlocked=JSON.parse(localStorage.getItem("texC05Levels")||"[]");const save=()=>localStorage.setItem("texC05Levels",JSON.stringify(unlocked));const has=l=>l===0||unlocked.includes(l);
 const evidence={
 "Contatos":[
 [1,"João","Barman • Tex Pub"],[1,"Giovana","Cliente / amiga"],[1,"Leo","Sócio • Tex Pub"],[1,"Jefferson","Sócio • Tex Pub"]
@@ -303,6 +303,10 @@ const evidence={
 [4,"Sistema CFTV","22:38 • Aviso automático: alteração administrativa registrada."]
 ],
 "WhatsApp":[
+[0,"João","out","08 SET 18:15","Me passa aquela receita então."],
+[0,"João","in","08 SET 18:16","Tá no bar."],
+[0,"João","out","08 SET 18:16","Onde?"],
+[0,"João","in","08 SET 18:17","No mesmo lugar de todas as outras, porra 😂"],
 [1,"João","out","03 SET 16:42","E aí, quando vai começar a me ensinar direito?"],
 [1,"João","in","03 SET 16:44","Ensinar o quê? kkkkk"],
 [1,"João","out","03 SET 16:45","Bar, porra. Tô falando sério."],
@@ -311,6 +315,12 @@ const evidence={
 [1,"João","in","08 SET 18:12","Você me desafiou. Eu só respondi."],
 [1,"João","out","08 SET 18:13","Uma hora você vai passar do limite."],
 [1,"João","in","08 SET 18:14","Então para de transformar tudo em disputa."],
+[1,"João","out","07 SET 23:18","Vai jogar hoje depois de fechar?"],
+[1,"João","in","07 SET 23:19","Se você quiser perder de novo."],
+[1,"João","out","07 SET 23:19","Seu recorde naquele negócio é ridículo."],
+[1,"João","in","07 SET 23:20","Então bate primeiro 😂"],
+[1,"João","out","07 SET 23:20","Qual era mesmo?"],
+[1,"João","in","07 SET 23:21","Tá salvo na máquina."],
 [1,"Contato a identificar","out","21:41","O João passou dos limites hoje."],
 [1,"Contato a identificar","out","21:41","Depois eu te conto."],
 [2,"Giovana","out","22:05","Tá com aquilo?"],
@@ -358,9 +368,11 @@ const evidence={
 [5,"camera_access_log.txt","E37 • Registro de consulta ao sistema de câmeras do Tex Pub."]
 ],
 "Notas":[
+[0,"Old Fashioned","Bourbon — 50 ml\nXarope de açúcar\nAngostura\nGelo grande\nCasca de laranja\n\nMexer no copo com gelo.\n\nNão é tão difícil assim."],
 [1,"Hoje","Preciso entender o que está acontecendo antes de falar com mais alguém."],
 [1,"Bar","Pesquisar curso de bartender. Não depender do João pra aprender."],
 [1,"21:42","João perdeu a cabeça de novo. Não comprar briga hoje."],
+[1,"João","Primeiro eu ganho dele no jogo. Depois eu ganho o lugar dele no bar. 😂"],
 [2,"22:05","Confirmar se a Giovana ainda está com aquilo."],
 [2,"Caixa","Ela só precisa guardar. Não envolver ela nisso."],
 [3,"Documentos","Não deixar isso virar uma confusão antes do Leo falar com o Jefferson."],

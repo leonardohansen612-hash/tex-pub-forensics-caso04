@@ -1,0 +1,12 @@
+CASO 05 — PATCH 05
+Substituir somente o index.html da raiz.
+
+Alterações:
+- Conteúdo N0 agora pode aparecer antes do primeiro código.
+- Nota "Old Fashioned" adicionada com Bourbon — 50 ml; xarope e Angostura sem quantidades.
+- Conversa Luiz × João adicionada antes do N1 para direcionar às fichas físicas do bar.
+- Após desbloquear 5012, entram mensagens sobre a rivalidade no fliperama.
+- Após desbloquear 5012, entra a nota: "Primeiro eu ganho dele no jogo. Depois eu ganho o lugar dele no bar."
+- O código N2 continua 6841.
+- Fotos não foram alteradas.
+- Caminhos das fotos permanecem assets/caso05/.
