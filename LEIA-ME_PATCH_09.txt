@@ -1,0 +1,21 @@
+CASO 05 — PATCH 09
+Substituir somente index.html.
+
+NOVO MINIGAME FINAL:
+- Substitui o minigame Vermelho/Verde/Azul.
+- Estilo Desafio de Einstein / Zebra Puzzle.
+- Só aparece após desbloquear 4761.
+- 4 pessoas: Bianca, Clara, Mauro, Renato.
+- 4 locais: Bar, Corredor, Escritório, Estoque.
+- 4 horários: 22:04, 22:13, 22:22, 22:31.
+- Duas grades de dedução clicáveis: vazio -> X -> ✓.
+- 8 pistas cruzadas.
+- Solução única verificada:
+  Mauro = Bar = 22:04
+  Clara = Escritório = 22:13
+  Renato = Corredor = 22:22
+  Bianca = Estoque = 22:31
+- A pessoa do Estoque está com o envelope.
+- Ao responder Bianca + 22:31, o jogo revela 22:31.
+- O jogador digita 2231 no sistema normal para liberar o último nível.
+- Fotos não alteradas; assets/caso05/ preservado.
