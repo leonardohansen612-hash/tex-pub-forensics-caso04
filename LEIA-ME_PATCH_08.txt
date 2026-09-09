@@ -1,0 +1,14 @@
+CASO 05 — PATCH 08
+Substituir somente index.html.
+
+NOVO:
+- App "Reconstrução" fica totalmente oculto antes de desbloquear o código 4761.
+- Ao desbloquear o nível 4, o ícone Reconstrução aparece.
+- Minigame em 2 etapas:
+  1) posicionar Vermelho -> Verde -> Azul pelas pistas;
+  2) ordenar MOVIMENTO -> DISPARO -> IMPACTO.
+- Ao concluir, o sistema revela 22:31.
+- O jogador deve então digitar 2231 no sistema normal de códigos.
+- 2231 apenas libera o último nível; não encerra automaticamente a investigação.
+- Fotos não alteradas.
+- Caminhos continuam assets/caso05/.
