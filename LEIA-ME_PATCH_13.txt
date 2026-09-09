@@ -1,0 +1,29 @@
+CASO 05 — PATCH 13
+Arquivos:
+- index.html
+- firestore.rules
+
+NOVO:
+1. Dossiê Final é enviado ao Firestore em tempo real.
+2. Painel do Investigador recebe todos os dossiês.
+3. Painel abre cada relatório completo.
+4. Botões:
+   - CASO SOLUCIONADO
+   - INVESTIGAÇÃO INCOMPLETA
+5. A resposta chega em tempo real ao dispositivo da equipe.
+6. Painel fica fora da tela normal. Acesse o mesmo endereço do jogo acrescentando:
+   ?investigador=1
+   Ex.: https://SEU-SITE.vercel.app/?investigador=1
+7. PIN do painel: 1700.
+
+IMPORTANTE — FIREBASE:
+O site precisa usar o mesmo Firebase/Firestore do projeto.
+Este patch tenta reutilizar uma configuração Firebase já inicializada no site.
+Se o Caso 05 ainda não tiver firebaseConfig no index.html, será necessário inserir a configuração Web do seu projeto.
+
+REGRAS:
+firestore.rules acompanha o patch.
+As regras estão propositalmente simples para o evento e permitem leitura/atualização da coleção caso05_dossiers.
+O PIN 1700 protege a interface, mas NÃO substitui autenticação Firebase real. Para um painel público permanente, o ideal é adicionar Firebase Auth depois.
+
+O minigame e toda a progressão anterior permanecem preservados.

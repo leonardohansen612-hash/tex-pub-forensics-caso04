@@ -280,6 +280,31 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 @media(max-width:650px){.dossier-paper{padding:15px}.dossier-paper h2{font-size:24px}.dossier-field textarea{min-height:240px}}
 </style>
 
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+
+
+<style>
+.admin-overlay{position:absolute;inset:0;z-index:10040;background:rgba(7,7,9,.99);overflow:auto;padding:14px}
+.admin-shell{max-width:1050px;margin:0 auto;color:#f3f0e8;font-family:Arial,Helvetica,sans-serif}
+.admin-top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #414141;padding:8px 0 14px;margin-bottom:14px}
+.admin-title{font-size:23px;font-weight:900}.admin-kicker{font-size:11px;color:#aaa;letter-spacing:.14em}
+.admin-close{width:44px;height:44px;border:1px solid #555;border-radius:10px;background:#171717;color:#fff;font-size:28px}
+.admin-card{background:#151515;border:1px solid #383838;border-radius:14px;padding:18px;margin-bottom:12px}
+.admin-login{max-width:440px;margin:40px auto;text-align:center}
+.admin-login input,.admin-note{box-sizing:border-box;width:100%;background:#0d0d0d;color:#fff;border:1px solid #505050;border-radius:9px;padding:11px;font:inherit}
+.admin-list{display:grid;gap:9px}.admin-item{border:1px solid #444;border-radius:10px;padding:12px;background:#101010;cursor:pointer}
+.admin-item-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.admin-team{font-weight:900}.admin-meta{font-size:11px;color:#999;margin-top:5px}
+.admin-status{font-size:11px;border:1px solid #555;border-radius:999px;padding:5px 8px;white-space:nowrap}
+.admin-report{white-space:pre-wrap;line-height:1.5;background:#0d0d0d;border:1px solid #444;border-radius:10px;padding:14px;margin:12px 0;max-height:390px;overflow:auto}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:12px}
+.admin-btn{min-height:42px;border-radius:9px;padding:9px 13px;font-weight:900}
+.admin-ok{border:0;background:#eee9dc;color:#111}.admin-no{border:1px solid #666;background:#242424;color:#fff}.admin-back{border:1px solid #555;background:#191919;color:#fff}
+.admin-msg{min-height:24px;margin-top:8px;font-weight:800}
+.dossier-result{border:1px solid #555;border-radius:12px;padding:15px;margin-top:15px;text-align:center}
+</style>
+
 </head>
 <body>
 <div id="boot"><img src="assets/logo-tex-pub.png"><b>TEX PUB FORENSICS</b><span id="bootText">Montando imagem...</span><div id="bootTrack"><i id="bootBar"></i></div></div>
@@ -306,6 +331,9 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
       </button>
       <button class="appbtn" data-app="Dossiê Final" id="dossier-app-btn" style="display:none">
         <div class="icon i-gray">📁</div><span class="label">Dossiê Final</span>
+      </button>
+      <button class="appbtn" data-app="Painel Investigador" id="investigator-app-btn" style="display:none">
+        <div class="icon i-red">🛡️</div><span class="label">Investigador</span>
       </button>
       <button class="appbtn" data-app="Gravador"><div class="icon i-black">〰️</div><span class="label">Gravador</span></button>
       <button class="appbtn" data-app="Spotify"><div class="icon i-spotify"><div class="spot">≋</div></div><span class="label">Spotify</span></button>
@@ -852,6 +880,157 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  refreshDossier();
  new MutationObserver(refreshDossier).observe(document.body,{childList:true,subtree:true,attributes:true});
  setInterval(refreshDossier,1000);
+})();
+</script>
+
+
+<div id="admin-overlay" class="admin-overlay" style="display:none">
+ <div class="admin-shell">
+  <div class="admin-top">
+   <div><div class="admin-kicker">CASO 05</div><div class="admin-title">PAINEL DO INVESTIGADOR</div></div>
+   <button class="admin-close" id="admin-close">×</button>
+  </div>
+  <div id="admin-login" class="admin-card admin-login">
+   <h2>Acesso restrito</h2>
+   <p style="color:#aaa">Informe o PIN do investigador.</p>
+   <input id="admin-pin" type="password" inputmode="numeric" placeholder="PIN">
+   <div class="admin-actions"><button class="admin-btn admin-ok" id="admin-enter">ENTRAR</button></div>
+   <div class="admin-msg" id="admin-login-msg"></div>
+  </div>
+  <div id="admin-home" style="display:none">
+   <div class="admin-card">
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+     <div><strong>Dossiês recebidos</strong><div class="admin-meta">Atualização em tempo real</div></div>
+     <button class="admin-btn admin-back" id="admin-refresh">ATUALIZAR</button>
+    </div>
+   </div>
+   <div class="admin-list" id="admin-list"></div>
+  </div>
+  <div id="admin-detail" style="display:none"></div>
+ </div>
+</div>
+
+
+<script>
+(function(){
+ const COLLECTION='caso05_dossiers';
+ const ADMIN_PIN='1700';
+ let db=null,unsubscribe=null,currentId=null;
+
+ function initDB(){
+   try{
+     if(typeof firebase==='undefined') return null;
+     if(firebase.apps && firebase.apps.length){db=firebase.firestore();return db;}
+     let cfg=null;
+     if(window.CASO05_FIREBASE_CONFIG) cfg=window.CASO05_FIREBASE_CONFIG;
+     if(!cfg){
+       try{const raw=localStorage.getItem('caso05_firebase_config');if(raw)cfg=JSON.parse(raw);}catch(e){}
+     }
+     if(cfg){firebase.initializeApp(cfg);db=firebase.firestore();return db;}
+   }catch(e){console.error('Caso05 Firebase:',e);}
+   return null;
+ }
+ window.caso05InitDB=initDB;
+
+ function teamDeviceId(){
+   let id=localStorage.getItem('caso05_device_id');
+   if(!id){id='dev_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9);localStorage.setItem('caso05_device_id',id);}
+   return id;
+ }
+
+ // Replace dossier submit behavior with Firestore submission when configured.
+ const submit=document.getElementById('dossier-submit');
+ if(submit){
+   submit.onclick=async()=>{
+     const team=document.getElementById('dossier-team'),report=document.getElementById('dossier-report');
+     const fb=document.getElementById('dossier-feedback'),form=document.getElementById('dossier-form'),receipt=document.getElementById('dossier-receipt');
+     const t=team.value.trim(),r=report.value.trim();
+     if(!t){fb.textContent='Informe o nome da equipe.';return;}
+     if(r.length<80){fb.textContent='O relatório está curto demais para registrar uma reconstrução completa.';return;}
+     const d=initDB();
+     if(!d){fb.textContent='Firebase ainda não configurado neste site. O dossiê não foi enviado.';return;}
+     fb.textContent='Enviando dossiê...';
+     try{
+       const deviceId=teamDeviceId();
+       const ref=await d.collection(COLLECTION).add({
+         team:t,report:r,status:'pending',adminNote:'',deviceId:deviceId,
+         submittedAt:firebase.firestore.FieldValue.serverTimestamp(),
+         updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+       });
+       localStorage.setItem('caso05_dossier_doc',ref.id);
+       localStorage.setItem('caso05_dossier_team',t);
+       localStorage.setItem('caso05_dossier_report',r);
+       const p='CASO05-'+ref.id.slice(0,6).toUpperCase();
+       document.getElementById('dossier-receipt-team').textContent=t;
+       document.getElementById('dossier-protocol').textContent=p;
+       form.style.display='none';receipt.style.display='';
+       watchTeamResult(ref.id);
+     }catch(e){console.error(e);fb.textContent='Falha no envio. Verifique a conexão e a configuração do Firestore.';}
+   };
+ }
+
+ function watchTeamResult(id){
+   const d=initDB(); if(!d||!id)return;
+   d.collection(COLLECTION).doc(id).onSnapshot(s=>{
+     if(!s.exists)return; const x=s.data();
+     const receipt=document.getElementById('dossier-receipt');
+     if(!receipt)return;
+     let box=document.getElementById('dossier-live-result');
+     if(!box){box=document.createElement('div');box.id='dossier-live-result';box.className='dossier-result';receipt.insertBefore(box,document.getElementById('dossier-return'));}
+     if(x.status==='approved') box.innerHTML='<strong>✓ DOSSIÊ VALIDADO</strong><p>CASO 05 SOLUCIONADO</p>';
+     else if(x.status==='rejected') box.innerHTML='<strong>DOSSIÊ NÃO VALIDADO</strong><p>A reconstrução ainda possui inconsistências. Retomem a investigação e enviem um novo dossiê.</p>';
+     else box.innerHTML='<strong>AGUARDANDO VALIDAÇÃO</strong><p>O investigador responsável ainda está analisando o relatório.</p>';
+   });
+ }
+ const existing=localStorage.getItem('caso05_dossier_doc');if(existing)setTimeout(()=>watchTeamResult(existing),500);
+
+ // Admin panel
+ const abtn=document.getElementById('investigator-app-btn'),aov=document.getElementById('admin-overlay');
+ // Admin icon is deliberately hidden from normal players; open with ?investigador=1 or #investigador.
+ const adminMode=new URLSearchParams(location.search).get('investigador')==='1'||location.hash==='#investigador';
+ if(abtn)abtn.style.display=adminMode?'':'none';
+ if(abtn)abtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();aov.style.display='';},true);
+ document.getElementById('admin-close').onclick=()=>aov.style.display='none';
+ document.getElementById('admin-enter').onclick=()=>{
+   if(document.getElementById('admin-pin').value!==ADMIN_PIN){document.getElementById('admin-login-msg').textContent='PIN incorreto.';return;}
+   if(!initDB()){document.getElementById('admin-login-msg').textContent='Firebase não configurado.';return;}
+   document.getElementById('admin-login').style.display='none';document.getElementById('admin-home').style.display='';listenAdmin();
+ };
+ document.getElementById('admin-refresh').onclick=()=>listenAdmin();
+
+ function listenAdmin(){
+   const d=initDB();if(!d)return;
+   if(unsubscribe)unsubscribe();
+   unsubscribe=d.collection(COLLECTION).orderBy('submittedAt','desc').onSnapshot(q=>{
+     const list=document.getElementById('admin-list');list.innerHTML='';
+     if(q.empty){list.innerHTML='<div class="admin-card">Nenhum dossiê recebido ainda.</div>';return;}
+     q.forEach(doc=>{
+       const x=doc.data(),el=document.createElement('div');el.className='admin-item';
+       const when=x.submittedAt&&x.submittedAt.toDate?x.submittedAt.toDate().toLocaleString('pt-BR'):'agora';
+       const st=x.status==='approved'?'VALIDADO':x.status==='rejected'?'INCOMPLETO':'AGUARDANDO';
+       el.innerHTML='<div class="admin-item-head"><span class="admin-team"></span><span class="admin-status">'+st+'</span></div><div class="admin-meta">'+when+'</div>';
+       el.querySelector('.admin-team').textContent=x.team||'Equipe';
+       el.onclick=()=>openDetail(doc.id,x);list.appendChild(el);
+     });
+   },e=>{document.getElementById('admin-list').innerHTML='<div class="admin-card">Erro ao carregar dossiês: '+e.message+'</div>';});
+ }
+ function openDetail(id,x){
+   currentId=id;document.getElementById('admin-home').style.display='none';
+   const det=document.getElementById('admin-detail');det.style.display='';
+   det.innerHTML='<div class="admin-card"><button class="admin-btn admin-back" id="admin-back">← VOLTAR</button><h2 id="detail-team"></h2><div class="admin-report" id="detail-report"></div><label class="admin-meta">OBSERVAÇÃO DO INVESTIGADOR (opcional)</label><textarea class="admin-note" id="detail-note" rows="3"></textarea><div class="admin-actions"><button class="admin-btn admin-no" id="detail-reject">INVESTIGAÇÃO INCOMPLETA</button><button class="admin-btn admin-ok" id="detail-approve">CASO SOLUCIONADO</button></div><div class="admin-msg" id="detail-msg"></div></div>';
+   document.getElementById('detail-team').textContent=x.team||'Equipe';
+   document.getElementById('detail-report').textContent=x.report||'';
+   document.getElementById('detail-note').value=x.adminNote||'';
+   document.getElementById('admin-back').onclick=()=>{det.style.display='none';document.getElementById('admin-home').style.display='';};
+   document.getElementById('detail-approve').onclick=()=>setStatus('approved');
+   document.getElementById('detail-reject').onclick=()=>setStatus('rejected');
+ }
+ async function setStatus(status){
+   try{
+     await db.collection(COLLECTION).doc(currentId).update({status:status,adminNote:document.getElementById('detail-note').value.trim(),reviewedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+     document.getElementById('detail-msg').textContent=status==='approved'?'Dossiê validado. A equipe receberá a confirmação em tempo real.':'Marcado como incompleto. A equipe receberá o retorno em tempo real.';
+   }catch(e){document.getElementById('detail-msg').textContent='Erro ao atualizar: '+e.message;}
+ }
 })();
 </script>
 
