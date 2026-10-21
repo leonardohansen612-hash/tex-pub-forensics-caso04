@@ -1,7 +1,13 @@
-CASO 06 — NÍVEL 4 / 0713
-Substituir somente index.html na raiz do GitHub e enviar assets/caso06/IMG_1059.jpg até IMG_1065.jpg.
-Níveis 1, 2 e 3 preservados; NÃO apagar arquivos existentes.
-Fotos de pessoas são retratos de referência extraídos das fichas fornecidas, não registros da noite do crime.
-Os áudios são falas sintetizadas pelo navegador, não arquivos mp3.
-Verificação: node --check; fotos por nível: 6,6,6,7. Sem teste visual em navegador.
-Cronologia canônica preservada: 22h12 Rafael sai, 22h14–22h25 lacuna de câmeras.
+TEX PUB FORENSICS — CASO 06 / NÍVEL 05 / CÓDIGO 3110
+
+INSTALAÇÃO: substituir somente index.html na raiz do GitHub e adicionar as 7 imagens IMG_1066.jpg até IMG_1072.jpg em assets/caso06/. NÃO APAGAR as imagens existentes.
+
+3110: pista física no cardápio de Halloween (31/10). A pista deve conduzir a 3110, sem confundir a data do crime (16/10/2026).
+
+Novidades: 7 fotos, 8 WhatsApp, 2 ligações, 2 SMS, 3 Safari, 3 e-mails, 2 notas, 6 arquivos completos, 3 áudios com voz sintetizada pelo navegador.
+
+CRONOLOGIA OFICIAL: 22h06 SMS anônimo; 22h12 Rafael deixa a mesa; 22h14 André interrompe câmeras remotamente; 22h16 Camila sai da mesa; 22h19 encontro no serviço; 22h22 agressão; 22h24 manipulação da cena e desaparecimento do telefone; 22h25 retomada das câmeras; 22h28 retorno de Camila; 22h41 descoberta; 22h45 emergência; 22h58 óbito constatado pelos socorristas.
+
+Os documentos externos pós-evento são relatórios sincronizados à interface de investigação, não arquivos originalmente criados por Rafael após sua morte. Os áudios são TTS com transcrição, não MP3.
+
+VALIDAÇÃO: node --check e contagem de fotos por nível (6,6,6,7,7). Não houve teste visual no navegador.
