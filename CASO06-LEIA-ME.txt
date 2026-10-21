@@ -20,3 +20,5 @@ Os diálogos e horários secundários deste nível são ficção criada para o j
 os horários oficiais da cronologia não foram alterados.
 
 IMPORTANTE: 2325 é uma senha de quatro dígitos, conforme solicitado.
+
+ATUALIZAÇÃO: O aplicativo Relógio do celular mostra 23:25 (ponteiros e texto). O relógio físico do pub pode mostrar outro horário. Código GrayKey nível 1: 2325.
