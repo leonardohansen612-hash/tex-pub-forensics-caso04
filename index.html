@@ -223,6 +223,7 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 .calcDisplay{background:#000;color:#fff;border-radius:16px;padding:20px 16px;text-align:right;font-size:38px;min-height:82px;overflow:hidden;margin-bottom:10px}.calcGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.calcGrid button{border:0;border-radius:50%;aspect-ratio:1;font-size:20px;background:#d1d1d6}.calcGrid button.op{background:#ff9f0a;color:white}.calcGrid button.dark{background:#505050;color:white}
 .weatherCard{border-radius:22px;padding:22px;background:linear-gradient(#4ca8ef,#92cff8);color:#fff;text-align:center;box-shadow:0 8px 24px #0002}.weatherCard .temp{font-size:64px;font-weight:300}.weatherCard .city{font-size:23px;font-weight:700}.weatherHours{display:flex;justify-content:space-between;margin-top:22px;border-top:1px solid #ffffff55;padding-top:16px;font-size:12px}
 .clockFace{width:220px;height:220px;border-radius:50%;background:#fff;border:7px solid #111;margin:20px auto;position:relative;box-shadow:0 6px 18px #0002}.hand{position:absolute;left:50%;bottom:50%;transform-origin:50% 100%;border-radius:5px}.hourHand{width:6px;height:57px;background:#111;margin-left:-3px;transform:rotate(252deg)}.minHand{width:4px;height:78px;background:#111;margin-left:-2px;transform:rotate(264deg)}.secHand{width:2px;height:85px;background:#e33;margin-left:-1px}.clockDot{position:absolute;width:12px;height:12px;border-radius:50%;background:#111;left:50%;top:50%;transform:translate(-50%,-50%)}.clockDigital{text-align:center;font-size:28px;font-weight:700}
+ .voicePlay{border:0;border-radius:10px;background:#25252a;color:#fff;padding:10px 12px;margin:8px 0;font-weight:700;cursor:pointer}
 </style>
 
 
@@ -512,17 +513,38 @@ window.CASO06_FIREBASE_CONFIG = {
 <script>
 const $=s=>document.querySelector(s);
 let p=0;const boot=$('#boot'),bar=$('#bootBar'),bt=$('#bootText');const timer=setInterval(()=>{p+=12;if(p>=100){p=100;clearInterval(timer);setTimeout(()=>boot.style.display='none',180)}bar.style.width=p+'%';bt.textContent=p<55?'Montando imagem forense...':'Carregando dispositivo...'},90);
-const codes={}; // Códigos do Caso 06 serão definidos junto das evidências.
+const codes={"2325":1}; // Nível 1: relógio analógico do pub.
 let unlocked=JSON.parse(localStorage.getItem("texC06Levels")||"[]");const save=()=>localStorage.setItem("texC06Levels",JSON.stringify(unlocked));const has=l=>l===0||unlocked.includes(l);
 // Base limpa: nenhuma evidência do Caso 05 é reutilizada no Caso 06.
 // Inserir apenas dados validados contra a cronologia de 16/10/2026.
+// Nível 1: registros ficcionais reconstruídos para a dinâmica do jogo.
+// Horários de chegada e fatos confirmados seguem a cronologia oficial.
 const evidence={
- "Contatos":[],"Telefone":[],"Mensagens":[],"WhatsApp":[],
- "Arquivos":[],"Notas":[],"Calendário":[],"Mapas":[],
- "Reconstrução":[],"E-mail":[],"Gravador":[],"Safari":[],
+ "Contatos":[[1,"Beatriz Almeida","Contato salvo • Quinta Dose"],[1,"Gustavo Moreira","Contato salvo • Quinta Dose"],[1,"Camila Torres","Contato salvo • Quinta Dose"],[1,"André Martins","Contato salvo • Quinta Dose"]],
+ "Telefone":[[1,"Beatriz Almeida","16/10 • 18:32 • chamada realizada • 01:14","out"],[1,"Gustavo Moreira","16/10 • 19:08 • chamada recebida • 00:46","in"],[1,"Camila Torres","16/10 • 20:03 • chamada realizada • não atendida","miss"]],
+ "Mensagens":[[1,"Quinta Dose • Agenda","16/10 • 17:26 — Confirmação: reunião presencial no Tex Pub, Mesa 13. Participantes: os cinco ex-sócios."],[1,"Número não identificado","16/10 • 20:18 — Rafael, você precisa parar de tratar isso como um erro de sistema. Alguém assinou esses pagamentos."]],
+ "WhatsApp":[
+ [1,"Beatriz Almeida","in","15/10 19:41","Rafael, preciso entender por que meu nome aparece nesses contratos. Eu não assinei aquilo."],
+ [1,"Beatriz Almeida","out","15/10 19:46","Vamos conversar pessoalmente amanhã. Não vou te expor na frente de todo mundo."],
+ [1,"Beatriz Almeida","in","16/10 18:11","Não quero que nossa história vire assunto na reunião. O problema são os documentos."],
+ [1,"Gustavo Moreira","in","16/10 17:55","Perdi fornecedores e dinheiro por causa dessa história. Hoje você vai explicar cada transferência."],
+ [1,"Gustavo Moreira","out","16/10 18:02","Eu também quero saber para onde foi o dinheiro. Leve o que tiver de comprovantes."],
+ [1,"André Martins","in","16/10 16:27","Meu usuário aparece nos relatórios, mas eu não autorizei aqueles lançamentos. Alguém usou minhas credenciais."],
+ [1,"André Martins","out","16/10 16:34","Traga os logs. Preciso separar acesso ao sistema de autorização de pagamento."],
+ [1,"Camila Torres","in","16/10 14:12","Confirmado hoje no Tex Pub? Prefiro que a gente mantenha a conversa objetiva."],
+ [1,"Camila Torres","out","16/10 14:16","Mesa 13. Quero todos presentes. Não dá mais para adiar."]
+ ],
+ "Arquivos":[[1,"convocacao_mesa13.txt","Reunião de 16/10/2026 • 21h45 • Quinta Dose"]],
+ "Notas":[[1,"Pontos para a reunião","Separar três coisas: quem criou os lançamentos; quem aprovou os pagamentos; quem se beneficiou. Não confundir acesso técnico com autorização."],[1,"Mesa 13","Pedir a André os logs originais. Perguntar a Beatriz sobre os contratos. Gustavo: fornecedores. Camila: conferência operacional."]],
+ "Calendário":[[1,"Reunião — Quinta Dose","21h45 • Tex Pub • Mesa 13 • Beatriz, Gustavo, Camila, André e Rafael"]],
+ "Mapas":[],"Reconstrução":[],
+ "E-mail":[[1,"Arquivo administrativo — Quinta Dose","Assunto: divergências em contratos e pagamentos. O material da reunião será confrontado com os registros de acesso e as aprovações financeiras."],[1,"Rafael Nogueira → arquivo pessoal","Assunto: pauta de 16/10. Não apontar culpados sem cruzar contratos, logs e comprovantes."]],
+ "Gravador":[[1,"Memorando de voz • 16/10 • 18:40","A reunião de hoje precisa esclarecer o dinheiro que saiu. André diz que usaram o acesso dele. Beatriz nega ter assinado os contratos. Gustavo quer os comprovantes. Preciso ouvir todos antes de decidir o que fazer."],[1,"Rascunho de áudio • 16/10 • 20:39","Se eu não conseguir explicar os números hoje, amanhã vou entregar a documentação para uma auditoria independente. Não quero mais versões sem provas."]],
+ "Safari":[[1,"16/10 • 12:08","como verificar histórico de alterações em sistema financeiro"],[1,"16/10 • 12:21","diferença entre usuário de acesso e responsável por autorização bancária"],[1,"16/10 • 15:03","assinatura eletrônica em contrato como verificar autenticidade"],[1,"16/10 • 17:14","como preservar mensagens e comprovantes para auditoria"]],
  "Ajustes":[[0,"iPhone de Rafael Nogueira","Extração forense • Caso 06 • 16/10/2026"]],
  "Arquivos apagados":[],"Histórico de localização":[],"Linha do tempo":[]
 };
+
 const appScreen=$('#appScreen'),appTitle=$('#appTitle'),appBody=$('#appBody');
 function initials(name){return name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
 function visible(name){const all=evidence[name]||[];return [all.filter(r=>has(r[0])),all.filter(r=>!has(r[0]))]}
@@ -540,7 +562,9 @@ function openWhatsChat(person){
  appBody.innerHTML=`<div class="waBg"><div class="chathead"><button class="back" onclick="openApp('WhatsApp')">‹</button><div class="avatar">${initials(person)}</div><div class="who"><b>${person}</b><small>WhatsApp</small></div></div><div class="waDay">Mensagens disponíveis na extração atual</div>${all.map(r=>`<div class="waBubble ${r[2]==='out'?'out':'in'}">${r[5]?'<small style="display:block;color:#8e8e93;margin-bottom:3px">RECUPERADA</small>':''}${r[4]}<time>${r[3]}${r[2]==='out'?' ✓✓':''}</time><div style="clear:both"></div></div>`).join('')}<div class="waInput"><span>＋</span><div class="fake">Mensagem</div><span>🎙</span></div></div>`;
 }
 
-const fileDetails={}; // Aguardando documentos validados do Caso 06.
+const fileDetails={
+ "convocacao_mesa13.txt":`<div class="notecard"><b>QUINTA DOSE — REUNIÃO EXTRAORDINÁRIA</b><p>Data: sexta-feira, 16/10/2026</p><p>Local: Tex Pub — Mesa 13</p><p>Início da discussão: 21h45</p><p>Pauta: contratos contestados, transferências e registros de acesso.</p><p>Participantes: Rafael, Beatriz, Gustavo, Camila e André.</p><p><small>Documento de organização da reunião; não é prova de autoria de fraude.</small></p></div>`
+};
 function renderFiles(){const [v,h]=visible("Arquivos");return `<div class="sectionlabel">No meu iPhone</div><div class="iosgroup">${v.map(r=>`<div class="iosrow" ${fileDetails[r[1]]?`onclick="openFile('${r[1]}')" style="cursor:pointer"`:''}><div class="avatar">${r[1].endsWith('.pdf')?'PDF':'▤'}</div><div class="main"><b>${r[1]} <span class="level">N${r[0]}</span></b><p>${r[2]}</p></div>${fileDetails[r[1]]?'<span class="chev">›</span>':''}</div>`).join('')}</div>${lockMsg(h.length)}`}
 function openFile(name){appTitle.textContent=name;appBody.innerHTML=`<button class="back" onclick="openApp('Arquivos')" style="margin-bottom:12px">‹ Arquivos</button>${fileDetails[name]||''}`}
 
@@ -549,14 +573,21 @@ function renderNotes(){const [v,h]=visible("Notas");return v.map(r=>`<div class=
 function renderSafari(){const [v,h]=visible("Safari");return `<div class="safariTop"><div class="address">🔒 Histórico e Pesquisas</div></div>${v.map(r=>`<div class="searchitem"><small>${r[1]}</small><div style="margin-top:6px;font-size:15px">${r[2]}</div></div>`).join('')}${lockMsg(h.length)}`}
 function renderMaps(){const [v,h]=visible("Mapas");return `<div class="mapmock"><div class="pin">📍</div></div><div class="iosgroup">${v.map(r=>`<div class="iosrow"><div class="main"><b>${r[1]}</b><p>${r[2]}</p></div></div>`).join('')}</div>${lockMsg(h.length)}`}
 function renderCalendar(){const [v,h]=visible("Calendário");return `<div class="calday"><div class="date">SEXTA-FEIRA, 16 DE OUTUBRO</div>${v.map(r=>`<div class="event"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')}</div>${lockMsg(h.length)}`}
-function renderVoice(){const [v,h]=visible("Gravador");return v.map(r=>`<div class="voiceitem"><b>${r[1]}</b><div class="wave"></div><p style="color:#666;font-size:13px">${r[2]}</p></div>`).join('')+lockMsg(h.length)}
+function playCaseAudio(index){
+ const records=visible("Gravador")[0],item=records[index];if(!item)return;
+ if(!("speechSynthesis" in window)){alert("Reprodução de voz não disponível neste navegador. Leia a transcrição.");return;}
+ window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(item[2]);u.lang="pt-BR";u.rate=.92;
+ const voices=window.speechSynthesis.getVoices(),br=voices.find(v=>v.lang.toLowerCase()==="pt-br");if(br)u.voice=br;
+ window.speechSynthesis.speak(u);
+}
+function renderVoice(){const [v,h]=visible("Gravador");return v.map((r,i)=>`<div class="voiceitem"><b>${r[1]}</b><div class="wave"></div><button class="voicePlay" onclick="playCaseAudio(${i})">▶ Ouvir gravação reconstruída</button><p style="color:#666;font-size:13px"><b>Transcrição:</b> ${r[2]}</p><small>Voz sintetizada pelo navegador para representar o áudio fictício.</small></div>`).join('')+lockMsg(h.length)}
 function renderTerminal(){
  appScreen.classList.add('forensic');
- const labels=["Evidências pendentes","Evidências pendentes","Evidências pendentes","Evidências pendentes","Evidências pendentes"];
- return `<div class="terminalbox"><b>GrayKey Bridge — Caso 06</b><p style="color:#aaa;font-size:13px">Os códigos físicos do Caso 06 serão configurados junto às evidências.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
+ const labels=["Primeiros registros do celular","Aguardando novas evidências","Aguardando novas evidências","Aguardando novas evidências","Aguardando novas evidências"];
+ return `<div class="terminalbox"><b>GrayKey Bridge — Caso 06</b><p style="color:#aaa;font-size:13px">Encontre os códigos físicos no Tex Pub. O primeiro está associado ao relógio analógico.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=[]; // Aguardando fotografias do Caso 06.
+const casePhotos=[]; // Fotografias serão acrescentadas nos próximos níveis.
 const photoLevels=Object.fromEntries(casePhotos.map(p=>[p.id,p.level]));
 function renderPhotoGallery(){
  const unlockedPhotos=casePhotos.filter(p=>p.level===0||has(p.level));
@@ -582,7 +613,7 @@ let calcExpr="";
 function bindCalc(){document.querySelectorAll("[data-calc]").forEach(b=>b.onclick=()=>{let v=b.dataset.calc,d=document.querySelector("#calcDisplay");if(v==="C"){calcExpr="";d.textContent="0";return}if(v==="±"){if(calcExpr)calcExpr=calcExpr.startsWith("-")?calcExpr.slice(1):"-"+calcExpr;d.textContent=calcExpr||"0";return}if(v==="%"){let n=parseFloat(calcExpr);if(!isNaN(n)){calcExpr=String(n/100);d.textContent=calcExpr}return}if(v==="="){try{let e=calcExpr.replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-");let r=Function('"use strict";return ('+e+')')();calcExpr=String(Math.round(r*1e8)/1e8);d.textContent=calcExpr}catch{d.textContent="Erro";calcExpr=""}return}calcExpr+=v;d.textContent=calcExpr})}
 function renderWeather(){return `<div class="weatherCard"><div class="city">Jundiaí</div><div>Parcialmente nublado</div><div class="temp">19°</div><div>Máx. 24° &nbsp; Mín. 15°</div><div class="weatherHours"><span>21h<br>☁️<br>19°</span><span>22h<br>☁️<br>18°</span><span>23h<br>☁️<br>18°</span><span>00h<br>☁️<br>17°</span></div></div><div class="notecard"><b>Condições</b><p>Umidade 71% • Vento 9 km/h</p><p style="color:#8e8e93">Dados armazenados no último cache do aparelho.</p></div>`}
 function renderClock(){return `<div class="clockFace"><div class="hand hourHand"></div><div class="hand minHand"></div><div class="hand secHand"></div><div class="clockDot"></div></div><div class="clockDigital">20:44</div><div class="iosgroup" style="margin-top:24px"><div class="iosrow"><div class="main"><b>Alarmes</b><p>07:10 • dias úteis</p></div></div><div class="iosrow"><div class="main"><b>Timer</b><p>Nenhum timer ativo</p></div></div></div>`}
-function stopAmbientApps(){clearInterval(snakeTimer);if(window._snakeKey){document.removeEventListener("keydown",window._snakeKey);window._snakeKey=null}}
+function stopAmbientApps(){if("speechSynthesis" in window)window.speechSynthesis.cancel();clearInterval(snakeTimer);if(window._snakeKey){document.removeEventListener("keydown",window._snakeKey);window._snakeKey=null}}
 
 function openApp(name){
  stopAmbientApps();

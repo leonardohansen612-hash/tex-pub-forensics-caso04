@@ -1,18 +1,22 @@
-TEX PUB FORENSICS — CASO 06: A MESA 13
+TEX PUB FORENSICS — CASO 06 — NÍVEL 1
 
-BASE INICIAL PARA GITHUB
+CÓDIGO ATIVO: 2325
+LOCAL FÍSICO: RELÓGIO ANALÓGICO DO TEX PUB
 
-Alterações:
-- Título e proprietário do celular: Rafael Nogueira / Caso 06.
-- Papel de parede neutro: assets/wallpaper-caso06.svg.
-- Aplicativos e simulador mantidos.
-- Conteúdo do Caso 05 removido dos dados exibidos: mensagens, fotos, laudos, registros etc.
-- Códigos antigos DESATIVADOS; cinco níveis permanecem preparados para configurar.
-- Armazenamento local e coleção de relatórios separados para Caso 06.
+Suba os arquivos desta pasta para a raiz do repositório do Caso 06.
+Acesse o iPhone > GrayKey e digite 2325.
 
-ATENÇÃO:
-- As evidências do Caso 06 ainda NÃO foram adicionadas.
-- Os arquivos e as mídias antigas do Caso 05 foram removidos desta cópia para evitar confusão e reduzir o deploy.
-- Não use códigos antigos: nenhum código está ativo nesta base.
-- Se usar o painel Firebase, confira regras de segurança e permissões para a nova coleção caso06_dossiers.
-- Preserve a cronologia oficial de 16/10/2026 antes de adicionar dados.
+CONTEÚDO LIBERADO:
+- WhatsApp: conversas com os quatro suspeitos
+- Mensagens: convocação e SMS
+- Telefone: chamadas
+- Safari: histórico de pesquisas
+- Gravador: dois áudios fictícios, com voz sintetizada pelo navegador e transcrição
+- E-mail, Notas, Calendário, Contatos e um documento em Arquivos
+
+Os demais quatro níveis permanecem bloqueados.
+A voz dos áudios depende do suporte do navegador a síntese de fala em português.
+Os diálogos e horários secundários deste nível são ficção criada para o jogo;
+os horários oficiais da cronologia não foram alterados.
+
+IMPORTANTE: 2325 é uma senha de quatro dígitos, conforme solicitado.
