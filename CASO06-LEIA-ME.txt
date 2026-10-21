@@ -1,0 +1,18 @@
+TEX PUB FORENSICS — CASO 06: A MESA 13
+
+BASE INICIAL PARA GITHUB
+
+Alterações:
+- Título e proprietário do celular: Rafael Nogueira / Caso 06.
+- Papel de parede neutro: assets/wallpaper-caso06.svg.
+- Aplicativos e simulador mantidos.
+- Conteúdo do Caso 05 removido dos dados exibidos: mensagens, fotos, laudos, registros etc.
+- Códigos antigos DESATIVADOS; cinco níveis permanecem preparados para configurar.
+- Armazenamento local e coleção de relatórios separados para Caso 06.
+
+ATENÇÃO:
+- As evidências do Caso 06 ainda NÃO foram adicionadas.
+- Os arquivos e as mídias antigas do Caso 05 foram removidos desta cópia para evitar confusão e reduzir o deploy.
+- Não use códigos antigos: nenhum código está ativo nesta base.
+- Se usar o painel Firebase, confira regras de segurança e permissões para a nova coleção caso06_dossiers.
+- Preserve a cronologia oficial de 16/10/2026 antes de adicionar dados.

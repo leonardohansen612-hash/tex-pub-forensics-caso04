@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111">
-<title>Luiz — iPhone • Caso 05</title>
+<title>Rafael Nogueira — Tex Pub Forensics • Caso 06</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;background:#111;color:#111}
 button,input{font:inherit}button{cursor:pointer}
@@ -282,7 +282,7 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 
 
 <script>
-window.CASO05_FIREBASE_CONFIG = {
+window.CASO06_FIREBASE_CONFIG = {
   apiKey: "AIzaSyD3EeULMamtJ6uHJ9o6vxyVvY5l6QRmZpQ",
   authDomain: "noite-do-misterio.firebaseapp.com",
   projectId: "noite-do-misterio",
@@ -385,7 +385,7 @@ window.CASO05_FIREBASE_CONFIG = {
 .screen{
   background:
     linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),
-    url("assets/wallpaper-luiz.png") center center / cover no-repeat !important;
+    url("assets/wallpaper-caso06.svg") center center / cover no-repeat !important;
 }
 .status{
   height:50px;
@@ -458,7 +458,7 @@ window.CASO05_FIREBASE_CONFIG = {
 <div class="screen" id="homeScreen">
   <div class="status"><span id="clock">20:44</span><span class="right">●●● ◔ 18%</span></div>
   <div class="home">
-    <div class="owner"><div class="time">Luiz</div><small>iPhone de Luiz • Caso 05</small></div>
+    <div class="owner"><div class="time">Rafael Nogueira</div><small>iPhone de Rafael • Caso 06 — A Mesa 13</small></div>
     <div class="apps">
       <button class="appbtn" data-app="Telefone"><div class="icon i-green">☎</div><span class="label">Telefone</span></button>
       <button class="appbtn" data-app="Mensagens"><div class="icon i-green">💬</div><span class="label">Mensagens</span></button>
@@ -512,174 +512,16 @@ window.CASO05_FIREBASE_CONFIG = {
 <script>
 const $=s=>document.querySelector(s);
 let p=0;const boot=$('#boot'),bar=$('#bootBar'),bt=$('#bootText');const timer=setInterval(()=>{p+=12;if(p>=100){p=100;clearInterval(timer);setTimeout(()=>boot.style.display='none',180)}bar.style.width=p+'%';bt.textContent=p<55?'Montando imagem forense...':'Carregando dispositivo...'},90);
-const codes={"5012":1,"6841":2,"3144":3,"4761":4,"2231":5};
-let unlocked=JSON.parse(localStorage.getItem("texC05Levels")||"[]");const save=()=>localStorage.setItem("texC05Levels",JSON.stringify(unlocked));const has=l=>l===0||unlocked.includes(l);
+const codes={}; // Códigos do Caso 06 serão definidos junto das evidências.
+let unlocked=JSON.parse(localStorage.getItem("texC06Levels")||"[]");const save=()=>localStorage.setItem("texC06Levels",JSON.stringify(unlocked));const has=l=>l===0||unlocked.includes(l);
+// Base limpa: nenhuma evidência do Caso 05 é reutilizada no Caso 06.
+// Inserir apenas dados validados contra a cronologia de 16/10/2026.
 const evidence={
-"Contatos":[
-[1,"João","Barman • Tex Pub"],[1,"Giovana","Cliente / amiga"],[1,"Leo","Sócio • Tex Pub"],[1,"Jefferson","Sócio • Tex Pub"]
-],
-"Telefone":[
-[1,"João","08/09 • 18:12 • chamada realizada • 00:41","ok"],
-[1,"João","08/09 • 21:38 • chamada não atendida","miss"],
-[1,"Mãe","08/09 • 19:02 • chamada recebida • 01:14","ok"],
-[2,"Giovana","08/09 • 18:52 • chamada realizada • 00:16","ok"],
-[2,"Giovana","08/09 • 22:08 • chamada recebida • 00:27","ok"],
-[3,"Giovana","08/09 • 21:58 • chamada realizada • 00:47","ok"],
-[3,"Leo","08/09 • 20:17 • chamada realizada • 00:09","ok"],
-[3,"Leo","08/09 • 21:49 • chamada não atendida","miss"],
-[4,"Jefferson","08/09 • 19:34 • chamada recebida • 00:12","ok"],
-[4,"Fornecedor Chope","08/09 • 16:58 • chamada realizada • 02:03","ok"]
-],
-"Mensagens":[
-[1,"João","18:14 • 'Depois a gente conversa. No meio do serviço não.'"],
-[1,"João","21:39 • 'Você também passou do ponto.'"],
-[2,"Giovana","18:53 • 'Tô chegando no balcão.'"],
-[3,"Leo","20:17 • 'Me atende quando puder.'"],
-[3,"Marta - Contabilidade","17:28 • 'Recebi os documentos. Falta só a conferência final.'"],
-[4,"Sistema CFTV","22:38 • Aviso automático: alteração administrativa registrada."]
-],
-"WhatsApp":[
-[0,"João","out","08 SET 18:15","Me passa aquela receita então."],
-[0,"João","in","08 SET 18:16","Tá no bar."],
-[0,"João","out","08 SET 18:16","Onde?"],
-[0,"João","in","08 SET 18:17","No mesmo lugar de todas as outras, porra 😂"],
-[1,"João","out","03 SET 16:42","E aí, quando vai começar a me ensinar direito?"],
-[1,"João","in","03 SET 16:44","Ensinar o quê? kkkkk"],
-[1,"João","out","03 SET 16:45","Bar, porra. Tô falando sério."],
-[1,"João","in","03 SET 16:47","Então começa estudando 😂"],
-[1,"João","out","08 SET 18:11","Você fez aquilo de propósito na frente de todo mundo?"],
-[1,"João","in","08 SET 18:12","Você me desafiou. Eu só respondi."],
-[1,"João","out","08 SET 18:13","Uma hora você vai passar do limite."],
-[1,"João","in","08 SET 18:14","Então para de transformar tudo em disputa."],
-[1,"João","out","07 SET 23:18","Vai jogar hoje depois de fechar?"],
-[1,"João","in","07 SET 23:19","Se você quiser perder de novo."],
-[1,"João","out","07 SET 23:19","Seu recorde naquele negócio é ridículo."],
-[1,"João","in","07 SET 23:20","Então bate primeiro 😂"],
-[1,"João","out","07 SET 23:20","Qual era mesmo?"],
-[1,"João","in","07 SET 23:21","Tá salvo na máquina."],
-[2,"Giovana","out","05 SET 20:32","Você já reparou que tem coisa aqui que tá no mesmo lugar desde que abriu?"],
-[2,"Giovana","in","05 SET 20:33","Tipo o quê?"],
-[2,"Giovana","out","05 SET 20:33","Aquele relógio horroroso 😂"],
-[2,"Giovana","in","05 SET 20:34","kkkkkk deixa ele em paz"],
-[1,"Contato a identificar","out","21:41","O João passou dos limites hoje."],
-[1,"Contato a identificar","out","21:41","Depois eu te conto."],
-[2,"Giovana","out","22:05","Tá com aquilo?"],
-[2,"Giovana","in","22:05","Tá."],
-[2,"Giovana","out","22:06","Não entrega pra ninguém."],
-[2,"Giovana","in","22:06","Eu ainda não entendi por que eu tô com isso."],
-[2,"Giovana","out","22:06","Depois te explico."],
-[2,"Giovana","out","22:07","Principalmente pro Jefferson."],
-[2,"Giovana","in","22:07","Tá bom."],
-[2,"Giovana","out","18:51","Você tá onde?"],
-[2,"Giovana","in","18:52","Chegando no balcão."],
-[2,"Giovana","out","18:56","Guarda isso pra mim. Depois eu explico."],
-[2,"Giovana","in","18:57","Luiz, o que tem nessa caixa?"],
-[2,"Giovana","out","18:58","Nada que seja seu. Só não deixa ninguém pegar."],
-[2,"Giovana","in","18:59","Isso tá ficando estranho."],
-[3,"Giovana","in","06 SET 22:11","Para de girar essa merda kkkkk"],
-[3,"Giovana","out","06 SET 22:11","Só mais uma"],
-[3,"Giovana","in","06 SET 22:12","Você fala isso toda vez"],
-[3,"Giovana","out","06 SET 22:12","Agora vai 😂"],
-[3,"Leo","out","20:18","A gente precisa conversar sobre aquilo."],
-[3,"Leo","in","20:19","Não por mensagem."],
-[3,"Leo","out","20:19","O Jefferson sabe?"],
-[3,"Leo","in","20:20","Ainda não."],
-[3,"Leo","in","20:20","E deixa assim até eu falar com ele."],
-[3,"Leo","out","21:50","Você falou com mais alguém sobre isso?"],
-[3,"Leo","in","21:51","Só com quem eu precisava."],
-[3,"Leo","out","21:52","Luiz, não complica isso antes de eu resolver."],
-[3,"Marta - Contabilidade","in","17:26","A minuta ficou pronta. Dá uma conferida quando puder."],
-[3,"Marta - Contabilidade","out","17:27","Tem uma cópia impressa aqui também."],
-[4,"Jefferson","in","19:33","Você tá estranho hoje."],
-[4,"Jefferson","out","19:34","Tô trabalhando."],
-[4,"Jefferson","in","19:35","Tem alguma coisa acontecendo?"],
-[4,"Jefferson","out","19:36","Pergunta pro Leo."],
-[5,"Jefferson","in","20:22","Depois preciso falar com você e com o Leo."],
-[5,"Jefferson","out","20:23","Fala com ele primeiro."]
-],
-"Arquivos":[
-[1,"depoimento_joao.txt","E08 • Depoimento inicial de João sobre as discussões com Luiz."],
-[2,"registro_bar_2229_2233.txt","E10/E12 • Operações atribuídas a João no bar às 22:29 e 22:33."],
-[2,"depoimento_giovana.txt","E15 • Giovana relata que Luiz pediu que guardasse algumas coisas."],
-[3,"alteracao_societaria.pdf","E16 • Documentação referente à retirada de Leo da sociedade do Tex Pub."],
-[3,"apreensao_caixa.pdf","E18 • Relatório de apreensão de uma caixa encontrada nos fundos do Tex Pub."],
-[3,"laudo_balistica.pdf","E19 • Resultado pericial da arma encontrada na caixa."],
-[4,"comparativo_caixas.txt","E23 • Nota técnica para conferência dos identificadores das duas caixas."],
-[4,"depoimento_leo.txt","E28 • Trecho do depoimento de Leo sobre seus últimos contatos com Luiz."],
-[4,"alteracao_societaria_completa.pdf","E29 • Versão ampliada da documentação societária."],
-[4,"log_exclusao_cftv.txt","E30 • Registro administrativo de exclusão manual de um segmento da câmera interna do estoque."],
-[5,"trajetoria_projétil.pdf","E32 • Reconstrução técnica da direção do disparo."],
-[5,"camera_access_log.txt","E37 • Registro de consulta ao sistema de câmeras do Tex Pub."]
-],
-"Notas":[
-[0,"Old Fashioned","Bourbon — 50 ml\nXarope de açúcar\nAngostura\nGelo grande\nCasca de laranja\n\nMexer no copo com gelo.\n\nNão é tão difícil assim."],
-[1,"Hoje","Preciso entender o que está acontecendo antes de falar com mais alguém."],
-[1,"Bar","Pesquisar curso de bartender. Não depender do João pra aprender."],
-[1,"21:42","João perdeu a cabeça de novo. Não comprar briga hoje."],
-[1,"João","Primeiro eu ganho dele no jogo. Depois eu ganho o lugar dele no bar. 😂"],
-[2,"31.","O resto está onde todo mundo olha várias vezes por noite, mas ninguém presta atenção."],
-[2,"22:05","Confirmar se a Giovana ainda está com aquilo."],
-[2,"Caixa","Ela só precisa guardar. Não envolver ela nisso."],
-[3,"Sem título","Se estiver procurando o resto, não adianta ficar parado.\n\nTem coisa que só aparece quando você gira."],
-[3,"Documentos","Não deixar isso virar uma confusão antes do Leo falar com o Jefferson."],
-[3,"Saída do Leo","Se isso vazar antes da conversa entre os dois, vai dar merda."],
-[4,"Lembrete","Pedir para o Leo parar de fingir que está tudo normal."],
-[5,"20:24","Jefferson tá fazendo perguntas demais."]
-],
-"Calendário":[
-[1,"08 SET","Turno — Tex Pub"],
-[1,"10 SET","Pesquisar curso de bartender"],
-[3,"09 SET","Lembrar Leo: falar com Jefferson sobre documentos"]
-],
-"Mapas":[[1,"Tex Pub","Local de trabalho • Jundiaí / SP"]],
-"Reconstrução":[],
-"E-mail":[
-[1,"Escala do bar — setembro","João encaminha ajustes de escala e responsabilidades do bar para a equipe."],
-[1,"Curso básico de coquetelaria","Confirmação automática de interesse em aula introdutória de coquetelaria."],
-[2,"Nota fiscal — fornecedor","Mensagem operacional sem relação aparente com o homicídio."],
-[3,"Marta — documentação societária","Assunto: documentos para conferência. Há referência a uma minuta impressa deixada no Tex Pub."],
-[4,"Sistema CFTV — alerta administrativo","O sistema registrou uma alteração manual de gravação na noite de 08/09."],
-[5,"Alteração contratual — Tex Pub","Registro recuperado indica abertura às 20:10 de mensagem relacionada à retirada de Leo da sociedade."]
-],
-"Gravador":[
-[1,"Depoimento de testemunha • 00:18","E05 • “Eu vi os dois discutindo. O João estava bem bravo. Ouvi ele falar algo como: continua se metendo no que não é da sua conta pra você ver o que acontece.”"],
-[5,"Análise de áudio • CAM 04 / Corredor","E31 • 22:31:08 — pico acústico abrupto, duração aproximada de 0,18 s, com características compatíveis com estampido de arma de fogo em ambiente fechado. Origem estimada: setor do estoque."]
-],
-"Safari":[
-[1,"Pesquisa • 17:52","curso bartender jundiai"],
-[1,"Pesquisa • 17:55","quanto ganha bartender sp"],
-[1,"Pesquisa • 18:07","como fazer old fashioned"],
-[1,"Pesquisa • 18:09","old fashioned ingredientes proporção"],
-[1,"Pesquisa • 18:16","diferença bourbon e whisky old fashioned"],
-[1,"Histórico","Tex Pub • WhatsApp Web • pesquisa de coquetéis clássicos"],
-[2,"Pesquisa • 19:03","como ocultar arquivo no iphone"],
-[2,"Pesquisa • 19:05","pasta oculta fotos iphone"],
-[3,"Pesquisa • 20:03","retirada de sócio alteração contratual"],
-[3,"Pesquisa • 20:05","o que acontece quando um sócio sai da empresa"],
-[4,"Pesquisa • 21:58","camera de segurança grava audio"],
-[4,"Pesquisa • 22:01","quanto tempo gravação cftv fica salva"]
-],
-"Ajustes":[[1,"iPhone de Luiz","Extração forense • Caso 05 • 08/09/2026"]],
-"Arquivos apagados":[
-[1,"rascunho_bar.txt","RECUPERADO • 'Cansei de ouvir que eu não sei fazer nada no bar. Vou aprender sozinho.'"],
-[1,"lista_estudos_barman.txt","RECUPERADO • Old Fashioned; Negroni; Dry Martini; Whiskey Sour; serviço de chope."],
-[2,"nota_sem_titulo_1859.txt","RECUPERADO • 'Ela não precisa saber o que tem dentro. Melhor assim.'"],
-[2,"rascunho_giovana.txt","RECUPERADO • 'Se alguém perguntar, fala só que eu pedi pra guardar.'"],
-[3,"documentos_pendentes.txt","RECUPERADO • 'Cópia impressa / assinatura / falar com Leo / não deixar Jefferson ver antes.'"],
-[3,"rascunho_2153.txt","RECUPERADO • 'Isso vai explodir quando ele descobrir.'"],
-[4,"nota_estoque.txt","RECUPERADO • 'Resolver isso hoje. Sem discussão no salão.'"],
-[5,"rascunho_jefferson.txt","RECUPERADO • 'Ele já sabe de alguma coisa. Só não sei quanto.'"]
-],
-"Histórico de localização":[],
-"Linha do tempo":[
-[1,"18:00","Primeira discussão entre Luiz e João."],
-[1,"21:35","Segunda discussão entre Luiz e João."],
-[2,"22:05","Luiz confirma com Giovana que ela ainda está com “aquilo”."],
-[4,"22:20","Leo segue para o estoque."],
-[4,"22:23","Luiz segue para o estoque."],
-[4,"22:40","Leo deixa o estoque."],
-[5,"22:31","Horário técnico do disparo."]
-]
+ "Contatos":[],"Telefone":[],"Mensagens":[],"WhatsApp":[],
+ "Arquivos":[],"Notas":[],"Calendário":[],"Mapas":[],
+ "Reconstrução":[],"E-mail":[],"Gravador":[],"Safari":[],
+ "Ajustes":[[0,"iPhone de Rafael Nogueira","Extração forense • Caso 06 • 16/10/2026"]],
+ "Arquivos apagados":[],"Histórico de localização":[],"Linha do tempo":[]
 };
 const appScreen=$('#appScreen'),appTitle=$('#appTitle'),appBody=$('#appBody');
 function initials(name){return name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
@@ -698,20 +540,7 @@ function openWhatsChat(person){
  appBody.innerHTML=`<div class="waBg"><div class="chathead"><button class="back" onclick="openApp('WhatsApp')">‹</button><div class="avatar">${initials(person)}</div><div class="who"><b>${person}</b><small>WhatsApp</small></div></div><div class="waDay">Mensagens disponíveis na extração atual</div>${all.map(r=>`<div class="waBubble ${r[2]==='out'?'out':'in'}">${r[5]?'<small style="display:block;color:#8e8e93;margin-bottom:3px">RECUPERADA</small>':''}${r[4]}<time>${r[3]}${r[2]==='out'?' ✓✓':''}</time><div style="clear:both"></div></div>`).join('')}<div class="waInput"><span>＋</span><div class="fake">Mensagem</div><span>🎙</span></div></div>`;
 }
 
-const fileDetails={
-"depoimento_joao.txt":`<div class="notecard"><b>E08 — DEPOIMENTO INICIAL • JOÃO</b><p>“Foi uma discussão besta de trabalho. O Luiz queria fazer algumas coisas do bar e eu falei que não era hora. Não teve ameaça nem nada.”</p><p style="color:#8e8e93">Observação: o relato será confrontado com testemunhas e imagens.</p></div>`,
-"registro_bar_2229_2233.txt":`<div class="notecard"><b>E10/E12 — REGISTRO OPERACIONAL DO BAR</b><p>22:29 — operação registrada no terminal do bar • usuário: <b>João</b>.</p><p>22:33 — nova operação registrada • usuário: <b>João</b>.</p><p style="color:#8e8e93">O registro comprova uso do terminal; deve ser cruzado com evidência visual.</p></div>`,
-"depoimento_giovana.txt":`<div class="notecard"><b>E15 — DEPOIMENTO INICIAL • GIOVANA</b><p>“O Luiz me pediu para guardar umas coisas dele. Eu não sabia direito o que era e não achei que tivesse relação com o que aconteceu.”</p></div>`,
-"alteracao_societaria.pdf":`<div class="notecard"><b>E16 — DOCUMENTAÇÃO SOCIETÁRIA</b><p>Minuta referente à <b>retirada de Leonardo da sociedade do Tex Pub</b>.</p><p>O material indica preparação de alteração contratual e transferência/regularização das responsabilidades societárias.</p><p style="color:#8e8e93">Documento ainda sujeito à conferência de integridade e assinaturas.</p></div>`,
-"apreensao_caixa.pdf":`<div class="notecard"><b>E18 — RELATÓRIO DE APREENSÃO</b><p>Uma caixa foi localizada na área dos fundos do Tex Pub.</p><p>No interior foi encontrada <b>uma arma de fogo</b>, encaminhada para perícia.</p><p>A aparência externa da caixa é compatível, em análise preliminar, com o objeto observado em gravações anteriores.</p></div>`,
-"laudo_balistica.pdf":`<div class="notecard"><b>E19 — LAUDO BALÍSTICO</b><p>O exame pericial confirma que a arma apreendida na caixa é <b>compatível com o disparo que atingiu Luiz</b>.</p><p style="color:#8e8e93">A conclusão balística identifica a arma; não determina quem efetuou o disparo.</p></div>`,
-"comparativo_caixas.txt":`<div class="notecard"><b>E23 — ANÁLISE COMPARATIVA DE IMAGENS</b><p>A caixa registrada pelas câmeras às <b>18:55</b> apresenta <b>deformação triangular permanente no canto superior direito da tampa</b>.</p><p>A caixa posteriormente apreendida nos fundos do estabelecimento <b>não apresenta a referida deformação</b>.</p><p>Considerando a posição, extensão e características da dobra observada no registro original, conclui-se que <b>os dois registros não apresentam o mesmo objeto físico</b>.</p></div>`,
-"depoimento_leo.txt":`<div class="notecard"><b>E28 — DEPOIMENTO • LEO</b><p>“Eu fui até o estoque buscar alguns documentos. O Luiz apareceu pouco depois porque queria continuar aquela conversa sobre a minha saída. A gente conversou por alguns minutos e eu saí.</p><p><b>Quando deixei o estoque, o Luiz estava vivo. Não vi mais ninguém entrando enquanto eu estava lá.</b>”</p><p style="color:#8e8e93">Trecho separado para confronto com os registros de câmera e a cronologia pericial.</p></div>`,
-"alteracao_societaria_completa.pdf":`<div class="notecard"><b>E29 — DOCUMENTAÇÃO SOCIETÁRIA • VERSÃO AMPLIADA</b><p>O conjunto confirma que Luiz teve contato com informações sobre a saída de Leo antes de Jefferson ser oficialmente comunicado.</p><p>O sigilo da mudança societária passa a ser um elemento central da investigação.</p></div>`,
-"log_exclusao_cftv.txt":`<div class="notecard"><b>E30 — SISTEMA DE CFTV • LOG DE ADMINISTRAÇÃO</b><p><b>08/09/2026 — 22:38:14</b></p><p>Câmera: <b>ESTOQUE_INTERNA</b><br>Ação: <b>exclusão manual de segmento</b><br>Intervalo removido: <b>22:25:00–22:40:00</b><br>Usuário autenticado: <b>LEONARDO_ADMIN</b></p><p style="color:#8e8e93">O log registra a ação administrativa. O conteúdo do segmento excluído não foi recuperado neste arquivo.</p></div>`,
-"trajetoria_projétil.pdf":`<div class="notecard"><b>E32 — RECONSTRUÇÃO DE TRAJETÓRIA</b><p>A direção do projétil indica que a posição de Luiz deve ser analisada em relação às demais pessoas presentes no estoque.</p><p><b>A trajetória, isoladamente, não confirma que Luiz fosse o alvo pretendido.</b></p><p style="color:#8e8e93">Cruze este laudo com as imagens e posições recuperadas.</p></div>`,
-"camera_access_log.txt":`<div class="notecard"><b>E37 — CAMERA_ACCESS.LOG</b><p>O sistema registra consulta a gravações anteriores do Tex Pub.</p><p>Entre os trechos acessados está a janela das <b>18:55</b>, horário em que Luiz entrega uma caixa a Giovana.</p><p style="color:#8e8e93">A identificação final do acesso deve ser cruzada com os registros administrativos liberados neste nível.</p></div>`
-};
+const fileDetails={}; // Aguardando documentos validados do Caso 06.
 function renderFiles(){const [v,h]=visible("Arquivos");return `<div class="sectionlabel">No meu iPhone</div><div class="iosgroup">${v.map(r=>`<div class="iosrow" ${fileDetails[r[1]]?`onclick="openFile('${r[1]}')" style="cursor:pointer"`:''}><div class="avatar">${r[1].endsWith('.pdf')?'PDF':'▤'}</div><div class="main"><b>${r[1]} <span class="level">N${r[0]}</span></b><p>${r[2]}</p></div>${fileDetails[r[1]]?'<span class="chev">›</span>':''}</div>`).join('')}</div>${lockMsg(h.length)}`}
 function openFile(name){appTitle.textContent=name;appBody.innerHTML=`<button class="back" onclick="openApp('Arquivos')" style="margin-bottom:12px">‹ Arquivos</button>${fileDetails[name]||''}`}
 
@@ -719,29 +548,15 @@ function renderMail(){const [v,h]=visible("E-mail");return `<div class="sectionl
 function renderNotes(){const [v,h]=visible("Notas");return v.map(r=>`<div class="notecard"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')+lockMsg(h.length)}
 function renderSafari(){const [v,h]=visible("Safari");return `<div class="safariTop"><div class="address">🔒 Histórico e Pesquisas</div></div>${v.map(r=>`<div class="searchitem"><small>${r[1]}</small><div style="margin-top:6px;font-size:15px">${r[2]}</div></div>`).join('')}${lockMsg(h.length)}`}
 function renderMaps(){const [v,h]=visible("Mapas");return `<div class="mapmock"><div class="pin">📍</div></div><div class="iosgroup">${v.map(r=>`<div class="iosrow"><div class="main"><b>${r[1]}</b><p>${r[2]}</p></div></div>`).join('')}</div>${lockMsg(h.length)}`}
-function renderCalendar(){const [v,h]=visible("Calendário");return `<div class="calday"><div class="date">TERÇA-FEIRA, 8 DE SETEMBRO</div>${v.map(r=>`<div class="event"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')}</div>${lockMsg(h.length)}`}
+function renderCalendar(){const [v,h]=visible("Calendário");return `<div class="calday"><div class="date">SEXTA-FEIRA, 16 DE OUTUBRO</div>${v.map(r=>`<div class="event"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')}</div>${lockMsg(h.length)}`}
 function renderVoice(){const [v,h]=visible("Gravador");return v.map(r=>`<div class="voiceitem"><b>${r[1]}</b><div class="wave"></div><p style="color:#666;font-size:13px">${r[2]}</p></div>`).join('')+lockMsg(h.length)}
 function renderTerminal(){
  appScreen.classList.add('forensic');
- const labels=["Old Fashioned","Comanda / autorização","Documentos / caixa","Comparação das caixas","Reconstrução do estoque"];
- return `<div class="terminalbox"><b>GrayKey Bridge — Caso 05</b><p style="color:#aaa;font-size:13px">Insira um código encontrado no Tex Pub.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
+ const labels=["Evidências pendentes","Evidências pendentes","Evidências pendentes","Evidências pendentes","Evidências pendentes"];
+ return `<div class="terminalbox"><b>GrayKey Bridge — Caso 06</b><p style="color:#aaa;font-size:13px">Os códigos físicos do Caso 06 serão configurados junto às evidências.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=[
- {id:"E04",level:0,src:"assets/caso05/E04.png",label:"E04 — Registro do estoque • 22:29"},
- {id:"E06",level:1,src:"assets/caso05/E06.png",label:"E06 — Discussão João × Luiz • 21:35"},
- {id:"E11",level:2,src:"assets/caso05/E11.png",label:"E11 — Registro de João no bar • 22:31"},
- {id:"E13",level:2,src:"assets/caso05/E13.png",label:"E13 — Luiz entrega a caixa a Giovana • 18:55"},
- {id:"E20",level:3,src:"assets/caso05/E20.png",label:"E20 — Caixa apreendida com a arma"},
- {id:"E21",level:3,src:"assets/caso05/E21.png",label:"E21 — Ampliação da caixa registrada às 18:55"},
- {id:"E22",level:3,src:"assets/caso05/E22.png",label:"E22 — Giovana no corredor • 22:16"},
- {id:"E25",level:4,src:"assets/caso05/E25.png",label:"E25 — Leo entra no estoque • 22:20"},
- {id:"E26",level:4,src:"assets/caso05/E26.png",label:"E26 — Luiz entra no estoque • 22:23"},
- {id:"E27",level:4,src:"assets/caso05/E27.png",label:"E27 — Leo sai do estoque • 22:40"},
- {id:"E33",level:5,src:"assets/caso05/E33.png",label:"E33 — Releitura da posição no estoque"},
- {id:"E34",level:5,src:"assets/caso05/E34.png",label:"E34 — Documento encontrado no chão do estoque"},
- {id:"E35",level:5,src:"assets/caso05/E35.png",label:"E35 — Jefferson entra no estoque • 22:27"}
-];
+const casePhotos=[]; // Aguardando fotografias do Caso 06.
 const photoLevels=Object.fromEntries(casePhotos.map(p=>[p.id,p.level]));
 function renderPhotoGallery(){
  const unlockedPhotos=casePhotos.filter(p=>p.level===0||has(p.level));
@@ -755,7 +570,7 @@ function openPhoto(src,label){
 }
 function bindPhotos(){}
 
-function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Luiz</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
+function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Rafael</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
 let snakeTimer=null,snake=[],snakeDir={x:1,y:0},snakeNext={x:1,y:0},snakeFood={x:10,y:8},snakeScore=0,snakeBest=Number(localStorage.getItem("texSnakeBest")||0);
 function renderSnake(){return `<div class="snakeWrap"><div class="snakeHud"><span>PONTOS <b id="snakeScore">0</b></span><span>RECORDE <b id="snakeBest">${snakeBest}</b></span></div><canvas id="snakeCanvas" width="320" height="320"></canvas><div class="snakeMsg" id="snakeMsg">Setas, WASD, swipe ou botões.</div><div class="snakeControls"><button class="up" data-dir="U">▲</button><button class="left" data-dir="L">◀</button><button class="down" data-dir="D">▼</button><button class="right" data-dir="R">▶</button></div><button id="snakeRestart" style="margin-top:13px;border:0;border-radius:12px;padding:11px 18px;font-weight:800">NOVO JOGO</button></div>`}
 function snakePlaceFood(){do{snakeFood={x:Math.floor(Math.random()*16),y:Math.floor(Math.random()*16)}}while(snake.some(p=>p.x===snakeFood.x&&p.y===snakeFood.y))}
@@ -916,7 +731,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 <div id="dossier-overlay" class="dossier-overlay" style="display:none" aria-hidden="true">
  <div class="dossier-shell">
   <div class="dossier-top">
-   <div><div class="dossier-kicker">NOITE DO MISTÉRIO • CASO 05</div><div class="dossier-title">DOSSIÊ FINAL</div></div>
+   <div><div class="dossier-kicker">TEX PUB FORENSICS • CASO 06</div><div class="dossier-title">DOSSIÊ FINAL</div></div>
    <button type="button" class="dossier-close" id="dossier-close">×</button>
   </div>
 
@@ -924,7 +739,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    <div class="dossier-stamp">RELATÓRIO DOS INVESTIGADORES</div>
    <h2>Reconstrução Final do Caso</h2>
    <div class="dossier-copy">
-    A investigação está completa. Vocês tiveram acesso ao material recuperado do Caso 05.
+    A investigação está completa. Vocês tiveram acesso ao material recuperado do Caso 06.
     Reconstruam os acontecimentos e apresentem sua conclusão de forma suficientemente completa
     para que a sequência do crime possa ser compreendida.<br><br>
     <strong>Nenhuma informação adicional será fornecida.</strong>
@@ -978,21 +793,21 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  function closeDossier(){ov.style.display='none';ov.setAttribute('aria-hidden','true');}
  function saveDraft(){
    try{
-     localStorage.setItem('caso05_dossier_team',team.value);
-     localStorage.setItem('caso05_dossier_report',report.value);
+     localStorage.setItem('caso06_dossier_team',team.value);
+     localStorage.setItem('caso06_dossier_report',report.value);
      fb.textContent='Rascunho salvo neste dispositivo.';
    }catch(e){fb.textContent='Não foi possível salvar o rascunho neste dispositivo.';}
  }
  function loadDraft(){
    try{
-     team.value=localStorage.getItem('caso05_dossier_team')||'';
-     report.value=localStorage.getItem('caso05_dossier_report')||'';
+     team.value=localStorage.getItem('caso06_dossier_team')||'';
+     report.value=localStorage.getItem('caso06_dossier_report')||'';
      count.textContent=report.value.length;
    }catch(e){}
  }
  function protocol(){
    const n=Math.floor(1000+Math.random()*9000);
-   return 'CASO05-'+n;
+   return 'CASO06-'+n;
  }
 
  btn.addEventListener('click',function(e){
@@ -1014,8 +829,8 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    saveDraft();
    const p=protocol();
    try{
-     localStorage.setItem('caso05_dossier_protocol',p);
-     localStorage.setItem('caso05_dossier_submitted','1');
+     localStorage.setItem('caso06_dossier_protocol',p);
+     localStorage.setItem('caso06_dossier_submitted','1');
    }catch(e){}
    document.getElementById('dossier-receipt-team').textContent=t;
    document.getElementById('dossier-protocol').textContent=p;
@@ -1032,7 +847,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 <div id="admin-overlay" class="admin-overlay" style="display:none">
  <div class="admin-shell">
   <div class="admin-top">
-   <div><div class="admin-kicker">CASO 05</div><div class="admin-title">PAINEL DO INVESTIGADOR</div></div>
+   <div><div class="admin-kicker">CASO 06</div><div class="admin-title">PAINEL DO INVESTIGADOR</div></div>
    <button class="admin-close" id="admin-close">×</button>
   </div>
   <div id="admin-login" class="admin-card admin-login">
@@ -1058,7 +873,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 
 <script>
 (function(){
- const COLLECTION='caso05_dossiers';
+ const COLLECTION='caso06_dossiers';
  const ADMIN_PIN='1700';
  let db=null,unsubscribe=null,currentId=null,teamUnsub=null;
 
@@ -1066,21 +881,21 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    try{
      if(typeof firebase==='undefined') return null;
      if(firebase.apps && firebase.apps.length){db=firebase.firestore();return db;}
-     let cfg=window.CASO05_FIREBASE_CONFIG||null;
+     let cfg=window.CASO06_FIREBASE_CONFIG||null;
      if(!cfg){
-       try{const raw=localStorage.getItem('caso05_firebase_config');if(raw)cfg=JSON.parse(raw);}catch(e){}
+       try{const raw=localStorage.getItem('caso06_firebase_config');if(raw)cfg=JSON.parse(raw);}catch(e){}
      }
      if(cfg){firebase.initializeApp(cfg);db=firebase.firestore();return db;}
-   }catch(e){console.error('Caso05 Firebase:',e);}
+   }catch(e){console.error('Caso06 Firebase:',e);}
    return null;
  }
- window.caso05InitDB=initDB;
+ window.caso06InitDB=initDB;
 
  function teamDeviceId(){
-   let id=localStorage.getItem('caso05_device_id');
+   let id=localStorage.getItem('caso06_device_id');
    if(!id){
      id='dev_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9);
-     localStorage.setItem('caso05_device_id',id);
+     localStorage.setItem('caso06_device_id',id);
    }
    return id;
  }
@@ -1115,7 +930,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    if(!e.receipt||!box)return;
    e.form.style.display='none';
    e.receipt.style.display='';
-   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso05_dossier_team')||'Equipe';
+   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso06_dossier_team')||'Equipe';
    box.innerHTML='<strong>⏳ DOSSIÊ ENVIADO</strong><p>Aguardando validação do investigador responsável.</p>';
  }
 
@@ -1124,8 +939,8 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    if(!e.receipt||!box)return;
    e.form.style.display='none';
    e.receipt.style.display='';
-   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso05_dossier_team')||'Equipe';
-   box.innerHTML='<strong style="font-size:20px">✓ DOSSIÊ VALIDADO</strong><p style="font-size:18px"><b>CASO 05 — SOLUCIONADO</b></p><p>Reconstrução aceita pelo investigador responsável.</p>';
+   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso06_dossier_team')||'Equipe';
+   box.innerHTML='<strong style="font-size:20px">✓ DOSSIÊ VALIDADO</strong><p style="font-size:18px"><b>CASO 06 — SOLUCIONADO</b></p><p>Reconstrução aceita pelo investigador responsável.</p>';
  }
 
  function showRejected(x){
@@ -1157,7 +972,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  }
 
  async function restoreCurrentSubmission(){
-   const id=localStorage.getItem('caso05_dossier_doc');
+   const id=localStorage.getItem('caso06_dossier_doc');
    if(!id)return;
    const d=initDB(); if(!d)return;
    try{
@@ -1186,7 +1001,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
      if(!d){e.fb.textContent='Firebase ainda não configurado neste site. O dossiê não foi enviado.';return;}
      e.fb.textContent='Enviando dossiê...';
      try{
-       const oldId=localStorage.getItem('caso05_dossier_doc');
+       const oldId=localStorage.getItem('caso06_dossier_doc');
        let ref;
        // Reenvio após "incompleto": atualiza o mesmo dossiê para manter uma única equipe no painel.
        if(oldId){
@@ -1207,10 +1022,10 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
            updatedAt:firebase.firestore.FieldValue.serverTimestamp()
          });
        }
-       localStorage.setItem('caso05_dossier_doc',ref.id);
-       localStorage.setItem('caso05_dossier_team',t);
-       localStorage.setItem('caso05_dossier_report',r);
-       const p='CASO05-'+ref.id.slice(0,6).toUpperCase();
+       localStorage.setItem('caso06_dossier_doc',ref.id);
+       localStorage.setItem('caso06_dossier_team',t);
+       localStorage.setItem('caso06_dossier_report',r);
+       const p='CASO06-'+ref.id.slice(0,6).toUpperCase();
        document.getElementById('dossier-receipt-team').textContent=t;
        document.getElementById('dossier-protocol').textContent=p;
        e.fb.textContent='';
