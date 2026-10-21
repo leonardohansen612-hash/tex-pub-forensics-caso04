@@ -513,7 +513,7 @@ window.CASO06_FIREBASE_CONFIG = {
 <script>
 const $=s=>document.querySelector(s);
 let p=0;const boot=$('#boot'),bar=$('#bootBar'),bt=$('#bootText');const timer=setInterval(()=>{p+=12;if(p>=100){p=100;clearInterval(timer);setTimeout(()=>boot.style.display='none',180)}bar.style.width=p+'%';bt.textContent=p<55?'Montando imagem forense...':'Carregando dispositivo...'},90);
-const codes={"2325":1}; // Nível 1: horário exibido no aplicativo Relógio do iPhone.
+const codes={"2325":1,"97426":2}; // Nível 1: horário exibido no aplicativo Relógio do iPhone.
 let unlocked=JSON.parse(localStorage.getItem("texC06Levels")||"[]");const save=()=>localStorage.setItem("texC06Levels",JSON.stringify(unlocked));const has=l=>l===0||unlocked.includes(l);
 // Base limpa: nenhuma evidência do Caso 05 é reutilizada no Caso 06.
 // Inserir apenas dados validados contra a cronologia de 16/10/2026.
@@ -545,6 +545,50 @@ const evidence={
  "Arquivos apagados":[],"Histórico de localização":[],"Linha do tempo":[]
 };
 
+
+// Nível 2 — informações obtidas após o enigma lógico 97426.
+// Os registros acrescentam suspeitas, não estabelecem autoria do homicídio.
+evidence["WhatsApp"].push(
+ [2,"Gustavo Moreira","in","16/10 19:12","Rafael, trouxe os comprovantes dos fornecedores. Não aceito mais que joguem tudo nas minhas costas."],
+ [2,"Gustavo Moreira","out","16/10 19:18","Vou comparar seus documentos com as aprovações. A reunião não vai terminar sem respostas."],
+ [2,"André Martins","in","16/10 19:37","Encontrei acessos administrativos fora do meu horário. Isso não prova que fui eu quem fez os pagamentos."],
+ [2,"André Martins","out","16/10 19:40","Salve os registros originais e não altere nada. Preciso saber quem aprovou cada transferência."],
+ [2,"Beatriz Almeida","in","16/10 20:02","Tenho uma cópia de um contrato com meu nome. A assinatura não é minha. Não quero que isso apareça sem contexto."],
+ [2,"Camila Torres","in","16/10 20:25","Levei a conciliação dos pagamentos. Alguns lançamentos foram feitos por perfil administrativo compartilhado."],
+ [2,"Camila Torres","out","16/10 20:29","Então precisamos identificar quem realmente operou esse perfil. Conversamos na mesa."]
+);
+evidence["Telefone"].push(
+ [2,"André Martins","16/10 • 19:42 • chamada recebida • 02:06","in"],
+ [2,"Gustavo Moreira","16/10 • 20:10 • chamada realizada • 00:58","out"],
+ [2,"Beatriz Almeida","15/10 • 22:04 • chamada recebida • 03:12","in"]
+);
+evidence["Mensagens"].push(
+ [2,"Auditoria — arquivo de referência","16/10 • 18:54 — Não confunda credenciais utilizadas com a identidade do responsável por cada operação."],
+ [2,"Número não identificado","16/10 • 21:02 — Você trouxe os documentos originais? Eles vão querer saber quem assinou."]
+);
+evidence["Safari"].push(
+ [2,"16/10 • 18:06","como exportar trilha de auditoria de pagamentos empresariais"],
+ [2,"16/10 • 18:24","diferença entre login administrativo e autorização de transferência"],
+ [2,"16/10 • 19:04","como identificar contrato assinado com assinatura falsificada"]
+);
+evidence["Notas"].push(
+ [2,"Conferência de lançamentos","Três frentes: contratos em nome de Beatriz; fornecedores apresentados por Gustavo; credenciais de André. Camila afirma ter conciliado as despesas. Conferir autorização efetiva de cada pagamento."],
+ [2,"Não confundir suspeita com prova","Quem perdeu dinheiro pode ter motivo para confronto. Quem administra o sistema pode ter acesso. Nenhuma dessas duas coisas, sozinha, identifica o autor dos desvios."]
+);
+evidence["E-mail"].push(
+ [2,"Quinta Dose • Controladoria","Assunto: revisão de lançamentos — relatórios apresentam perfil ADM em pagamentos contestados; necessário conferir aprovações e comprovantes originais."],
+ [2,"Beatriz Almeida → Rafael","Assunto: contrato contestado — solicito verificação da assinatura atribuída a mim e cópia integral do documento."],
+ [2,"André Martins → Rafael","Assunto: registros de acesso — anexei os horários do sistema. Ter meu usuário registrado não significa ter autorizado a saída de recursos."]
+);
+evidence["Arquivos"].push(
+ [2,"auditoria_preliminar_quinta_dose.txt","Conciliação parcial • contratos, aprovações e credenciais"],
+ [2,"registro_acessos_sistema.txt","Eventos de login • identidade do operador não comprovada"]
+);
+evidence["Gravador"].push(
+ [2,"Memorando de voz • 16/10 • 19:26","Os comprovantes de Gustavo não batem com a explicação que recebi. Mas isso não diz quem desviou o dinheiro. André mostrou um acesso administrativo que ele contesta. Vou precisar comparar os dois conjuntos de registros."],
+ [2,"Nota de áudio • 16/10 • 20:31","Beatriz insiste que não assinou o contrato. Camila disse que trouxe uma conciliação. Na reunião vou perguntar, um por um, quem criou, quem aprovou e quem recebeu os pagamentos."]
+);
+
 const appScreen=$('#appScreen'),appTitle=$('#appTitle'),appBody=$('#appBody');
 function initials(name){return name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
 function visible(name){const all=evidence[name]||[];return [all.filter(r=>has(r[0])),all.filter(r=>!has(r[0]))]}
@@ -563,6 +607,9 @@ function openWhatsChat(person){
 }
 
 const fileDetails={
+
+ "auditoria_preliminar_quinta_dose.txt":`<div class="notecard"><b>QUINTA DOSE — REVISÃO PRELIMINAR</b><p>Data da conferência: 16/10/2026</p><p>Existem pagamentos contestados vinculados a contratos e fornecedores. A trilha disponível aponta uso de perfil administrativo compartilhado.</p><p>O nome de Beatriz aparece em documento cuja assinatura ela contesta. Gustavo questiona repasses a fornecedores. André nega ter autorizado movimentações com suas credenciais.</p><p><b>Pendente:</b> identificar beneficiários, operadores reais e autorizações bancárias.</p><small>Relatório incompleto: não atribui autoria de fraude nem de homicídio.</small></div>`,
+ "registro_acessos_sistema.txt":`<div class="notecard"><b>REGISTRO DE ACESSOS — CÓPIA PARCIAL</b><p>Perfis analisados: ADM e suporte técnico.</p><p>Foram encontrados acessos contestados fora dos horários habituais de operação. O registro de login, isoladamente, não identifica quem estava diante do dispositivo.</p><p>André possui conhecimento técnico do sistema, mas isso não demonstra autorização de pagamentos.</p><p><b>Observação:</b> registro financeiro e sistema de câmeras são ambientes distintos.</p></div>`,
  "convocacao_mesa13.txt":`<div class="notecard"><b>QUINTA DOSE — REUNIÃO EXTRAORDINÁRIA</b><p>Data: sexta-feira, 16/10/2026</p><p>Local: Tex Pub — Mesa 13</p><p>Início da discussão: 21h45</p><p>Pauta: contratos contestados, transferências e registros de acesso.</p><p>Participantes: Rafael, Beatriz, Gustavo, Camila e André.</p><p><small>Documento de organização da reunião; não é prova de autoria de fraude.</small></p></div>`
 };
 function renderFiles(){const [v,h]=visible("Arquivos");return `<div class="sectionlabel">No meu iPhone</div><div class="iosgroup">${v.map(r=>`<div class="iosrow" ${fileDetails[r[1]]?`onclick="openFile('${r[1]}')" style="cursor:pointer"`:''}><div class="avatar">${r[1].endsWith('.pdf')?'PDF':'▤'}</div><div class="main"><b>${r[1]} <span class="level">N${r[0]}</span></b><p>${r[2]}</p></div>${fileDetails[r[1]]?'<span class="chev">›</span>':''}</div>`).join('')}</div>${lockMsg(h.length)}`}
@@ -583,11 +630,11 @@ function playCaseAudio(index){
 function renderVoice(){const [v,h]=visible("Gravador");return v.map((r,i)=>`<div class="voiceitem"><b>${r[1]}</b><div class="wave"></div><button class="voicePlay" onclick="playCaseAudio(${i})">▶ Ouvir gravação reconstruída</button><p style="color:#666;font-size:13px"><b>Transcrição:</b> ${r[2]}</p><small>Voz sintetizada pelo navegador para representar o áudio fictício.</small></div>`).join('')+lockMsg(h.length)}
 function renderTerminal(){
  appScreen.classList.add('forensic');
- const labels=["Primeiros registros do celular","Aguardando novas evidências","Aguardando novas evidências","Aguardando novas evidências","Aguardando novas evidências"];
+ const labels=["Primeiros registros do celular","Contratos e rastros financeiros","Aguardando novas evidências","Aguardando novas evidências","Aguardando novas evidências"];
  return `<div class="terminalbox"><b>GrayKey Bridge — Caso 06</b><p style="color:#aaa;font-size:13px">Investigue o ambiente e os aplicativos do celular para descobrir os códigos de desbloqueio.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=[{"id": "IMG_1041", "level": 1, "src": "assets/caso06/IMG_1041.jpg", "label": "Mesa 13 — reunião dos antigos sócios — A mesa antes da discussão. Envelope da Quinta Dose entre os documentos."}, {"id": "IMG_1042", "level": 1, "src": "assets/caso06/IMG_1042.jpg", "label": "Movimentações financeiras — Quinta Dose — Lançamentos destacados. A coluna de autorização mostra ADM, sem identificar o operador."}, {"id": "IMG_1043", "level": 1, "src": "assets/caso06/IMG_1043.jpg", "label": "Envelope confidencial e pendrive — Registro de um envelope identificado como confidencial. A localização atual do pendrive não foi confirmada."}, {"id": "IMG_1044", "level": 1, "src": "assets/caso06/IMG_1044.jpg", "label": "Corredor de serviço — Registro de um acesso de serviço do estabelecimento. A fotografia, isoladamente, não determina o local do crime."}, {"id": "IMG_1045", "level": 1, "src": "assets/caso06/IMG_1045.jpg", "label": "Contrato em nome de Beatriz Almeida — Documento fotografado para verificação de autenticidade. A autoria da assinatura permanece em disputa."}, {"id": "IMG_1046", "level": 1, "src": "assets/caso06/IMG_1046.jpg", "label": "Monitoramento — perda de sinal — Registro do sistema de câmeras. A interrupção ocorreu entre 22h14 e 22h25; a imagem não identifica o responsável."}]; // Fotos do nível 1, liberadas pelo código 2325.
+const casePhotos=[{"id": "IMG_1041", "level": 1, "src": "assets/caso06/IMG_1041.jpg", "label": "Mesa 13 — reunião dos antigos sócios — A mesa antes da discussão. Envelope da Quinta Dose entre os documentos."}, {"id": "IMG_1042", "level": 1, "src": "assets/caso06/IMG_1042.jpg", "label": "Movimentações financeiras — Quinta Dose — Lançamentos destacados. A coluna de autorização mostra ADM, sem identificar o operador."}, {"id": "IMG_1043", "level": 1, "src": "assets/caso06/IMG_1043.jpg", "label": "Envelope confidencial e pendrive — Registro de um envelope identificado como confidencial. A localização atual do pendrive não foi confirmada."}, {"id": "IMG_1044", "level": 1, "src": "assets/caso06/IMG_1044.jpg", "label": "Corredor de serviço — Registro de um acesso de serviço do estabelecimento. A fotografia, isoladamente, não determina o local do crime."}, {"id": "IMG_1045", "level": 1, "src": "assets/caso06/IMG_1045.jpg", "label": "Contrato em nome de Beatriz Almeida — Documento fotografado para verificação de autenticidade. A autoria da assinatura permanece em disputa."}, {"id": "IMG_1046", "level": 1, "src": "assets/caso06/IMG_1046.jpg", "label": "Monitoramento — perda de sinal — Registro do sistema de câmeras. A interrupção ocorreu entre 22h14 e 22h25; a imagem não identifica o responsável."},{"id": "IMG_1047", "level": 2, "src": "assets/caso06/IMG_1047.jpg", "label": "Conciliação financeira — Pagamentos registrados sob perfil ADM; o operador efetivo não foi identificado."},{"id": "IMG_1048", "level": 2, "src": "assets/caso06/IMG_1048.jpg", "label": "Exportação de acessos — Registro parcial de logins contestados; não prova autoria dos pagamentos."},{"id": "IMG_1049", "level": 2, "src": "assets/caso06/IMG_1049.jpg", "label": "Contrato contestado — Beatriz nega autenticidade da assinatura; documento ainda não periciado."},{"id": "IMG_1050", "level": 2, "src": "assets/caso06/IMG_1050.jpg", "label": "Lista de verificação — Rafael separava responsabilidades de cada ex-sócio."},{"id": "IMG_1051", "level": 2, "src": "assets/caso06/IMG_1051.jpg", "label": "Fotografia anterior da reunião — Discussão sobre documentos e pagamentos; registro ilustrativo sem horário verificável."},{"id": "IMG_1052", "level": 2, "src": "assets/caso06/IMG_1052.jpg", "label": "Área de serviço — Imagem de referência do ambiente; não identifica a movimentação dos suspeitos."}]; // Fotos dos níveis 1 e 2, liberadas por seus respectivos códigos.
 const photoLevels=Object.fromEntries(casePhotos.map(p=>[p.id,p.level]));
 function renderPhotoGallery(){
  const unlockedPhotos=casePhotos.filter(p=>p.level===0||has(p.level));
