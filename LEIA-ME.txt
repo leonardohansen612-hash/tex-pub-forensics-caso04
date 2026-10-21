@@ -1,13 +1,19 @@
-TEX PUB FORENSICS — CASO 06 / NÍVEL 05 / CÓDIGO 3110
+TEX PUB FORENSICS — CASO 06 / REVISÃO INVESTIGATIVA FINAL
 
-INSTALAÇÃO: substituir somente index.html na raiz do GitHub e adicionar as 7 imagens IMG_1066.jpg até IMG_1072.jpg em assets/caso06/. NÃO APAGAR as imagens existentes.
+SUBIR NO GITHUB:
+- Substitua o index.html na raiz.
+- Substitua SOMENTE as imagens incluídas em assets/caso06/.
+- NÃO apague as outras imagens já existentes no repositório.
+- NÃO limpe o armazenamento local: os níveis desbloqueados continuam salvos.
 
-3110: pista física no cardápio de Halloween (31/10). A pista deve conduzir a 3110, sem confundir a data do crime (16/10/2026).
+CORREÇÕES:
+- Substituição de 18 imagens decorativas/repetitivas por peças visuais de investigação.
+- 4 arquivos periciais adicionais com provas cruzadas: retorno às 22h28, vestígios no casaco, ultimato de Rafael, checagem do telefonema.
+- Referências e legendas das fotografias atualizadas.
+- Evidências pós-crime identificadas como anexos forenses externos.
+- Horários canônicos preservados: SMS 22h06, saída Rafael 22h12, câmeras 22h14–22h25, Camila 22h16/22h19/22h28, golpe ~22h22.
+- Códigos preservados: 2325 / 97426 / 9475 / 0713 / 3110.
 
-Novidades: 7 fotos, 8 WhatsApp, 2 ligações, 2 SMS, 3 Safari, 3 e-mails, 2 notas, 6 arquivos completos, 3 áudios com voz sintetizada pelo navegador.
-
-CRONOLOGIA OFICIAL: 22h06 SMS anônimo; 22h12 Rafael deixa a mesa; 22h14 André interrompe câmeras remotamente; 22h16 Camila sai da mesa; 22h19 encontro no serviço; 22h22 agressão; 22h24 manipulação da cena e desaparecimento do telefone; 22h25 retomada das câmeras; 22h28 retorno de Camila; 22h41 descoberta; 22h45 emergência; 22h58 óbito constatado pelos socorristas.
-
-Os documentos externos pós-evento são relatórios sincronizados à interface de investigação, não arquivos originalmente criados por Rafael após sua morte. Os áudios são TTS com transcrição, não MP3.
-
-VALIDAÇÃO: node --check e contagem de fotos por nível (6,6,6,7,7). Não houve teste visual no navegador.
+ATENÇÃO: Este pacote não contém imagens antigas inalteradas. Aplique SOBRE o repositório já atualizado até o Nível 5.
+Os novos registros foram escritos como evidências FICCIONAIS para o jogo; não são provas reais.
+VALIDAÇÃO: sintaxe JS, 32 referências de imagens, caminhos presentes no conjunto de pacotes anteriores e no patch, integridade ZIP. Não houve teste completo no navegador real.
