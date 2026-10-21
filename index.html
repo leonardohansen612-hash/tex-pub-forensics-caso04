@@ -513,7 +513,7 @@ window.CASO06_FIREBASE_CONFIG = {
 <script>
 const $=s=>document.querySelector(s);
 let p=0;const boot=$('#boot'),bar=$('#bootBar'),bt=$('#bootText');const timer=setInterval(()=>{p+=12;if(p>=100){p=100;clearInterval(timer);setTimeout(()=>boot.style.display='none',180)}bar.style.width=p+'%';bt.textContent=p<55?'Montando imagem forense...':'Carregando dispositivo...'},90);
-const codes={"2325":1,"97426":2}; // Nível 1: horário exibido no aplicativo Relógio do iPhone.
+const codes={"2325":1,"97426":2,"9475":3}; // Nível 1: horário exibido no aplicativo Relógio do iPhone.
 let unlocked=JSON.parse(localStorage.getItem("texC06Levels")||"[]");const save=()=>localStorage.setItem("texC06Levels",JSON.stringify(unlocked));const has=l=>l===0||unlocked.includes(l);
 // Base limpa: nenhuma evidência do Caso 05 é reutilizada no Caso 06.
 // Inserir apenas dados validados contra a cronologia de 16/10/2026.
@@ -589,6 +589,52 @@ evidence["Gravador"].push(
  [2,"Nota de áudio • 16/10 • 20:31","Beatriz insiste que não assinou o contrato. Camila disse que trouxe uma conciliação. Na reunião vou perguntar, um por um, quem criou, quem aprovou e quem recebeu os pagamentos."]
 );
 
+
+// Nível 3 — soma dos cinco tempos do ranking Vira Bota: 94,75 -> 9475.
+// Novas provas delimitam a fraude e a sequência de eventos sem identificar o assassino.
+evidence["WhatsApp"].push(
+ [3,"Gustavo Moreira","in","16/10 20:56","Eu trouxe as notas e os comprovantes. O problema é que duas notas não correspondem aos depósitos feitos aos fornecedores."],
+ [3,"Gustavo Moreira","out","16/10 21:00","Não destrua nem altere nada. Quero confrontar o número da nota com o comprovante bancário."],
+ [3,"André Martins","in","16/10 20:59","Meu relatório tem dois tipos de registro: entrada no sistema e autorização de pagamento. Não são a mesma coisa."],
+ [3,"André Martins","out","16/10 21:02","Entendi. Guarde a exportação original. Precisamos da trilha do banco também."],
+ [3,"Beatriz Almeida","in","16/10 20:35","Tenho a versão do contrato que recebi por e-mail. A assinatura que aparece na cópia do financeiro é diferente."],
+ [3,"Beatriz Almeida","out","16/10 20:38","Traga as duas versões. Vamos comparar os documentos, não acusações."],
+ [3,"Camila Torres","in","16/10 20:51","A conciliação operacional não é extrato bancário. Ela mostra o lançamento, mas não confirma o destinatário final."],
+ [3,"Camila Torres","out","16/10 20:54","Então precisamos dos comprovantes bancários originais. Hoje ninguém sai com uma conclusão precipitada."]
+);
+evidence["Telefone"].push(
+ [3,"Gustavo Moreira","16/10 • 20:42 • chamada recebida • 01:36","in"],
+ [3,"André Martins","16/10 • 21:08 • chamada realizada • 00:42","out"],
+ [3,"Beatriz Almeida","16/10 • 20:47 • chamada recebida • 00:31","in"]
+);
+evidence["Mensagens"].push(
+ [3,"Quinta Dose • Arquivo de conferência","16/10 • 19:58 — Extratos e notas fiscais não podem ser substituídos por capturas de tela de uma planilha."],
+ [3,"Número não identificado","16/10 • 21:27 — Você ainda pretende mostrar o original? Não confunda quem entrou no sistema com quem recebeu o dinheiro."]
+);
+evidence["Safari"].push(
+ [3,"16/10 • 19:16","como conferir autenticidade de comprovante bancário pdf"],
+ [3,"16/10 • 19:29","como rastrear beneficiário de transferência empresa"],
+ [3,"16/10 • 20:07","diferença entre registro de câmera e log de acesso remoto"]
+);
+evidence["Notas"].push(
+ [3,"Três documentos, três perguntas","1. Contrato: quem assinou? 2. Sistema: quem registrou e aprovou? 3. Banco: quem recebeu? As três respostas podem ser pessoas diferentes."],
+ [3,"Perguntas para depois da reunião","O desaparecimento de um arquivo não prova que seu autor mentiu. A falha nas câmeras e os desvios financeiros precisam de linhas de investigação separadas."]
+);
+evidence["E-mail"].push(
+ [3,"Quinta Dose • Controladoria","Assunto: conciliação não concluída — lançamentos administrativos não substituem comprovantes de liquidação bancária. Divergências de destinatário exigem documentação original."],
+ [3,"Fornecedor • atendimento","Assunto: conferência de nota fiscal — confirmamos a emissão do documento, mas o pagamento apontado na planilha não foi localizado na conta informada."],
+ [3,"Beatriz Almeida → Rafael","Assunto: duas versões — encaminho a cópia recebida antes da reunião. Solicito que a assinatura da versão do financeiro seja periciada antes de qualquer conclusão."]
+);
+evidence["Arquivos"].push(
+ [3,"comparativo_nota_pagamento.txt","Uma nota válida não comprova pagamento ao fornecedor indicado"],
+ [3,"matriz_de_responsabilidades.txt","Contrato, lançamento, autorização e beneficiário: etapas distintas"],
+ [3,"ocorrencia_monitoramento.txt","Lacuna das câmeras: 22h14–22h25; causa ainda em investigação"]
+);
+evidence["Gravador"].push(
+ [3,"Áudio de Rafael • 16/10 • 21:06","Temos uma nota fiscal que o fornecedor reconhece, mas ele não confirma o recebimento do valor mostrado na planilha. Isso muda a pergunta: não basta saber quem lançou; preciso descobrir para qual conta o dinheiro foi."],
+ [3,"Áudio de Rafael • 16/10 • 21:24","André insiste que o log não equivale a autorização bancária. Beatriz trouxe uma segunda versão do contrato. Gustavo tem notas sem confirmação de pagamento. A conciliação de Camila ainda não resolve quem recebeu. Vou confrontar tudo na mesa."]
+);
+
 const appScreen=$('#appScreen'),appTitle=$('#appTitle'),appBody=$('#appBody');
 function initials(name){return name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
 function visible(name){const all=evidence[name]||[];return [all.filter(r=>has(r[0])),all.filter(r=>!has(r[0]))]}
@@ -607,6 +653,10 @@ function openWhatsChat(person){
 }
 
 const fileDetails={
+
+ "comparativo_nota_pagamento.txt":`<div class="notecard"><b>QUINTA DOSE — NOTA × PAGAMENTO</b><p>Conferência: 16/10/2026. Uma nota fiscal de fornecedor foi confirmada como emitida. O fornecedor, porém, não localizou o pagamento que a planilha da Quinta Dose registrou como quitado.</p><p><b>Constatação:</b> a divergência entre lançamento e recebimento é concreta. <b>Pendente:</b> extrato de liquidação, conta beneficiária e responsável pela autorização bancária.</p><small>Não atribui autoria dos desvios nem do homicídio.</small></div>`,
+ "matriz_de_responsabilidades.txt":`<div class="notecard"><b>QUINTA DOSE — ETAPAS DISTINTAS</b><p>1. Emissão do contrato. 2. Registro contábil. 3. Autorização financeira. 4. Liquidação bancária e beneficiário.</p><p>O perfil ADM pode registrar a operação sem identificar o beneficiário final. A assinatura atribuída a Beatriz segue contestada; André contesta o uso de credenciais; Gustavo apresentou notas de fornecedores; Camila preparou conciliação operacional.</p><p><b>Conclusão provisória:</b> nenhuma dessas informações, isoladamente, resolve a fraude.</p></div>`,
+ "ocorrencia_monitoramento.txt":`<div class="notecard"><b>TEX PUB — OCORRÊNCIA DE CÂMERAS</b><p>16/10/2026 • interrupção entre 22h14 e 22h25.</p><p>Os registros visuais desse intervalo não estão disponíveis. A ausência de imagens não equivale à ausência de movimentação.</p><p><b>Não determinado nesta etapa:</b> motivo da interrupção, operador do sistema ou relação com o homicídio.</p></div>`,
 
  "auditoria_preliminar_quinta_dose.txt":`<div class="notecard"><b>QUINTA DOSE — REVISÃO PRELIMINAR</b><p>Data da conferência: 16/10/2026</p><p>Existem pagamentos contestados vinculados a contratos e fornecedores. A trilha disponível aponta uso de perfil administrativo compartilhado.</p><p>O nome de Beatriz aparece em documento cuja assinatura ela contesta. Gustavo questiona repasses a fornecedores. André nega ter autorizado movimentações com suas credenciais.</p><p><b>Pendente:</b> identificar beneficiários, operadores reais e autorizações bancárias.</p><small>Relatório incompleto: não atribui autoria de fraude nem de homicídio.</small></div>`,
  "registro_acessos_sistema.txt":`<div class="notecard"><b>REGISTRO DE ACESSOS — CÓPIA PARCIAL</b><p>Perfis analisados: ADM e suporte técnico.</p><p>Foram encontrados acessos contestados fora dos horários habituais de operação. O registro de login, isoladamente, não identifica quem estava diante do dispositivo.</p><p>André possui conhecimento técnico do sistema, mas isso não demonstra autorização de pagamentos.</p><p><b>Observação:</b> registro financeiro e sistema de câmeras são ambientes distintos.</p></div>`,
@@ -630,11 +680,11 @@ function playCaseAudio(index){
 function renderVoice(){const [v,h]=visible("Gravador");return v.map((r,i)=>`<div class="voiceitem"><b>${r[1]}</b><div class="wave"></div><button class="voicePlay" onclick="playCaseAudio(${i})">▶ Ouvir gravação reconstruída</button><p style="color:#666;font-size:13px"><b>Transcrição:</b> ${r[2]}</p><small>Voz sintetizada pelo navegador para representar o áudio fictício.</small></div>`).join('')+lockMsg(h.length)}
 function renderTerminal(){
  appScreen.classList.add('forensic');
- const labels=["Primeiros registros do celular","Contratos e rastros financeiros","Aguardando novas evidências","Aguardando novas evidências","Aguardando novas evidências"];
+ const labels=["Primeiros registros do celular","Contratos e rastros financeiros","Documentos cruzados e lacunas de prova","Aguardando novas evidências","Aguardando novas evidências"];
  return `<div class="terminalbox"><b>GrayKey Bridge — Caso 06</b><p style="color:#aaa;font-size:13px">Investigue o ambiente e os aplicativos do celular para descobrir os códigos de desbloqueio.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=[{"id": "IMG_1041", "level": 1, "src": "assets/caso06/IMG_1041.jpg", "label": "Mesa 13 — imagem de referência da mesa e dos documentos; não estabelece horário nem presença dos envolvidos."}, {"id": "IMG_1042", "level": 1, "src": "assets/caso06/IMG_1042.jpg", "label": "Movimentações financeiras — Quinta Dose — Lançamentos destacados. A coluna de autorização mostra ADM, sem identificar o operador."}, {"id": "IMG_1043", "level": 1, "src": "assets/caso06/IMG_1043.jpg", "label": "Envelope e pendrive — fotografia de referência; o conteúdo e a custódia do dispositivo ainda não foram verificados."}, {"id": "IMG_1044", "level": 1, "src": "assets/caso06/IMG_1044.jpg", "label": "Corredor de serviço — imagem de referência; não registra quem passou por ali na noite do crime."}, {"id": "IMG_1045", "level": 1, "src": "assets/caso06/IMG_1045.jpg", "label": "Contrato em nome de Beatriz Almeida — Documento fotografado para verificação de autenticidade. A autoria da assinatura permanece em disputa."}, {"id": "IMG_1046", "level": 1, "src": "assets/caso06/IMG_1046.jpg", "label": "Monitoramento — perda de sinal — Registro do sistema de câmeras. A interrupção ocorreu entre 22h14 e 22h25; a imagem não identifica o responsável."},{"id": "IMG_1047", "level": 2, "src": "assets/caso06/IMG_1047.jpg", "label": "Conciliação financeira — Pagamentos registrados sob perfil ADM; o operador efetivo não foi identificado."},{"id": "IMG_1048", "level": 2, "src": "assets/caso06/IMG_1048.jpg", "label": "Exportação de acessos — Registro parcial de logins contestados; não prova autoria dos pagamentos."},{"id": "IMG_1049", "level": 2, "src": "assets/caso06/IMG_1049.jpg", "label": "Contrato contestado — Beatriz nega autenticidade da assinatura; documento ainda não periciado."},{"id": "IMG_1050", "level": 2, "src": "assets/caso06/IMG_1050.jpg", "label": "Lista de verificação — Rafael separava responsabilidades de cada ex-sócio."},{"id": "IMG_1051", "level": 2, "src": "assets/caso06/IMG_1051.jpg", "label": "Matriz de conferência — cruzamento de contratos, aprovações e beneficiários; ainda sem autoria identificada."},{"id": "IMG_1052", "level": 2, "src": "assets/caso06/IMG_1052.jpg", "label": "Registro de preservação — anotações de Rafael sobre documentos originais e lacunas na auditoria."}]; // Fotos dos níveis 1 e 2, liberadas por seus respectivos códigos.
+const casePhotos=[[{"id": "IMG_1041", "level": 1, "src": "assets/caso06/IMG_1041.jpg", "label": "Mesa 13 — imagem de referência da mesa e dos documentos; não estabelece horário nem presença dos envolvidos."}, {"id": "IMG_1042", "level": 1, "src": "assets/caso06/IMG_1042.jpg", "label": "Movimentações financeiras — Quinta Dose — Lançamentos destacados. A coluna de autorização mostra ADM, sem identificar o operador."}, {"id": "IMG_1043", "level": 1, "src": "assets/caso06/IMG_1043.jpg", "label": "Envelope e pendrive — fotografia de referência; o conteúdo e a custódia do dispositivo ainda não foram verificados."}, {"id": "IMG_1044", "level": 1, "src": "assets/caso06/IMG_1044.jpg", "label": "Corredor de serviço — imagem de referência; não registra quem passou por ali na noite do crime."}, {"id": "IMG_1045", "level": 1, "src": "assets/caso06/IMG_1045.jpg", "label": "Contrato em nome de Beatriz Almeida — Documento fotografado para verificação de autenticidade. A autoria da assinatura permanece em disputa."}, {"id": "IMG_1046", "level": 1, "src": "assets/caso06/IMG_1046.jpg", "label": "Monitoramento — perda de sinal — Registro do sistema de câmeras. A interrupção ocorreu entre 22h14 e 22h25; a imagem não identifica o responsável."}, {"id": "IMG_1047", "level": 2, "src": "assets/caso06/IMG_1047.jpg", "label": "Conciliação financeira — Pagamentos registrados sob perfil ADM; o operador efetivo não foi identificado."}, {"id": "IMG_1048", "level": 2, "src": "assets/caso06/IMG_1048.jpg", "label": "Exportação de acessos — Registro parcial de logins contestados; não prova autoria dos pagamentos."}, {"id": "IMG_1049", "level": 2, "src": "assets/caso06/IMG_1049.jpg", "label": "Contrato contestado — Beatriz nega autenticidade da assinatura; documento ainda não periciado."}, {"id": "IMG_1050", "level": 2, "src": "assets/caso06/IMG_1050.jpg", "label": "Lista de verificação — Rafael separava responsabilidades de cada ex-sócio."}, {"id": "IMG_1051", "level": 2, "src": "assets/caso06/IMG_1051.jpg", "label": "Matriz de conferência — cruzamento de contratos, aprovações e beneficiários; ainda sem autoria identificada."}, {"id": "IMG_1052", "level": 2, "src": "assets/caso06/IMG_1052.jpg", "label": "Registro de preservação — anotações de Rafael sobre documentos originais e lacunas na auditoria."}, {"id": "IMG_1053", "level": 3, "src": "assets/caso06/IMG_1053.jpg", "label": "Nota de fornecedor — emissão confirmada, pagamento lançado sem recebimento localizado."}, {"id": "IMG_1054", "level": 3, "src": "assets/caso06/IMG_1054.jpg", "label": "Fluxo financeiro — quatro etapas que exigem provas diferentes."}, {"id": "IMG_1055", "level": 3, "src": "assets/caso06/IMG_1055.jpg", "label": "Duas versões de contrato — assinatura contestada; autoria não estabelecida."}, {"id": "IMG_1056", "level": 3, "src": "assets/caso06/IMG_1056.jpg", "label": "Ocorrência de câmeras — 22h14 a 22h25; operador desconhecido nesta etapa."}, {"id": "IMG_1057", "level": 3, "src": "assets/caso06/IMG_1057.jpg", "label": "Pendências da reunião — cada suspeito tem documentos a explicar."}, {"id": "IMG_1058", "level": 3, "src": "assets/caso06/IMG_1058.jpg", "label": "Mensagem anônima de 21h27 — remetente ainda não identificado."}]]; // Fotos dos níveis 1 a 3, liberadas por seus respectivos códigos.
 const photoLevels=Object.fromEntries(casePhotos.map(p=>[p.id,p.level]));
 function renderPhotoGallery(){
  const unlockedPhotos=casePhotos.filter(p=>p.level===0||has(p.level));
