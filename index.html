@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111">
-<title>Rafael Nogueira — Tex Pub Forensics • Caso 06</title>
+<title>Henrique Valença — Tex Pub Forensics • Caso 07</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;background:#111;color:#111}
 button,input{font:inherit}button{cursor:pointer}
@@ -283,7 +283,7 @@ linear-gradient(165deg,#d6e8ce 0 40%,#d8ecf8 40% 52%,#e8e2d1 52%);position:relat
 
 
 <script>
-window.CASO06_FIREBASE_CONFIG = {
+window.CASO07_FIREBASE_CONFIG = {
   apiKey: "AIzaSyD3EeULMamtJ6uHJ9o6vxyVvY5l6QRmZpQ",
   authDomain: "noite-do-misterio.firebaseapp.com",
   projectId: "noite-do-misterio",
@@ -318,7 +318,7 @@ window.CASO06_FIREBASE_CONFIG = {
 </style>
 
 
-<style id="caso05-photo-viewer-fix">
+<style id="caso07-photo-viewer-fix">
 /* PATCH 16 — visualizador de fotos sem zoom exagerado */
 .photoFull{
   height:100%;
@@ -381,12 +381,12 @@ window.CASO06_FIREBASE_CONFIG = {
 </style>
 
 
-<style id="caso05-phone-polish-v17">
+<style id="caso07-phone-polish-v17">
 /* PATCH 17 — somente estética do aparelho */
 .screen{
   background:
     linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),
-    url("assets/wallpaper-caso06.svg") center center / cover no-repeat !important;
+    url("assets/wallpaper-caso07.svg") center center / cover no-repeat !important;
 }
 .status{
   height:50px;
@@ -439,8 +439,8 @@ window.CASO06_FIREBASE_CONFIG = {
   box-shadow:inset 0 0 0 1px #161616;
 }
 /* apps continuam iguais por dentro; apenas suaviza abertura */
-.appscreen.open{animation:caso05AppOpen .14s ease-out}
-@keyframes caso05AppOpen{
+.appscreen.open{animation:caso07AppOpen .14s ease-out}
+@keyframes caso07AppOpen{
   from{opacity:.72;transform:scale(.985)}
   to{opacity:1;transform:scale(1)}
 }
@@ -459,7 +459,7 @@ window.CASO06_FIREBASE_CONFIG = {
 <div class="screen" id="homeScreen">
   <div class="status"><span id="clock">20:44</span><span class="right">●●● ◔ 18%</span></div>
   <div class="home">
-    <div class="owner"><div class="time">Rafael Nogueira</div><small>iPhone de Rafael • Caso 06 — A Mesa 13</small></div>
+    <div class="owner"><div class="time">Henrique Valença</div><small>iPhone de Henrique • Caso 07 — O Último Brinde</small></div>
     <div class="apps">
       <button class="appbtn" data-app="Telefone"><div class="icon i-green">☎</div><span class="label">Telefone</span></button>
       <button class="appbtn" data-app="Mensagens"><div class="icon i-green">💬</div><span class="label">Mensagens</span></button>
@@ -513,247 +513,18 @@ window.CASO06_FIREBASE_CONFIG = {
 <script>
 const $=s=>document.querySelector(s);
 let p=0;const boot=$('#boot'),bar=$('#bootBar'),bt=$('#bootText');const timer=setInterval(()=>{p+=12;if(p>=100){p=100;clearInterval(timer);setTimeout(()=>boot.style.display='none',180)}bar.style.width=p+'%';bt.textContent=p<55?'Montando imagem forense...':'Carregando dispositivo...'},90);
-const codes={"2325":1,"97426":2,"9475":3,"0713":4,"3110":5}; // Nível 1: horário exibido no aplicativo Relógio do iPhone.
+const codes={"1942":1,"2478":2,"2311":3,"0680":4,"5836":5,"3800":6,"1357":7};
 // Progressão linear: apenas a sequência completa é considerada desbloqueada.
 // Se uma versão anterior liberou níveis fora de ordem, conserva somente o prefixo válido.
 let storedLevels=[];
-try{const parsed=JSON.parse(localStorage.getItem("texC06Levels")||"[]");if(Array.isArray(parsed))storedLevels=parsed;}catch(e){}
+try{const parsed=JSON.parse(localStorage.getItem("texC07Levels")||"[]");if(Array.isArray(parsed))storedLevels=parsed;}catch(e){}
 let unlocked=[];
-for(let n=1;n<=5&&storedLevels.includes(n);n++)unlocked.push(n);
-const save=()=>localStorage.setItem("texC06Levels",JSON.stringify(unlocked));
+for(let n=1;n<=7&&storedLevels.includes(n);n++)unlocked.push(n);
+const save=()=>localStorage.setItem("texC07Levels",JSON.stringify(unlocked));
 if(JSON.stringify(storedLevels)!==JSON.stringify(unlocked))save();
 const has=l=>l===0||unlocked.includes(l);
 const nextLevel=()=>unlocked.length+1;
-// Base limpa: nenhuma evidência do Caso 05 é reutilizada no Caso 06.
-// Inserir apenas dados validados contra a cronologia de 16/10/2026.
-// Nível 1: registros ficcionais reconstruídos para a dinâmica do jogo.
-// Horários de chegada e fatos confirmados seguem a cronologia oficial.
-const evidence={
- "Contatos":[[1,"Beatriz Almeida","Contato salvo • Quinta Dose"],[1,"Gustavo Moreira","Contato salvo • Quinta Dose"],[1,"Camila Torres","Contato salvo • Quinta Dose"],[1,"André Martins","Contato salvo • Quinta Dose"]],
- "Telefone":[[1,"Beatriz Almeida","16/10 • 18:32 • chamada realizada • 01:14","out"],[1,"Gustavo Moreira","16/10 • 19:08 • chamada recebida • 00:46","in"],[1,"Camila Torres","16/10 • 20:03 • chamada realizada • não atendida","miss"]],
- "Mensagens":[[1,"Quinta Dose • Agenda","16/10 • 17:26 — Confirmação: reunião presencial no Tex Pub, Mesa 13. Participantes: os cinco ex-sócios."],[1,"Número não identificado","16/10 • 20:18 — Rafael, você precisa parar de tratar isso como um erro de sistema. Alguém assinou esses pagamentos."]],
- "WhatsApp":[
- [1,"Beatriz Almeida","in","15/10 19:41","Rafael, preciso entender por que meu nome aparece nesses contratos. Eu não assinei aquilo."],
- [1,"Beatriz Almeida","out","15/10 19:46","Vamos conversar pessoalmente amanhã. Não vou te expor na frente de todo mundo."],
- [1,"Beatriz Almeida","in","16/10 18:11","Não quero que nossa história vire assunto na reunião. O problema são os documentos."],
- [1,"Gustavo Moreira","in","16/10 17:55","Perdi fornecedores e dinheiro por causa dessa história. Hoje você vai explicar cada transferência."],
- [1,"Gustavo Moreira","out","16/10 18:02","Eu também quero saber para onde foi o dinheiro. Leve o que tiver de comprovantes."],
- [1,"André Martins","in","16/10 16:27","Meu usuário aparece nos relatórios, mas eu não autorizei aqueles lançamentos. Alguém usou minhas credenciais."],
- [1,"André Martins","out","16/10 16:34","Traga os logs. Preciso separar acesso ao sistema de autorização de pagamento."],
- [1,"Camila Torres","in","16/10 14:12","Confirmado hoje no Tex Pub? Prefiro que a gente mantenha a conversa objetiva."],
- [1,"Camila Torres","out","16/10 14:16","Mesa 13. Quero todos presentes. Não dá mais para adiar."]
- ],
- "Arquivos":[[1,"convocacao_mesa13.txt","Reunião de 16/10/2026 • 21h45 • Quinta Dose"]],
- "Notas":[[1,"Pontos para a reunião","Separar três coisas: quem criou os lançamentos; quem aprovou os pagamentos; quem se beneficiou. Não confundir acesso técnico com autorização."],[1,"Mesa 13","Pedir a André os logs originais. Perguntar a Beatriz sobre os contratos. Gustavo: fornecedores. Camila: conferência operacional."]],
- "Calendário":[[1,"Reunião — Quinta Dose","21h45 • Tex Pub • Mesa 13 • Beatriz, Gustavo, Camila, André e Rafael"]],
- "Mapas":[],"Reconstrução":[],
- "E-mail":[[1,"Arquivo administrativo — Quinta Dose","Assunto: divergências em contratos e pagamentos. O material da reunião será confrontado com os registros de acesso e as aprovações financeiras."],[1,"Rafael Nogueira → arquivo pessoal","Assunto: pauta de 16/10. Não apontar culpados sem cruzar contratos, logs e comprovantes."]],
- "Gravador":[[1,"Memorando de voz • 16/10 • 18:40","A reunião de hoje precisa esclarecer o dinheiro que saiu. André diz que usaram o acesso dele. Beatriz nega ter assinado os contratos. Gustavo quer os comprovantes. Preciso ouvir todos antes de decidir o que fazer."],[1,"Rascunho de áudio • 16/10 • 20:39","Se eu não conseguir explicar os números hoje, amanhã vou entregar a documentação para uma auditoria independente. Não quero mais versões sem provas."]],
- "Safari":[[1,"16/10 • 12:08","como verificar histórico de alterações em sistema financeiro"],[1,"16/10 • 12:21","diferença entre usuário de acesso e responsável por autorização bancária"],[1,"16/10 • 15:03","assinatura eletrônica em contrato como verificar autenticidade"],[1,"16/10 • 17:14","como preservar mensagens e comprovantes para auditoria"]],
- "Ajustes":[[0,"iPhone de Rafael Nogueira","Extração forense • Caso 06 • 16/10/2026"]],
- "Arquivos apagados":[],"Histórico de localização":[],"Linha do tempo":[]
-};
-
-
-// Nível 2 — informações obtidas após o enigma lógico 97426.
-// Os registros acrescentam suspeitas, não estabelecem autoria do homicídio.
-evidence["WhatsApp"].push(
- [2,"Gustavo Moreira","in","16/10 19:12","Rafael, trouxe os comprovantes dos fornecedores. Não aceito mais que joguem tudo nas minhas costas."],
- [2,"Gustavo Moreira","out","16/10 19:18","Vou comparar seus documentos com as aprovações. A reunião não vai terminar sem respostas."],
- [2,"André Martins","in","16/10 19:37","Encontrei acessos administrativos fora do meu horário. Isso não prova que fui eu quem fez os pagamentos."],
- [2,"André Martins","out","16/10 19:40","Salve os registros originais e não altere nada. Preciso saber quem aprovou cada transferência."],
- [2,"Beatriz Almeida","in","16/10 20:02","Tenho uma cópia de um contrato com meu nome. A assinatura não é minha. Não quero que isso apareça sem contexto."],
- [2,"Camila Torres","in","16/10 20:25","Levei a conciliação dos pagamentos. Alguns lançamentos foram feitos por perfil administrativo compartilhado."],
- [2,"Camila Torres","out","16/10 20:29","Então precisamos identificar quem realmente operou esse perfil. Conversamos na mesa."]
-);
-evidence["Telefone"].push(
- [2,"André Martins","16/10 • 19:42 • chamada recebida • 02:06","in"],
- [2,"Gustavo Moreira","16/10 • 20:10 • chamada realizada • 00:58","out"],
- [2,"Beatriz Almeida","15/10 • 22:04 • chamada recebida • 03:12","in"]
-);
-evidence["Mensagens"].push(
- [2,"Auditoria — arquivo de referência","16/10 • 18:54 — Não confunda credenciais utilizadas com a identidade do responsável por cada operação."],
- [2,"Número não identificado","16/10 • 21:02 — Você trouxe os documentos originais? Eles vão querer saber quem assinou."]
-);
-evidence["Safari"].push(
- [2,"16/10 • 18:06","como exportar trilha de auditoria de pagamentos empresariais"],
- [2,"16/10 • 18:24","diferença entre login administrativo e autorização de transferência"],
- [2,"16/10 • 19:04","como identificar contrato assinado com assinatura falsificada"]
-);
-evidence["Notas"].push(
- [2,"Conferência de lançamentos","Três frentes: contratos em nome de Beatriz; fornecedores apresentados por Gustavo; credenciais de André. Camila afirma ter conciliado as despesas. Conferir autorização efetiva de cada pagamento."],
- [2,"Não confundir suspeita com prova","Quem perdeu dinheiro pode ter motivo para confronto. Quem administra o sistema pode ter acesso. Nenhuma dessas duas coisas, sozinha, identifica o autor dos desvios."]
-);
-evidence["E-mail"].push(
- [2,"Quinta Dose • Controladoria","Assunto: revisão de lançamentos — relatórios apresentam perfil ADM em pagamentos contestados; necessário conferir aprovações e comprovantes originais."],
- [2,"Beatriz Almeida → Rafael","Assunto: contrato contestado — solicito verificação da assinatura atribuída a mim e cópia integral do documento."],
- [2,"André Martins → Rafael","Assunto: registros de acesso — anexei os horários do sistema. Ter meu usuário registrado não significa ter autorizado a saída de recursos."]
-);
-evidence["Arquivos"].push(
- [2,"auditoria_preliminar_quinta_dose.txt","Conciliação parcial • contratos, aprovações e credenciais"],
- [2,"registro_acessos_sistema.txt","Eventos de login • identidade do operador não comprovada"]
-);
-evidence["Gravador"].push(
- [2,"Memorando de voz • 16/10 • 19:26","Os comprovantes de Gustavo não batem com a explicação que recebi. Mas isso não diz quem desviou o dinheiro. André mostrou um acesso administrativo que ele contesta. Vou precisar comparar os dois conjuntos de registros."],
- [2,"Nota de áudio • 16/10 • 20:31","Beatriz insiste que não assinou o contrato. Camila disse que trouxe uma conciliação. Na reunião vou perguntar, um por um, quem criou, quem aprovou e quem recebeu os pagamentos."]
-);
-
-
-// Nível 3 — soma dos cinco tempos do ranking Vira Bota: 94,75 -> 9475.
-// Novas provas delimitam a fraude e a sequência de eventos sem identificar o assassino.
-evidence["WhatsApp"].push(
- [3,"Gustavo Moreira","in","16/10 20:56","Eu trouxe as notas e os comprovantes. O problema é que duas notas não correspondem aos depósitos feitos aos fornecedores."],
- [3,"Gustavo Moreira","out","16/10 21:00","Não destrua nem altere nada. Quero confrontar o número da nota com o comprovante bancário."],
- [3,"André Martins","in","16/10 20:59","Meu relatório tem dois tipos de registro: entrada no sistema e autorização de pagamento. Não são a mesma coisa."],
- [3,"André Martins","out","16/10 21:02","Entendi. Guarde a exportação original. Precisamos da trilha do banco também."],
- [3,"Beatriz Almeida","in","16/10 20:35","Tenho a versão do contrato que recebi por e-mail. A assinatura que aparece na cópia do financeiro é diferente."],
- [3,"Beatriz Almeida","out","16/10 20:38","Traga as duas versões. Vamos comparar os documentos, não acusações."],
- [3,"Camila Torres","in","16/10 20:51","A conciliação operacional não é extrato bancário. Ela mostra o lançamento, mas não confirma o destinatário final."],
- [3,"Camila Torres","out","16/10 20:54","Então precisamos dos comprovantes bancários originais. Hoje ninguém sai com uma conclusão precipitada."]
-);
-evidence["Telefone"].push(
- [3,"Gustavo Moreira","16/10 • 20:42 • chamada recebida • 01:36","in"],
- [3,"André Martins","16/10 • 21:08 • chamada realizada • 00:42","out"],
- [3,"Beatriz Almeida","16/10 • 20:47 • chamada recebida • 00:31","in"]
-);
-evidence["Mensagens"].push(
- [3,"Quinta Dose • Arquivo de conferência","16/10 • 19:58 — Extratos e notas fiscais não podem ser substituídos por capturas de tela de uma planilha."],
- [3,"Número não identificado","16/10 • 21:27 — Você ainda pretende mostrar o original? Não confunda quem entrou no sistema com quem recebeu o dinheiro."]
-);
-evidence["Safari"].push(
- [3,"16/10 • 19:16","como conferir autenticidade de comprovante bancário pdf"],
- [3,"16/10 • 19:29","como rastrear beneficiário de transferência empresa"],
- [3,"16/10 • 20:07","diferença entre registro de câmera e log de acesso remoto"]
-);
-evidence["Notas"].push(
- [3,"Três documentos, três perguntas","1. Contrato: quem assinou? 2. Sistema: quem registrou e aprovou? 3. Banco: quem recebeu? As três respostas podem ser pessoas diferentes."],
- [3,"Perguntas para depois da reunião","O desaparecimento de um arquivo não prova que seu autor mentiu. A falha nas câmeras e os desvios financeiros precisam de linhas de investigação separadas."]
-);
-evidence["E-mail"].push(
- [3,"Quinta Dose • Controladoria","Assunto: conciliação não concluída — lançamentos administrativos não substituem comprovantes de liquidação bancária. Divergências de destinatário exigem documentação original."],
- [3,"Fornecedor • atendimento","Assunto: conferência de nota fiscal — confirmamos a emissão do documento, mas o pagamento apontado na planilha não foi localizado na conta informada."],
- [3,"Beatriz Almeida → Rafael","Assunto: duas versões — encaminho a cópia recebida antes da reunião. Solicito que a assinatura da versão do financeiro seja periciada antes de qualquer conclusão."]
-);
-evidence["Arquivos"].push(
- [3,"comparativo_nota_pagamento.txt","Uma nota válida não comprova pagamento ao fornecedor indicado"],
- [3,"matriz_de_responsabilidades.txt","Contrato, lançamento, autorização e beneficiário: etapas distintas"],
- [3,"ocorrencia_monitoramento.txt","Lacuna das câmeras: 22h14–22h25; causa ainda em investigação"]
-);
-evidence["Gravador"].push(
- [3,"Áudio de Rafael • 16/10 • 21:06","Temos uma nota fiscal que o fornecedor reconhece, mas ele não confirma o recebimento do valor mostrado na planilha. Isso muda a pergunta: não basta saber quem lançou; preciso descobrir para qual conta o dinheiro foi."],
- [3,"Áudio de Rafael • 16/10 • 21:24","André insiste que o log não equivale a autorização bancária. Beatriz trouxe uma segunda versão do contrato. Gustavo tem notas sem confirmação de pagamento. A conciliação de Camila ainda não resolve quem recebeu. Vou confrontar tudo na mesa."]
-);
-
-
-// Nível 4 — Identidade dos Cinco (A=1 ... Z=26), soma 0713.
-// Material anterior a 22h12 ou descrito como referência sem horário de captura.
-evidence["WhatsApp"].push(
- [4,"Beatriz Almeida","in","16/10 21:34","Estou com minha cópia do contrato. Não vou aceitar que uma assinatura questionada vire prova contra mim."],
- [4,"Beatriz Almeida","out","16/10 21:36","Quero confrontar as versões na frente de todos. Não vou afirmar autoria sem perícia."],
- [4,"Gustavo Moreira","in","16/10 21:37","O fornecedor confirmou a nota. Mas não reconheceu o recebimento. Alguém precisa mostrar o extrato real."],
- [4,"Gustavo Moreira","out","16/10 21:39","É por isso que pedi a reunião. Nota, comprovante e conta de destino precisam bater."],
- [4,"André Martins","in","16/10 21:40","Se aparecer meu usuário no sistema, isso ainda não identifica quem executou o comando. Guarde o log bruto."],
- [4,"André Martins","out","16/10 21:42","Preciso dos registros de origem, não de uma captura de tela. Vamos separar os sistemas."],
- [4,"Camila Torres","in","16/10 21:42","Tenho a conciliação que preparei. Ela indica lançamentos, mas não comprova em que conta o dinheiro caiu."],
- [4,"Camila Torres","out","16/10 21:43","Mostre a planilha na reunião. Também precisamos da trilha bancária original."]
-);
-evidence["Telefone"].push(
- [4,"Beatriz Almeida","16/10 • 21:04 • chamada recebida • 00:37","in"],
- [4,"Gustavo Moreira","16/10 • 21:10 • chamada realizada • 00:24","out"],
- [4,"André Martins","16/10 • 21:29 • chamada recebida • 00:19","in"]
-);
-evidence["Mensagens"].push(
- [4,"Rafael • rascunho não enviado","16/10 • 21:44 — A mesma pessoa pode controlar uma planilha sem controlar o banco. Preciso descobrir quem autorizou e quem recebeu."],
- [4,"Arquivo • preservação","16/10 • 21:35 — Fotografias pessoais e retratos não comprovam deslocamentos na noite de 16/10."]
-);
-evidence["Safari"].push(
- [4,"16/10 • 20:12","como solicitar comprovante de liquidação de transferência empresarial"],
- [4,"16/10 • 20:27","como comparar assinatura em duas vias de contrato"],
- [4,"16/10 • 20:44","registro de câmera diferença entre perda de sinal e acesso remoto"]
-);
-evidence["Notas"].push(
- [4,"Pessoas, versões e documentos","Beatriz: assinatura contestada. Gustavo: fornecedor sem recebimento. André: usuário técnico contestado. Camila: conciliação operacional. Rafael: quer cruzar extratos e originais. Nenhum desses fatos, isoladamente, aponta o autor do homicídio."],
- [4,"Duas linhas de apuração","1. Fraude financeira: rastrear beneficiário final e autorização. 2. Morte: reconstruir deslocamentos, intervalo sem câmeras e prova material. Não presumir que o operador das câmeras é o assassino."]
-);
-evidence["E-mail"].push(
- [4,"Fornecedor → Rafael","Assunto: confirmação documental — reiteramos que a nota foi emitida; o pagamento indicado na planilha não consta em nossa conta. Enviar comprovante bancário para conciliação."],
- [4,"Beatriz Almeida → Rafael","Assunto: versão anterior do contrato — a cópia que possuo não corresponde à versão que circulou no financeiro. Solicito exame da assinatura e preservação do original."],
- [4,"Suporte técnico → Rafael","Assunto: integridade de registros — logs de autenticação não equivalem a autorização de transferência. A origem de cada operação depende de verificação independente."]
-);
-evidence["Arquivos"].push(
- [4,"quadro_de_confronto_n4.txt","Versões dos quatro suspeitos e perguntas pendentes"],
- [4,"relatorio_tecnico_parcial_n4.txt","Interrupção das câmeras não demonstra quem estava no corredor"],
- [4,"indice_fotografico_n4.txt","Retratos de referência: não são registros da noite do crime"]
-);
-evidence["Gravador"].push(
- [4,"Rafael • nota de voz • 16/10 • 21:38","Tenho cinco pessoas na reunião, mas isso não é uma disputa de acusações. Beatriz fala da assinatura. Gustavo, dos fornecedores. André, dos acessos. Camila, da conciliação. Eu preciso do caminho do dinheiro, do documento original e de uma explicação verificável."],
- [4,"Rafael • nota de voz • 16/10 • 21:43","Se as versões se contradizem, não vou escolher a mais convincente. Vou procurar uma prova independente. O registro de câmeras também precisa ser tratado separado do financeiro."]
-);
-
-
-// Nível 4 — pista sobre a motivação paralela de André, sem revelar a resposta.
-evidence["Arquivos"].push(
- [4,"solicitacao_logs_andre_n4.txt","Pedido não autorizado de cópia de registros administrativos"]
-);
-evidence["E-mail"].push(
- [4,"André → suporte • rascunho 16/10 21:40","Assunto: extração de logs — Preciso preservar a trilha do usuário ADM antes que a auditoria me atribua pagamentos que não autorizei. O acesso de manutenção foi negado. Vou registrar minha solicitação por escrito."]
-);
-// NÍVEL 05 — 3110 (Halloween no cardápio do Tex Pub).
-// Pacote de prova cruzada: nenhuma frase isolada nomeia a pessoa responsável.
-// Os dados pós-22h12 são laudos externos sincronizados à extração forense,
-// e não mensagens enviadas pelo telefone da vítima após seu desaparecimento.
-evidence["WhatsApp"].push(
- [5,"Beatriz Almeida","in","16/10 21:50","O original que tenho não tem aquela assinatura. Pode comparar com a via do financeiro."],
- [5,"Beatriz Almeida","out","16/10 21:51","Vou pedir perícia e não acusar ninguém só pela cópia."],
- [5,"Gustavo Moreira","in","16/10 21:53","A conta que consta como paga não é a do fornecedor. Tenho a confirmação por escrito."],
- [5,"Gustavo Moreira","out","16/10 21:54","Guarde a resposta. Quero a conta de destino e o registro de aprovação."],
- [5,"André Martins","in","16/10 21:57","O servidor de vídeo é independente do banco. Mesmo que alguém mexa na gravação, isso não movimenta um centavo."],
- [5,"André Martins","out","16/10 21:58","Os dois sistemas precisam de auditorias separadas."],
- [5,"Camila Torres","in","16/10 22:01","Não leva essa documentação para fora da mesa ainda. Preciso conferir uma última versão."],
- [5,"Camila Torres","out","16/10 22:02","Não vou destruir nada. Quero o extrato original, sem ajustes." ]
-);
-evidence["Telefone"].push(
- [5,"Número sem identificação","16/10 • 22:06 • SMS recebido • metadado recuperado","in"],
- [5,"Camila Torres","16/10 • 21:56 • chamada realizada • 00:22","out"]
-);
-evidence["Mensagens"].push(
- [5,"Recuperação pericial • SMS 22:06","16/10 • 22:06 — Encontre-me perto do acesso de serviço. Preciso te mostrar a conta certa. Venha sozinho. Origem: linha secundária não identificada na agenda."],
- [5,"Nota da perícia • origem","16/10 • 22:06 — A mensagem foi enviada de um número secundário. O vínculo cadastral aparece no arquivo 'vinculo_linha_secundaria_n5.txt'."]
-);
-evidence["Safari"].push(
- [5,"16/10 • 18:06","como rastrear beneficiário final de transferência bancária"],
- [5,"16/10 • 18:22","como recuperar mensagens apagadas em backup de celular"],
- [5,"16/10 • 19:05","diferença entre registro de acesso e imagem de câmera"]
-);
-evidence["E-mail"].push(
- [5,"Auditoria → pacote forense (anexo externo)","Assunto: conta destinatária — os pagamentos questionados foram direcionados à conta de uma empresa intermediária; a responsável operacional cadastrada consta no anexo de titularidade."],
- [5,"Suporte → pacote forense (anexo externo)","Assunto: log íntegro — sessão remota vinculada ao equipamento de André iniciou às 22h14 e encerrou às 22h25. A interferência foi técnica; o log não registra agressão nem deslocamento físico."],
- [5,"Perícia → pacote forense (anexo externo)","Assunto: exame complementar — lesão craniana incompatível com queda simples. Confrontar ferramenta ausente do suporte e marcas do local de serviço."]
-);
-evidence["Notas"].push(
- [5,"Cadeia de custódia","Registros de origem distinta foram preservados para confronto: auditoria bancária, operadora, controle de acesso e monitoramento. Os relógios dos equipamentos foram verificados durante a extração."],
- [5,"Ocorrências simultâneas","O relatório de manutenção do gateway e o registro do acesso lateral são sistemas diferentes. A auditoria exige analisar separadamente cada origem de dados."]
-);
-evidence["Arquivos"].push(
- [5,"testemunho_e_imagem_2228_n5.txt","Retorno ao salão após 22h25: imagem e testemunha"],
- [5,"pericia_casaco_n5.txt","Microvestígios e cadeia de custódia do casaco"],
- [5,"ultimato_e_conciliacao_n5.txt","Rascunho anterior ao crime e pressão pela auditoria"],
- [5,"checagem_ligacao_camila_n5.txt","Checagem da alegação de telefonema"],
- [5,"rastro_bancario_final_n5.txt","Liquidação e beneficiário final dos pagamentos"],
- [5,"vinculo_linha_secundaria_n5.txt","Cruzamento cadastral do SMS de 22h06"],
- [5,"controle_acesso_servico_n5.txt","Registros de acesso 22h16–22h28"],
- [5,"pericia_material_n5.txt","Lesão, ferramenta e manipulação da cena"],
- [5,"log_remoto_cameras_n5.txt","Sessão remota independente do homicídio"],
- [5,"auditoria_gateway_andre_n5.txt","Manutenção remota, exportação de logs e interrupção de vídeo"],
- [5,"extracao_registros_adm_n5.txt","Cópia de registros preservada no computador de André"],
- [5,"relatorio_integracao_n5.txt","Matriz para reconstrução final sem gabarito"]
-);
-evidence["Gravador"].push(
- [5,"Áudio recuperado • Rafael • 16/10 • 21:59","Eu consegui comparar a conta do fornecedor com a conta de destino. Não são a mesma. Vou guardar o nome da pessoa vinculada à intermediária no relatório. Se eu receber uma explicação, quero documento, não promessa."],
- [5,"Registro técnico narrado • perícia • 17/10 • 10:15","Este áudio representa a leitura do laudo, não uma gravação da vítima. O exame encontrou lesão por impacto na cabeça, sem elementos compatíveis com uma queda acidental simples. O relatório do local menciona uma ferramenta metálica não localizada no suporte habitual."],
- [5,"Registro técnico narrado • monitoramento • 17/10 • 11:05","Esta é a leitura do log recuperado. O comando de interrupção de vídeo foi executado por acesso remoto associado ao equipamento de André. A associação do equipamento não comprova que André esteve fisicamente na área de serviço durante a agressão."]
-);
-
+const evidence={"Arquivos": [[0, "Boletim_007_2026", "DETETIVE TEX PUB\nCASO 07 — O ÚLTIMO BRINDE\n\nB.O. Nº 007/2026\nRegistro: 22/11/2026\n\nBOLETIM DE OCORRÊNCIA\nDOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO\n\n1. DADOS DO FATO\nNatureza: Morte suspeita — possível intoxicação.\nData da reunião: 21/11/2026 (sábado).\nLocalização da vítima: 22/11/2026 (domingo), às 00h12.\nChegada da polícia: 00h25.\nLocal: Tex Pub — Jundiaí/SP.\n\n2. IDENTIFICAÇÃO DA VÍTIMA\nNome: Henrique Valença Idade: 42 anos\nProfissão: Empresário Estado civil: Divorciado\nEmpresa: Valença Desenvolvimento\n\n3. RELATO DA OCORRÊNCIA\nDurante o encerramento do estabelecimento, um funcionário encontrou Henrique Valença inconsciente junto\na uma das mesas. O atendimento de emergência constatou o óbito. A vítima havia participado de uma\nreunião particular com quatro pessoas na noite anterior. Não foram observados sinais aparentes de violência\nfísica. A causa da morte permanece sob investigação.\n\n4. PARTICIPANTES DA REUNIÃO\nNome\n\nRelação com a vítima\n\nRicardo Montenegro\n\nSócio empresarial\n\nHelena Valença\n\nEx-esposa\n\nMarcelo Duarte\n\nAmigo de longa data\n\nBeatriz Ferraz\n\nAdvogada da empresa\n\n5. EVIDÊNCIAS RECOLHIDAS — MARCADORES FOTOGRÁFICOS\n01 — Copo de cerveja da vítima.\n02 — Celular da vítima.\n03 — Envelope com documentos.\n04 — Pulseira prateada com pedra violeta.\n\n6. PROVIDÊNCIAS\nPreservação do local, recolhimento das evidências, solicitação de exames periciais e coleta de depoimentos.\nInvestigação em andamento.\n\nDETETIVE TEX PUB • MATERIAL FICTÍCIO • 007/2026"], [0, "Laudo_Pericial_Preliminar_071-A_2026", "DETETIVE TEX PUB\n\nLAUDO Nº 071-A/2026\nReferência: B.O. 007/2026\n\nCASO 07 — O ÚLTIMO BRINDE\n\nLAUDO PERICIAL PRELIMINAR\nDOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO\n\n1. IDENTIFICAÇÃO DO EXAME\nLaudo: 071-A/2026\nOcorrência vinculada: 007/2026\nExaminado: Henrique Valença, 42 anos\nLocal da ocorrência: Tex Pub — Jundiaí/SP\nLocalização da vítima: 22/11/2026, às 00h12.\n2. OBJETIVO\nRegistrar os achados preliminares do exame pericial e indicar a necessidade de análises\ncomplementares para esclarecimento da causa da morte.\n3. ACHADOS PRELIMINARES\n• Ausência de lesões traumáticas relevantes.\n• Ausência de sinais aparentes de luta corporal.\n• Indícios de intoxicação por substância ainda não identificada.\n4. EVIDÊNCIAS ENCAMINHADAS PARA ANÁLISE\n01 — Copo de cerveja da vítima.\n02 — Celular da vítima.\n03 — Envelope com documentos.\n04 — Pulseira prateada com pedra violeta.\nOs resultados das análises desses materiais permanecem pendentes.\n5. CONCLUSÃO PRELIMINAR\nA hipótese de homicídio não pode ser descartada. A causa definitiva da morte e a eventual relação entre\nos materiais recolhidos e o óbito dependem dos exames complementares solicitados.\nSTATUS: LAUDO DEFINITIVO PENDENTE\n\nDETETIVE TEX PUB • MATERIAL FICTÍCIO • 007/2026"], [1, "Depoimento_001_Ricardo_Montenegro", "“Henrique me convidou para comemorar a venda da empresa. Não sabia de nenhuma auditoria.\nTivemos uma pequena discussão sobre o futuro dos negócios, mas nada sério. Saí do Pub e fui\ndiretamente para casa. Não tenho nenhum motivo para desejar a morte dele.”"], [1, "Depoimento_002_Helena_Valenca", "DETETIVE TEX PUB\nCASO 07 — O ÚLTIMO BRINDE\n\nDEPOIMENTO 002\nRegistro: 22/11/2026\n\nTERMO DE DEPOIMENTO\nDOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO\n\n1. IDENTIFICAÇÃO DA DEPOENTE\nNome: Helena Valença\nIdade: 39 anos\nRelação com a vítima: Ex-esposa\nEstado civil: Divorciada\n2. REGISTRO DA OITIVA\nData: 22/11/2026 (domingo)\n\nHorário: 10h30\n\nReferência: Boletim de Ocorrência nº 007/2026\n3. DECLARAÇÃO DA DEPOENTE\n“Apesar do divórcio, eu e Henrique mantínhamos uma relação respeitosa. Fui convidada porque ainda\nexistem questões patrimoniais entre nós. Não tenho nenhuma relação pessoal com Ricardo. Depois\nda reunião, fui embora sozinha.”"], [1, "Depoimento_003_Marcelo_Duarte", "“Henrique era praticamente um irmão para mim. Nunca tivemos problemas financeiros. Durante a\nreunião, ele parecia nervoso, mas não explicou o motivo. Fui embora porque precisava trabalhar cedo\nno domingo.”"], [1, "Depoimento_004_Beatriz_Ferraz", "DETETIVE TEX PUB\nCASO 07 — O ÚLTIMO BRINDE\n\nDEPOIMENTO 004\nRegistro: 22/11/2026\n\nTERMO DE DEPOIMENTO\nDOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO\n\n1. IDENTIFICAÇÃO DA DEPOENTE\nNome: Beatriz Ferraz\nIdade: 36 anos\nRelação com a vítima: Advogada da empresa\n\n2. REGISTRO DA OITIVA\nData: 22/11/2026 (domingo)\n\nHorário: 14h20\n\nReferência: Boletim de Ocorrência nº 007/2026\n\n3. DECLARAÇÃO DA DEPOENTE\n“Minha presença era exclusivamente profissional. Henrique queria discutir alguns detalhes jurídicos da\nvenda. Não tive nenhuma discussão com ele. Quando fui embora, estava tudo aparentemente normal.\nNão sei de nenhum problema grave na empresa.”"], [1, "Testemunha T-01", "Daniel Ribeiro — “Por volta das 20h45, ouvi Henrique mencionar uma auditoria. Ricardo respondeu: “Você já me\nmostrou isso na terça-feira. Não precisava trazer esse assunto aqui.” Mais tarde, por volta das 21h05,\nos dois discutiram novamente. Não consegui ouvir toda a conversa.”"], [1, "Testemunha T-02", "Camila Nunes — “Por volta das 21h30, vi Helena e Ricardo conversando afastados da mesa. Ouvi Helena dizer: “A\ngente precisa conversar depois, longe daqui.” Quando saí do Pub, depois das 23h, vi os dois\ncaminhando juntos em direção ao estacionamento. Não sei para onde foram.”"], [1, "Testemunha T-03", "André Martins — “Por volta das 21h50, quando passei pela mesa, ouvi Marcelo dizer a Henrique: “Eu sei que estou te\ndevendo, mas preciso de mais prazo.” Henrique respondeu que não aceitaria outro adiamento. Não\nouvi nenhum valor e não sei a origem da dívida.”"], [1, "Testemunha T-04", "Patrícia Gomes — “Por volta das 22h35, ouvi uma discussão entre Henrique e Beatriz. Ele disse que não voltaria atrás.\nEla respondeu em voz elevada: “Você não pode fazer isso comigo.” Não consegui ouvir o restante.\nNão vi o que aconteceu depois.”"], [3, "Cadastro de referências", "A-103: fornecedor regular; B-208: Ricardo Montenegro; C-301: fornecedor regular; D-409: fornecedor regular."], [3, "Relatório de auditoria inicial", "Operações B-208 sem justificativa comercial. O valor deve ser apurado pelo extrato físico. O responsável admitiu irregularidades em 17/11."], [4, "Índice de documentos", "Identifiquem os documentos físicos: transferência irregular de Ricardo; reserva de hotel de Helena; nota promissória de Marcelo; cartão profissional de Beatriz. Leiam somente o último dígito de cada identificador, nessa ordem."], [5, "Contratos sob análise", "C-41: R$ 1.200.000; C-42: R$ 950.000; C-43: R$ 1.650.000; C-44: R$ 400.000 (serviço entregue). Os três primeiros não têm comprovação de serviço. C-44 é regular."], [5, "Cadastro de empresas e autorizações", "C-41, C-42 e C-43: beneficiária final Beatriz Ferraz; assinaturas digitais vinculadas a ela. C-44: fornecedor independente. O esquema B-208 de Ricardo é separado."], [6, "Prova A — Auditoria complementar", "Beatriz Ferraz é beneficiária final de R$ 3,8 milhões em contratos fraudulentos. Henrique pretendia entregar as provas às autoridades em 23/11."], [6, "Prova B — Registro digital autenticado", "Mensagem recuperada de Beatriz, anterior à reunião: “Depois de sábado, Henrique não será mais um problema. A entrega de segunda-feira não vai acontecer.” Autoria confirmada pela perícia fictícia."], [6, "Prova C — Laudo definitivo", "Causa da morte: intoxicação por VX-47, substância exclusivamente fictícia. Vestígios compatíveis no copo (marcador 01) e na pulseira (marcador 04). Beatriz negou ser dona da pulseira. A fotografia do brinde permite confrontar a declaração. Registro audiovisual pericial autenticado confirma Beatriz como responsável pela contaminação do copo; não há participação dos demais suspeitos no ato."], [7, "Instruções da acusação", "No Dossiê Final, indiquem assassino, causa, motivação, motivo da suspeita sobre Ricardo e as três provas decisivas. Expliquem por que as outras mentiras não demonstram participação no homicídio."]], "Notas": [[0, "Missão 01", "Localizem o comprovante original de reserva. Juntem os dois últimos dígitos da reserva à idade da vítima. Digitem no GrayKey."], [1, "Missão 02", "Abram Reconstrução e identifiquem as quatro afirmações falsas. Consultem os comprovantes físicos de estacionamento."], [2, "Missão 03", "Cruzem o calendário empresarial físico com as mensagens e a transcrição. Código: dia e mês da entrega das provas (DDMM)."], [3, "Missão 04", "Identifiquem a referência de Ricardo no cadastro. Somem somente as operações correspondentes no relatório financeiro físico. Código: total em milhares de reais, com quatro dígitos."], [4, "Missão 05", "Associem Ricardo, Helena, Marcelo e Beatriz, nessa ordem, aos documentos físicos e usem somente o último dígito de cada identificador. Usem os quatro dígitos no GrayKey."], [5, "Missão 06", "Cruzem os contratos com o cadastro e o organograma físico. Somem os contratos fraudulentos do segundo esquema em milhares de reais (quatro dígitos)."], [6, "Missão 07", "Abram Reconstrução. Selecionem as três provas decisivas: motivação, premeditação e ligação material. Consultem a fotografia do brinde."]], "Contatos": [[0, "Ricardo Montenegro", "Sócio"], [0, "Helena Valença", "Ex-esposa"], [0, "Marcelo Duarte", "Amigo desde a adolescência"], [0, "Beatriz Ferraz", "Advogada"]], "WhatsApp": [[2, "Ricardo Montenegro", "out", "20/11 16:10", "Sábado, Tex Pub. Vamos conversar sobre a venda.", false], [2, "Ricardo Montenegro", "in", "20/11 16:12", "Você vai tocar naquele assunto de terça?", false], [2, "Helena Valença", "out", "20/11 16:20", "Precisamos resolver as pendências. Venha sábado.", false], [2, "Marcelo Duarte", "out", "20/11 16:30", "Não vou adiar nossa conversa novamente.", false], [2, "Beatriz Ferraz", "out", "20/11 16:40", "Traga os documentos da negociação.", false], [2, "Auditor", "out", "21/11 15:10", "Hoje vou colocar um ponto final nessa história. Amanhã, tudo será diferente.", false], [2, "Auditor", "in", "21/11 15:12", "A entrega às autoridades está confirmada para segunda-feira.", false], [4, "Helena Valença", "in", "19/11 18:10", "Ricardo e eu estamos juntos há cinco meses. Não quero que isso entre na disputa patrimonial.", true], [4, "Marcelo Duarte", "in", "21/11 17:05", "Sei que devo R$ 230 mil. Não conte à minha família sobre as apostas.", true], [4, "Marcelo Duarte", "in", "21/11 23:25", "Não vou trabalhar amanhã. Saí porque estava envergonhado da discussão.", true]], "Gravador": [[2, "Transcrição — nota de Henrique, 20/11", "Não é uma comemoração. Vou confrontar os quatro. A negociação ainda não foi concluída. Na segunda-feira entregaremos os documentos às autoridades."]], "E-mail": [[2, "Auditoria independente", "A venda está suspensa até a conclusão da auditoria. A entrega às autoridades permanece marcada para segunda-feira."], [6, "Mensagem programada de Henrique — 22/11", "Se você está recebendo esta mensagem, é porque não cancelei o envio. Não confie apenas nos números da auditoria. Existe uma segunda história por trás deles. Guarde os documentos. E, acima de tudo, não confie em quem deveria proteger os meus interesses."]], "Calendário": [[2, "Entrega de provas", "Segunda-feira — conferir data no calendário empresarial físico."]], "Ajustes": [[0, "iPhone de Henrique Valença", "Extração forense — Caso 07 — material fictício"]]};
 const appScreen=$('#appScreen'),appTitle=$('#appTitle'),appBody=$('#appBody');
 function initials(name){return name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
 function visible(name){const all=evidence[name]||[];return [all.filter(r=>has(r[0])),all.filter(r=>!has(r[0]))]}
@@ -771,35 +542,7 @@ function openWhatsChat(person){
  appBody.innerHTML=`<div class="waBg"><div class="chathead"><button class="back" onclick="openApp('WhatsApp')">‹</button><div class="avatar">${initials(person)}</div><div class="who"><b>${person}</b><small>WhatsApp</small></div></div><div class="waDay">Mensagens disponíveis na extração atual</div>${all.map(r=>`<div class="waBubble ${r[2]==='out'?'out':'in'}">${r[5]?'<small style="display:block;color:#8e8e93;margin-bottom:3px">RECUPERADA</small>':''}${r[4]}<time>${r[3]}${r[2]==='out'?' ✓✓':''}</time><div style="clear:both"></div></div>`).join('')}<div class="waInput"><span>＋</span><div class="fake">Mensagem</div><span>🎙</span></div></div>`;
 }
 
-const fileDetails={
-
- "testemunho_e_imagem_2228_n5.txt":`<div class="notecard"><b>RECONSTRUÇÃO • IMAGEM E TESTEMUNHO</b><p><b>16/10/2026 • 22h28:</b> a câmera do salão, novamente ativa desde 22h25, registra Camila Torres entrando pela passagem lateral. O registro foi exportado com hash e relógio conferido com o servidor.</p><p>Um funcionário declarou, em depoimento colhido em 17/10, ter visto Camila entrar por aquela passagem logo após o retorno das câmeras. Ele não presenciou a agressão.</p><p>Confrontar com o depoimento de Camila, a credencial CT-03 e o registro da porta. Nenhuma imagem do golpe foi recuperada.</p></div>`,
- "pericia_casaco_n5.txt":`<div class="notecard"><b>PERÍCIA • VESTÍGIOS COMPARATIVOS</b><p>Casaco atribuído a Camila recolhido e lacrado em 17/10/2026. Na manga direita: micropartículas metálicas e fragmentos de tinta compatíveis com o suporte de ferramentas do corredor de serviço.</p><p>Amostras do suporte e do tecido foram coletadas separadamente, identificadas e lacradas. O resultado demonstra contato compatível com a área de manutenção, mas não prova isoladamente o momento nem a ferramenta exata do golpe.</p><p>Cruzar com retorno pelo acesso lateral às 22h28 e com o laudo da lesão.</p></div>`,
- "ultimato_e_conciliacao_n5.txt":`<div class="notecard"><b>ARQUIVO RECUPERADO • RASCUNHO DE RAFAEL</b><p><b>16/10/2026 • 21h59 • não enviado:</b> “Amanhã cedo encaminho os extratos e os documentos à auditoria independente. A pessoa que preparou a conciliação sabe que os valores não chegaram ao fornecedor. Hoje vou exigir uma explicação e não aceitarei apagar nada.”</p><p>Às 22h01, Camila escreveu pedindo que a documentação não fosse retirada da mesa antes de nova conferência. O vínculo com a conta de destino surge no relatório bancário final.</p><small>Este rascunho é anterior à saída de Rafael da mesa; não é comunicação pós-morte.</small></div>`,
- "checagem_ligacao_camila_n5.txt":`<div class="notecard"><b>REGISTRO EXTERNO • OPERADORA</b><p>Relatório da linha principal informada por Camila: <b>nenhuma chamada recebida ou atendida entre 22h12 e 22h28 de 16/10/2026</b>.</p><p>Camila declarou ter saído da mesa para atender uma ligação. O relatório contradiz essa justificativa quanto à linha principal; não exclui uso de outro aparelho ou aplicativo.</p><p>Cruzar com a linha secundária, a credencial CT-03 e a imagem das 22h28.</p></div>`,
-
- "rastro_bancario_final_n5.txt":`<div class="notecard"><b>AUDITORIA • LIQUIDAÇÃO BANCÁRIA</b><p>Conta do fornecedor original: <b>não recebeu</b> a transferência questionada. Conta de destino: intermediária <b>CT Gestão Operacional</b>, cuja administradora consta como <b>Camila Torres</b> no cadastro bancário validado.</p><p>A conciliação operacional havia marcado a nota como quitada. A confirmação do fornecedor e a titularidade bancária contradizem esse lançamento.</p><small>O desvio financeiro é um fato distinto do homicídio; confrontar com outras evidências.</small></div>`,
- "vinculo_linha_secundaria_n5.txt":`<div class="notecard"><b>EXTRAÇÃO • SMS DE 22h06</b><p>16/10/2026 • 22h06: mensagem convocando Rafael ao acesso de serviço, sozinho.</p><p>O número emissor é uma linha secundária cujo cadastro de recuperação utiliza o mesmo e-mail e documento da titular de <b>CT Gestão Operacional</b>.</p><p>Conferir a titularidade no arquivo de liquidação e comparar com o depoimento de quem afirmou ter se afastado apenas para atender uma ligação.</p><small>Metadado recuperado por perícia; não é uma nova mensagem enviada após o crime.</small></div>`,
- "controle_acesso_servico_n5.txt":`<div class="notecard"><b>ACESSO DE SERVIÇO • REGISTROS DE SENSOR</b><p>16/10/2026 • <b>22h16</b>: abertura da porta interna do salão para área lateral.</p><p><b>22h19</b>: presença detectada na área de serviço; registro de proximidade de credencial de operações <b>CT-03</b>.</p><p><b>22h28</b>: retorno da mesma credencial pela passagem lateral ao salão.</p><p>A credencial CT-03 foi entregue nominalmente a Camila Torres em 02/10/2026, conforme termo de retirada. Não há registro de devolução ou empréstimo. Cruzar com o depoimento, a imagem pós-22h25 e o relato do funcionário.</p><small>Sensor e credencial não são imagem de câmera. A câmera volta a gravar às 22h25: conferir a imagem de 22h28 no arquivo de retorno.</small></div>`,
- "pericia_material_n5.txt":`<div class="notecard"><b>LAUDO COMPLEMENTAR • LOCAL DE SERVIÇO</b><p>Rafael apresentou trauma craniano por <b>impacto concentrado</b>, incompatível com uma queda simples. Estimativa investigativa do evento: <b>aproximadamente 22h22</b>; atendimento às 22h58 não é horário de morte.</p><p>Um instrumento metálico do suporte de manutenção não foi localizado. Microvestígios compatíveis com contato metálico foram identificados próximos ao ponto de impacto.</p><p>O posicionamento de objetos foi alterado depois da agressão; o telefone da vítima desapareceu. Perícia comparativa: partículas metálicas e tinta do suporte de manutenção foram encontradas na manga do casaco recolhido de Camila em 17/10, com cadeia de custódia documentada. Compatibilidade não identifica sozinha a ferramenta do golpe.</p></div>`,
- "solicitacao_logs_andre_n4.txt":`<div class="notecard"><b>SUPORTE • PEDIDO DE ACESSO</b><p><b>16/10/2026 • 20h36:</b> solicitação registrada por André Martins para exportar trilha de operações do usuário compartilhado ADM, sob alegação de que seu nome estava sendo associado a autorizações financeiras que contestava.</p><p><b>21h08:</b> suporte respondeu que a extração dependeria de autorização da auditoria no dia seguinte.</p><p>André tinha acesso técnico ao gateway de manutenção do pub, mas não autorização para extrair registros financeiros naquela noite.</p><small>Documento anterior à interrupção das câmeras; não comprova o que André fez depois.</small></div>`,
- "auditoria_gateway_andre_n5.txt":`<div class="notecard"><b>RELATÓRIO DE SUPORTE • GATEWAY DE MANUTENÇÃO</b><p>Exportação dos eventos preservados em 17/10/2026. <b>22h13:</b> login remoto por certificado instalado no notebook de André Martins. <b>22h14:</b> comando explícito PAUSE_RECORDER. <b>22h15:</b> sessão de leitura no servidor de auditoria ADM, através do mesmo gateway. <b>22h23:</b> exportação de pacote LOG-ADM-1610. <b>22h25:</b> RESUME_RECORDER.</p><p>O vídeo foi interrompido por comando administrativo, não por falha elétrica. O gateway de manutenção permitia alcançar tanto o gravador quanto o servidor de logs; a leitura de logs não movimentava valores bancários.</p><p>O operador não tinha autorização para a exportação naquela noite. O log identifica o certificado do notebook, mas não registra presença física na área de serviço.</p></div>`,
- "extracao_registros_adm_n5.txt":`<div class="notecard"><b>PERÍCIA DIGITAL • NOTEBOOK DE ANDRÉ</b><p>Arquivo LOG-ADM-1610 encontrado na pasta de exportações, criado em <b>16/10/2026 às 22h23</b>. Seu resumo criptográfico corresponde ao pacote registrado no gateway.</p><p>O pacote contém trilha de autenticação do usuário ADM, incluindo sessões de terceiros não individualizadas. Não inclui imagens da área de serviço nem ordens de pagamento.</p><p>Um rascunho local salvo às <b>22h31</b> registra: “Peguei a cópia antes que alterem os logs. Não tinha permissão. Se descobrirem o acesso, vão dizer que fui eu de novo.”</p><p>O rascunho é compatível com a intenção de preservar prova em sua defesa e ocultar o acesso não autorizado; não demonstra conhecimento antecipado da agressão.</p></div>`,
- "log_remoto_cameras_n5.txt":`<div class="notecard"><b>MONITORAMENTO • AUDITORIA DE LOG</b><p><b>22h14:</b> sessão remota a partir de equipamento associado a André Martins; comando de interrupção da gravação.</p><p><b>22h25:</b> retomada do sinal. A intervenção foi remota, e não comprova presença de André no corredor.</p><p><b>22h13:</b> autenticação no gateway de manutenção; <b>22h14:</b> gravação colocada em pausa administrativa; <b>22h15:</b> conexão ao servidor de registros ADM; <b>22h23:</b> exportação concluída; <b>22h25:</b> gravação reativada.</p><p>O gateway fornece acesso de manutenção a equipamentos diferentes. Os registros de vídeo e os dados financeiros permanecem sistemas distintos. O log não informa deslocamento físico do operador.</p></div>`,
- "relatorio_integracao_n5.txt":`<div class="notecard"><b>ÍNDICE DE ANEXOS • CONFERÊNCIA TÉCNICA</b><p>Fontes preservadas: registros bancários, cadastro de telefonia, controle de acesso, monitoramento, perícia do local e extração de equipamento de informática.</p><p>Horários de origem foram mantidos; cada documento registra sua própria procedência. Os relatórios produzidos em 17/10 foram anexados ao pacote forense posteriormente.</p><p>A extração não inclui imagens do intervalo de gravação interrompida.</p></p></div>`,
-
- "quadro_de_confronto_n4.txt":`<div class="notecard"><b>QUINTA DOSE — QUADRO DE CONFRONTO</b><p>Beatriz: assinatura contestada. Gustavo: notas emitidas sem confirmação de recebimento. André: acesso técnico contestado. Camila: conciliação sem comprovante bancário final.</p><p><b>Rafael:</b> solicitou documentos originais. A fraude e a morte exigem provas independentes.</p><small>Documento de trabalho; nenhuma autoria estabelecida.</small></div>`,
- "relatorio_tecnico_parcial_n4.txt":`<div class="notecard"><b>MONITORAMENTO — RELATÓRIO PARCIAL</b><p>16/10/2026 • 22h14–22h25: indisponibilidade de gravação.</p><p>Não é possível deduzir, apenas pela falha, quem circulou no corredor. Atribuição de comando remoto depende de log íntegro, equipamento de origem e confronto técnico.</p><p><b>Pendente:</b> identificação de operador e relação com os fatos.</p></div>`,
- "indice_fotografico_n4.txt":`<div class="notecard"><b>ÍNDICE DE IMAGENS DE REFERÊNCIA</b><p>Os cinco retratos liberados no Nível 4 são reproduções dos perfis dos envolvidos, para reconhecimento visual. <b>Não são fotografias registradas na noite do crime</b> e não demonstram localização ou horário.</p><p>Documentos adicionais permitem comparar versões, mas não encerram a investigação.</p></div>`,
-
- "comparativo_nota_pagamento.txt":`<div class="notecard"><b>QUINTA DOSE — NOTA × PAGAMENTO</b><p>Conferência: 16/10/2026. Uma nota fiscal de fornecedor foi confirmada como emitida. O fornecedor, porém, não localizou o pagamento que a planilha da Quinta Dose registrou como quitado.</p><p><b>Constatação:</b> a divergência entre lançamento e recebimento é concreta. <b>Pendente:</b> extrato de liquidação, conta beneficiária e responsável pela autorização bancária.</p><small>Não atribui autoria dos desvios nem do homicídio.</small></div>`,
- "matriz_de_responsabilidades.txt":`<div class="notecard"><b>QUINTA DOSE — ETAPAS DISTINTAS</b><p>1. Emissão do contrato. 2. Registro contábil. 3. Autorização financeira. 4. Liquidação bancária e beneficiário.</p><p>O perfil ADM pode registrar a operação sem identificar o beneficiário final. A assinatura atribuída a Beatriz segue contestada; André contesta o uso de credenciais; Gustavo apresentou notas de fornecedores; Camila preparou conciliação operacional.</p><p><b>Conclusão provisória:</b> nenhuma dessas informações, isoladamente, resolve a fraude.</p></div>`,
- "ocorrencia_monitoramento.txt":`<div class="notecard"><b>TEX PUB — OCORRÊNCIA DE CÂMERAS</b><p>16/10/2026 • interrupção entre 22h14 e 22h25.</p><p>Os registros visuais desse intervalo não estão disponíveis. A ausência de imagens não equivale à ausência de movimentação.</p><p><b>Não determinado nesta etapa:</b> motivo da interrupção, operador do sistema ou relação com o homicídio.</p></div>`,
-
- "auditoria_preliminar_quinta_dose.txt":`<div class="notecard"><b>QUINTA DOSE — REVISÃO PRELIMINAR</b><p>Data da conferência: 16/10/2026</p><p>Existem pagamentos contestados vinculados a contratos e fornecedores. A trilha disponível aponta uso de perfil administrativo compartilhado.</p><p>O nome de Beatriz aparece em documento cuja assinatura ela contesta. Gustavo questiona repasses a fornecedores. André nega ter autorizado movimentações com suas credenciais.</p><p><b>Pendente:</b> identificar beneficiários, operadores reais e autorizações bancárias.</p><small>Relatório incompleto: não atribui autoria de fraude nem de homicídio.</small></div>`,
- "registro_acessos_sistema.txt":`<div class="notecard"><b>REGISTRO DE ACESSOS — CÓPIA PARCIAL</b><p>Perfis analisados: ADM e suporte técnico.</p><p>Foram encontrados acessos contestados fora dos horários habituais de operação. O registro de login, isoladamente, não identifica quem estava diante do dispositivo.</p><p>André possui conhecimento técnico do sistema, mas isso não demonstra autorização de pagamentos.</p><p><b>Observação:</b> registro financeiro e sistema de câmeras são ambientes distintos.</p></div>`,
- "convocacao_mesa13.txt":`<div class="notecard"><b>QUINTA DOSE — REUNIÃO EXTRAORDINÁRIA</b><p>Data: sexta-feira, 16/10/2026</p><p>Local: Tex Pub — Mesa 13</p><p>Início da discussão: 21h45</p><p>Pauta: contratos contestados, transferências e registros de acesso.</p><p>Participantes: Rafael, Beatriz, Gustavo, Camila e André.</p><p><small>Documento de organização da reunião; não é prova de autoria de fraude.</small></p></div>`
-};
+const fileDetails={"Boletim_007_2026": "<div class=\"notecard\"><b>Boletim_007_2026</b><p>DETETIVE TEX PUB<br>CASO 07 — O ÚLTIMO BRINDE<br><br>B.O. Nº 007/2026<br>Registro: 22/11/2026<br><br>BOLETIM DE OCORRÊNCIA<br>DOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO<br><br>1. DADOS DO FATO<br>Natureza: Morte suspeita — possível intoxicação.<br>Data da reunião: 21/11/2026 (sábado).<br>Localização da vítima: 22/11/2026 (domingo), às 00h12.<br>Chegada da polícia: 00h25.<br>Local: Tex Pub — Jundiaí/SP.<br><br>2. IDENTIFICAÇÃO DA VÍTIMA<br>Nome: Henrique Valença Idade: 42 anos<br>Profissão: Empresário Estado civil: Divorciado<br>Empresa: Valença Desenvolvimento<br><br>3. RELATO DA OCORRÊNCIA<br>Durante o encerramento do estabelecimento, um funcionário encontrou Henrique Valença inconsciente junto<br>a uma das mesas. O atendimento de emergência constatou o óbito. A vítima havia participado de uma<br>reunião particular com quatro pessoas na noite anterior. Não foram observados sinais aparentes de violência<br>física. A causa da morte permanece sob investigação.<br><br>4. PARTICIPANTES DA REUNIÃO<br>Nome<br><br>Relação com a vítima<br><br>Ricardo Montenegro<br><br>Sócio empresarial<br><br>Helena Valença<br><br>Ex-esposa<br><br>Marcelo Duarte<br><br>Amigo de longa data<br><br>Beatriz Ferraz<br><br>Advogada da empresa<br><br>5. EVIDÊNCIAS RECOLHIDAS — MARCADORES FOTOGRÁFICOS<br>01 — Copo de cerveja da vítima.<br>02 — Celular da vítima.<br>03 — Envelope com documentos.<br>04 — Pulseira prateada com pedra violeta.<br><br>6. PROVIDÊNCIAS<br>Preservação do local, recolhimento das evidências, solicitação de exames periciais e coleta de depoimentos.<br>Investigação em andamento.<br><br>DETETIVE TEX PUB • MATERIAL FICTÍCIO • 007/2026</p></div>", "Laudo_Pericial_Preliminar_071-A_2026": "<div class=\"notecard\"><b>Laudo_Pericial_Preliminar_071-A_2026</b><p>DETETIVE TEX PUB<br><br>LAUDO Nº 071-A/2026<br>Referência: B.O. 007/2026<br><br>CASO 07 — O ÚLTIMO BRINDE<br><br>LAUDO PERICIAL PRELIMINAR<br>DOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO<br><br>1. IDENTIFICAÇÃO DO EXAME<br>Laudo: 071-A/2026<br>Ocorrência vinculada: 007/2026<br>Examinado: Henrique Valença, 42 anos<br>Local da ocorrência: Tex Pub — Jundiaí/SP<br>Localização da vítima: 22/11/2026, às 00h12.<br>2. OBJETIVO<br>Registrar os achados preliminares do exame pericial e indicar a necessidade de análises<br>complementares para esclarecimento da causa da morte.<br>3. ACHADOS PRELIMINARES<br>• Ausência de lesões traumáticas relevantes.<br>• Ausência de sinais aparentes de luta corporal.<br>• Indícios de intoxicação por substância ainda não identificada.<br>4. EVIDÊNCIAS ENCAMINHADAS PARA ANÁLISE<br>01 — Copo de cerveja da vítima.<br>02 — Celular da vítima.<br>03 — Envelope com documentos.<br>04 — Pulseira prateada com pedra violeta.<br>Os resultados das análises desses materiais permanecem pendentes.<br>5. CONCLUSÃO PRELIMINAR<br>A hipótese de homicídio não pode ser descartada. A causa definitiva da morte e a eventual relação entre<br>os materiais recolhidos e o óbito dependem dos exames complementares solicitados.<br>STATUS: LAUDO DEFINITIVO PENDENTE<br><br>DETETIVE TEX PUB • MATERIAL FICTÍCIO • 007/2026</p></div>", "Depoimento_001_Ricardo_Montenegro": "<div class=\"notecard\"><b>Depoimento_001_Ricardo_Montenegro</b><p>“Henrique me convidou para comemorar a venda da empresa. Não sabia de nenhuma auditoria.<br>Tivemos uma pequena discussão sobre o futuro dos negócios, mas nada sério. Saí do Pub e fui<br>diretamente para casa. Não tenho nenhum motivo para desejar a morte dele.”</p></div>", "Depoimento_002_Helena_Valenca": "<div class=\"notecard\"><b>Depoimento_002_Helena_Valenca</b><p>DETETIVE TEX PUB<br>CASO 07 — O ÚLTIMO BRINDE<br><br>DEPOIMENTO 002<br>Registro: 22/11/2026<br><br>TERMO DE DEPOIMENTO<br>DOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO<br><br>1. IDENTIFICAÇÃO DA DEPOENTE<br>Nome: Helena Valença<br>Idade: 39 anos<br>Relação com a vítima: Ex-esposa<br>Estado civil: Divorciada<br>2. REGISTRO DA OITIVA<br>Data: 22/11/2026 (domingo)<br><br>Horário: 10h30<br><br>Referência: Boletim de Ocorrência nº 007/2026<br>3. DECLARAÇÃO DA DEPOENTE<br>“Apesar do divórcio, eu e Henrique mantínhamos uma relação respeitosa. Fui convidada porque ainda<br>existem questões patrimoniais entre nós. Não tenho nenhuma relação pessoal com Ricardo. Depois<br>da reunião, fui embora sozinha.”</p></div>", "Depoimento_003_Marcelo_Duarte": "<div class=\"notecard\"><b>Depoimento_003_Marcelo_Duarte</b><p>“Henrique era praticamente um irmão para mim. Nunca tivemos problemas financeiros. Durante a<br>reunião, ele parecia nervoso, mas não explicou o motivo. Fui embora porque precisava trabalhar cedo<br>no domingo.”</p></div>", "Depoimento_004_Beatriz_Ferraz": "<div class=\"notecard\"><b>Depoimento_004_Beatriz_Ferraz</b><p>DETETIVE TEX PUB<br>CASO 07 — O ÚLTIMO BRINDE<br><br>DEPOIMENTO 004<br>Registro: 22/11/2026<br><br>TERMO DE DEPOIMENTO<br>DOCUMENTO FICTÍCIO • USO EXCLUSIVO NO JOGO<br><br>1. IDENTIFICAÇÃO DA DEPOENTE<br>Nome: Beatriz Ferraz<br>Idade: 36 anos<br>Relação com a vítima: Advogada da empresa<br><br>2. REGISTRO DA OITIVA<br>Data: 22/11/2026 (domingo)<br><br>Horário: 14h20<br><br>Referência: Boletim de Ocorrência nº 007/2026<br><br>3. DECLARAÇÃO DA DEPOENTE<br>“Minha presença era exclusivamente profissional. Henrique queria discutir alguns detalhes jurídicos da<br>venda. Não tive nenhuma discussão com ele. Quando fui embora, estava tudo aparentemente normal.<br>Não sei de nenhum problema grave na empresa.”</p></div>", "Testemunha T-01": "<div class=\"notecard\"><b>Testemunha T-01</b><p>Daniel Ribeiro — “Por volta das 20h45, ouvi Henrique mencionar uma auditoria. Ricardo respondeu: “Você já me<br>mostrou isso na terça-feira. Não precisava trazer esse assunto aqui.” Mais tarde, por volta das 21h05,<br>os dois discutiram novamente. Não consegui ouvir toda a conversa.”</p></div>", "Testemunha T-02": "<div class=\"notecard\"><b>Testemunha T-02</b><p>Camila Nunes — “Por volta das 21h30, vi Helena e Ricardo conversando afastados da mesa. Ouvi Helena dizer: “A<br>gente precisa conversar depois, longe daqui.” Quando saí do Pub, depois das 23h, vi os dois<br>caminhando juntos em direção ao estacionamento. Não sei para onde foram.”</p></div>", "Testemunha T-03": "<div class=\"notecard\"><b>Testemunha T-03</b><p>André Martins — “Por volta das 21h50, quando passei pela mesa, ouvi Marcelo dizer a Henrique: “Eu sei que estou te<br>devendo, mas preciso de mais prazo.” Henrique respondeu que não aceitaria outro adiamento. Não<br>ouvi nenhum valor e não sei a origem da dívida.”</p></div>", "Testemunha T-04": "<div class=\"notecard\"><b>Testemunha T-04</b><p>Patrícia Gomes — “Por volta das 22h35, ouvi uma discussão entre Henrique e Beatriz. Ele disse que não voltaria atrás.<br>Ela respondeu em voz elevada: “Você não pode fazer isso comigo.” Não consegui ouvir o restante.<br>Não vi o que aconteceu depois.”</p></div>", "Cadastro de referências": "<div class=\"notecard\"><b>Cadastro de referências</b><p>A-103: fornecedor regular; B-208: Ricardo Montenegro; C-301: fornecedor regular; D-409: fornecedor regular.</p></div>", "Relatório de auditoria inicial": "<div class=\"notecard\"><b>Relatório de auditoria inicial</b><p>Operações B-208 sem justificativa comercial. O valor deve ser apurado pelo extrato físico. O responsável admitiu irregularidades em 17/11.</p></div>", "Índice de documentos": "<div class=\"notecard\"><b>Índice de documentos</b><p>Identifiquem os documentos físicos: transferência irregular de Ricardo; reserva de hotel de Helena; nota promissória de Marcelo; cartão profissional de Beatriz. Leiam somente o último dígito de cada identificador, nessa ordem.</p></div>", "Contratos sob análise": "<div class=\"notecard\"><b>Contratos sob análise</b><p>C-41: R$ 1.200.000; C-42: R$ 950.000; C-43: R$ 1.650.000; C-44: R$ 400.000 (serviço entregue). Os três primeiros não têm comprovação de serviço. C-44 é regular.</p></div>", "Cadastro de empresas e autorizações": "<div class=\"notecard\"><b>Cadastro de empresas e autorizações</b><p>C-41, C-42 e C-43: beneficiária final Beatriz Ferraz; assinaturas digitais vinculadas a ela. C-44: fornecedor independente. O esquema B-208 de Ricardo é separado.</p></div>", "Prova A — Auditoria complementar": "<div class=\"notecard\"><b>Prova A — Auditoria complementar</b><p>Beatriz Ferraz é beneficiária final de R$ 3,8 milhões em contratos fraudulentos. Henrique pretendia entregar as provas às autoridades em 23/11.</p></div>", "Prova B — Registro digital autenticado": "<div class=\"notecard\"><b>Prova B — Registro digital autenticado</b><p>Mensagem recuperada de Beatriz, anterior à reunião: “Depois de sábado, Henrique não será mais um problema. A entrega de segunda-feira não vai acontecer.” Autoria confirmada pela perícia fictícia.</p></div>", "Prova C — Laudo definitivo": "<div class=\"notecard\"><b>Prova C — Laudo definitivo</b><p>Causa da morte: intoxicação por VX-47, substância exclusivamente fictícia. Vestígios compatíveis no copo (marcador 01) e na pulseira (marcador 04). Beatriz negou ser dona da pulseira. A fotografia do brinde permite confrontar a declaração. Registro audiovisual pericial autenticado confirma Beatriz como responsável pela contaminação do copo; não há participação dos demais suspeitos no ato.</p></div>", "Instruções da acusação": "<div class=\"notecard\"><b>Instruções da acusação</b><p>No Dossiê Final, indiquem assassino, causa, motivação, motivo da suspeita sobre Ricardo e as três provas decisivas. Expliquem por que as outras mentiras não demonstram participação no homicídio.</p></div>"};
 function renderFiles(){const [v,h]=visible("Arquivos");return `<div class="sectionlabel">No meu iPhone</div><div class="iosgroup">${v.map(r=>`<div class="iosrow" ${fileDetails[r[1]]?`onclick="openFile('${r[1]}')" style="cursor:pointer"`:''}><div class="avatar">${r[1].endsWith('.pdf')?'PDF':'▤'}</div><div class="main"><b>${r[1]} <span class="level">N${r[0]}</span></b><p>${r[2]}</p></div>${fileDetails[r[1]]?'<span class="chev">›</span>':''}</div>`).join('')}</div>${lockMsg(h.length)}`}
 function openFile(name){appTitle.textContent=name;appBody.innerHTML=`<button class="back" onclick="openApp('Arquivos')" style="margin-bottom:12px">‹ Arquivos</button>${fileDetails[name]||''}`}
 
@@ -807,22 +550,15 @@ function renderMail(){const [v,h]=visible("E-mail");return `<div class="sectionl
 function renderNotes(){const [v,h]=visible("Notas");return v.map(r=>`<div class="notecard"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')+lockMsg(h.length)}
 function renderSafari(){const [v,h]=visible("Safari");return `<div class="safariTop"><div class="address">🔒 Histórico e Pesquisas</div></div>${v.map(r=>`<div class="searchitem"><small>${r[1]}</small><div style="margin-top:6px;font-size:15px">${r[2]}</div></div>`).join('')}${lockMsg(h.length)}`}
 function renderMaps(){const [v,h]=visible("Mapas");return `<div class="mapmock"><div class="pin">📍</div></div><div class="iosgroup">${v.map(r=>`<div class="iosrow"><div class="main"><b>${r[1]}</b><p>${r[2]}</p></div></div>`).join('')}</div>${lockMsg(h.length)}`}
-function renderCalendar(){const [v,h]=visible("Calendário");return `<div class="calday"><div class="date">SEXTA-FEIRA, 16 DE OUTUBRO</div>${v.map(r=>`<div class="event"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')}</div>${lockMsg(h.length)}`}
-function playCaseAudio(index){
- const records=visible("Gravador")[0],item=records[index];if(!item)return;
- if(!("speechSynthesis" in window)){alert("Reprodução de voz não disponível neste navegador. Leia a transcrição.");return;}
- window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(item[2]);u.lang="pt-BR";u.rate=.92;
- const voices=window.speechSynthesis.getVoices(),br=voices.find(v=>v.lang.toLowerCase()==="pt-br");if(br)u.voice=br;
- window.speechSynthesis.speak(u);
-}
-function renderVoice(){const [v,h]=visible("Gravador");return v.map((r,i)=>`<div class="voiceitem"><b>${r[1]}</b><div class="wave"></div><button class="voicePlay" onclick="playCaseAudio(${i})">▶ Ouvir gravação reconstruída</button><p style="color:#666;font-size:13px"><b>Transcrição:</b> ${r[2]}</p><small>Voz sintetizada pelo navegador para representar o áudio fictício.</small></div>`).join('')+lockMsg(h.length)}
+function renderCalendar(){const [v,h]=visible("Calendário");return `<div class="calday"><div class="date">NOVEMBRO DE 2026</div>${v.map(r=>`<div class="event"><b>${r[1]}</b><p>${r[2]}</p></div>`).join('')}</div>${lockMsg(h.length)}`}
+function renderVoice(){return genericRows("Gravador")}
 function renderTerminal(){
  appScreen.classList.add('forensic');
- const labels=["Primeiros registros do celular","Contratos e rastros financeiros","Documentos cruzados e lacunas de prova","Confronto de versões e pessoas","Reconstrução final e confronto de provas"];
- return `<div class="terminalbox"><b>GrayKey Bridge — Caso 06</b><p style="color:#aaa;font-size:13px">Investigue o ambiente e os aplicativos do celular para descobrir os códigos de desbloqueio. Os níveis devem ser abertos em ordem.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
+ const labels=["Quatro versões","A falsa comemoração","O dinheiro desaparecido","Segredos e traições","A segunda fraude","A evidência esquecida","A acusação"];
+ return `<div class="terminalbox"><b>GrayKey Bridge — Caso 07</b><p style="color:#aaa;font-size:13px">Consulte Notas para a missão atual. Investigue o ambiente e os aplicativos do celular para descobrir os códigos de desbloqueio. Os níveis devem ser abertos em ordem.</p><input id="pinInput" inputmode="numeric" placeholder="Código"><button id="pinBtn">DESBLOQUEAR</button><div id="pinResult"></div></div><div class="terminalbox">${labels.map((x,i)=>`<div class="levelrow"><b>Nível ${i+1}</b><div class="${has(i+1)?'ok':'bad'}">${has(i+1)?'● LIBERADO — '+x:'○ BLOQUEADO'}</div></div>`).join('')}</div><div class="terminalbox"><button id="resetBtn" style="background:#333">Resetar investigação</button></div>`;
 }
 
-const casePhotos=[{"id": "IMG_1041", "level": 1, "src": "assets/caso06/IMG_1041.jpg", "label": "Mesa 13 — imagem de referência da mesa e dos documentos; não estabelece horário nem presença dos envolvidos."}, {"id": "IMG_1042", "level": 1, "src": "assets/caso06/IMG_1042.jpg", "label": "Movimentações financeiras — Quinta Dose — Lançamentos destacados. A coluna de autorização mostra ADM, sem identificar o operador."}, {"id": "IMG_1043", "level": 1, "src": "assets/caso06/IMG_1043.jpg", "label": "Pendrive lacrado — referência contextual, sem conteúdo autenticado."}, {"id": "IMG_1044", "level": 1, "src": "assets/caso06/IMG_1044.jpg", "label": "Corredor de serviço — imagem de referência; não registra quem passou por ali na noite do crime."}, {"id": "IMG_1045", "level": 1, "src": "assets/caso06/IMG_1045.jpg", "label": "Contrato em nome de Beatriz Almeida — Documento fotografado para verificação de autenticidade. A autoria da assinatura permanece em disputa."}, {"id": "IMG_1046", "level": 1, "src": "assets/caso06/IMG_1046.jpg", "label": "Monitoramento — perda de sinal — Registro do sistema de câmeras. A interrupção ocorreu entre 22h14 e 22h25; a imagem não identifica o responsável."}, {"id": "IMG_1047", "level": 2, "src": "assets/caso06/IMG_1047.jpg", "label": "Conciliação financeira — Pagamentos registrados sob perfil ADM; o operador efetivo não foi identificado."}, {"id": "IMG_1048", "level": 2, "src": "assets/caso06/IMG_1048.jpg", "label": "Exportação de acessos — Registro parcial de logins contestados; não prova autoria dos pagamentos."}, {"id": "IMG_1049", "level": 2, "src": "assets/caso06/IMG_1049.jpg", "label": "Contrato contestado — Beatriz nega autenticidade da assinatura; documento ainda não periciado."}, {"id": "IMG_1050", "level": 2, "src": "assets/caso06/IMG_1050.jpg", "label": "Lista de verificação — Rafael separava responsabilidades de cada ex-sócio."}, {"id": "IMG_1051", "level": 2, "src": "assets/caso06/IMG_1051.jpg", "label": "Matriz de conferência — cruzamento de contratos, aprovações e beneficiários; ainda sem autoria identificada."}, {"id": "IMG_1052", "level": 2, "src": "assets/caso06/IMG_1052.jpg", "label": "Registro de preservação — anotações de Rafael sobre documentos originais e lacunas na auditoria."}, {"id": "IMG_1053", "level": 3, "src": "assets/caso06/IMG_1053.jpg", "label": "Nota de fornecedor — emissão confirmada, pagamento lançado sem recebimento localizado."}, {"id": "IMG_1054", "level": 3, "src": "assets/caso06/IMG_1054.jpg", "label": "Etapas da fraude: nota emitida, quitação registrada, recebimento não confirmado."}, {"id": "IMG_1055", "level": 3, "src": "assets/caso06/IMG_1055.jpg", "label": "Duas versões de contrato — assinatura contestada; autoria não estabelecida."}, {"id": "IMG_1056", "level": 3, "src": "assets/caso06/IMG_1056.jpg", "label": "Ocorrência de câmeras — 22h14 a 22h25; operador desconhecido nesta etapa."}, {"id": "IMG_1057", "level": 3, "src": "assets/caso06/IMG_1057.jpg", "label": "Quadro de versões: contratos, fornecedores, acesso técnico e conciliação."}, {"id": "IMG_1058", "level": 3, "src": "assets/caso06/IMG_1058.jpg", "label": "Dois avisos distintos: o registro de 21h27 não é a convocação de 22h06."}, {"id": "IMG_1059", "level": 4, "src": "assets/caso06/IMG_1059.jpg", "label": "Rafael e o ultimato de auditoria: intenção de entregar documentos na manhã seguinte."}, {"id": "IMG_1060", "level": 4, "src": "assets/caso06/IMG_1060.jpg", "label": "Beatriz: confronto das duas vias do contrato e assinatura contestada."}, {"id": "IMG_1061", "level": 4, "src": "assets/caso06/IMG_1061.jpg", "label": "Gustavo: fornecedor confirma nota, mas nega recebimento."}, {"id": "IMG_1062", "level": 4, "src": "assets/caso06/IMG_1062.jpg", "label": "Camila: conciliação operacional não comprova conta de destino."}, {"id": "IMG_1063", "level": 4, "src": "assets/caso06/IMG_1063.jpg", "label": "André: acesso técnico e autorização bancária são registros diferentes."}, {"id": "IMG_1064", "level": 4, "src": "assets/caso06/IMG_1064.jpg", "label": "Quadro comparativo dos quatro depoimentos e lacunas documentais."}, {"id": "IMG_1065", "level": 4, "src": "assets/caso06/IMG_1065.jpg", "label": "Monitoramento: interrupção 22h14–22h25 sem identificação de circulação."}, {"id": "IMG_1066", "level": 5, "src": "assets/caso06/IMG_1066.jpg", "label": "Rastro bancário: destino CT Gestão Operacional; administradora Camila Torres."}, {"id": "IMG_1067", "level": 5, "src": "assets/caso06/IMG_1067.jpg", "label": "SMS de 22h06: vínculo cadastral da linha secundária com CT Gestão Operacional."}, {"id": "IMG_1068", "level": 5, "src": "assets/caso06/IMG_1068.jpg", "label": "Acesso lateral: credencial CT-03 detectada às 22h19 e 22h28."}, {"id": "IMG_1069", "level": 5, "src": "assets/caso06/IMG_1069.jpg", "label": "Perícia: impacto craniano, instrumento metálico ausente e cena alterada."}, {"id": "IMG_1070", "level": 5, "src": "assets/caso06/IMG_1070.jpg", "label": "Câmeras: acesso remoto associado a André, separado da agressão."}, {"id": "IMG_1071", "level": 5, "src": "assets/caso06/IMG_1071.jpg", "label": "Registro das 22h28: Camila retorna pela passagem lateral após retomada das câmeras."}, {"id": "IMG_1072", "level": 5, "src": "assets/caso06/IMG_1072.jpg", "label": "Perícia comparativa: partículas na manga de Camila compatíveis com suporte metálico."}]; // Fotos dos níveis 1 a 5, liberadas por seus respectivos códigos.
+const casePhotos=[{"id": "F00", "level": 0, "src": "assets/caso07/brinde.png", "label": "Fotografia do brinde — 21/11"}, {"id": "F01", "level": 0, "src": "assets/caso07/cena.png", "label": "Cena do crime — 22/11"}];
 const photoLevels=Object.fromEntries(casePhotos.map(p=>[p.id,p.level]));
 function renderPhotoGallery(){
  const unlockedPhotos=casePhotos.filter(p=>p.level===0||has(p.level));
@@ -836,7 +572,7 @@ function openPhoto(src,label){
 }
 function bindPhotos(){}
 
-function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Rafael</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
+function renderSpotify(){const songs=[["Dreams","Fleetwood Mac"],["Do I Wanna Know?","Arctic Monkeys"],["Sweet Disposition","The Temper Trap"],["Somebody Else","The 1975"],["Midnight City","M83"],["The Less I Know the Better","Tame Impala"]];return `<div class="spotifyApp"><div class="spotifyHero"><h1>Boa noite, Henrique</h1><p>Tocados recentemente</p></div><div class="playlistGrid"><div class="playlist"><div class="cover">🌙</div><b>Fim de expediente</b></div><div class="playlist"><div class="cover">🏙️</div><b>Arquitetura & café</b></div></div><h3 class="spotifySection">Últimas músicas</h3>${songs.map((s,i)=>`<div class="spotifyRow"><div class="album">${["◼","△","●","✦","▥","≈"][i]}</div><div class="meta"><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join("")}<p style="color:#777;font-size:12px;margin-top:20px">Modo offline • reprodução indisponível nesta extração.</p></div>`}
 let snakeTimer=null,snake=[],snakeDir={x:1,y:0},snakeNext={x:1,y:0},snakeFood={x:10,y:8},snakeScore=0,snakeBest=Number(localStorage.getItem("texSnakeBest")||0);
 function renderSnake(){return `<div class="snakeWrap"><div class="snakeHud"><span>PONTOS <b id="snakeScore">0</b></span><span>RECORDE <b id="snakeBest">${snakeBest}</b></span></div><canvas id="snakeCanvas" width="320" height="320"></canvas><div class="snakeMsg" id="snakeMsg">Setas, WASD, swipe ou botões.</div><div class="snakeControls"><button class="up" data-dir="U">▲</button><button class="left" data-dir="L">◀</button><button class="down" data-dir="D">▼</button><button class="right" data-dir="R">▶</button></div><button id="snakeRestart" style="margin-top:13px;border:0;border-radius:12px;padding:11px 18px;font-weight:800">NOVO JOGO</button></div>`}
 function snakePlaceFood(){do{snakeFood={x:Math.floor(Math.random()*16),y:Math.floor(Math.random()*16)}}while(snake.some(p=>p.x===snakeFood.x&&p.y===snakeFood.y))}
@@ -847,9 +583,10 @@ function renderCalc(){return `<div class="calcDisplay" id="calcDisplay">0</div><
 let calcExpr="";
 function bindCalc(){document.querySelectorAll("[data-calc]").forEach(b=>b.onclick=()=>{let v=b.dataset.calc,d=document.querySelector("#calcDisplay");if(v==="C"){calcExpr="";d.textContent="0";return}if(v==="±"){if(calcExpr)calcExpr=calcExpr.startsWith("-")?calcExpr.slice(1):"-"+calcExpr;d.textContent=calcExpr||"0";return}if(v==="%"){let n=parseFloat(calcExpr);if(!isNaN(n)){calcExpr=String(n/100);d.textContent=calcExpr}return}if(v==="="){try{let e=calcExpr.replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-");let r=Function('"use strict";return ('+e+')')();calcExpr=String(Math.round(r*1e8)/1e8);d.textContent=calcExpr}catch{d.textContent="Erro";calcExpr=""}return}calcExpr+=v;d.textContent=calcExpr})}
 function renderWeather(){return `<div class="weatherCard"><div class="city">Jundiaí</div><div>Parcialmente nublado</div><div class="temp">19°</div><div>Máx. 24° &nbsp; Mín. 15°</div><div class="weatherHours"><span>21h<br>☁️<br>19°</span><span>22h<br>☁️<br>18°</span><span>23h<br>☁️<br>18°</span><span>00h<br>☁️<br>17°</span></div></div><div class="notecard"><b>Condições</b><p>Umidade 71% • Vento 9 km/h</p><p style="color:#8e8e93">Dados armazenados no último cache do aparelho.</p></div>`}
-function renderClock(){return `<div class="clockFace"><div class="hand hourHand"></div><div class="hand minHand"></div><div class="hand secHand"></div><div class="clockDot"></div></div><div class="clockDigital">23:25</div><p style="text-align:center;color:#9a9a9a;font-size:11px;margin:8px 0">Relógio salvo na imagem extraída do aparelho; não indica a hora do óbito.</p><div class="iosgroup" style="margin-top:24px"><div class="iosrow"><div class="main"><b>Alarmes</b><p>07:10 • dias úteis</p></div></div><div class="iosrow"><div class="main"><b>Timer</b><p>Nenhum timer ativo</p></div></div></div>`}
+function renderClock(){return `<div class="clockFace"><div class="hand hourHand"></div><div class="hand minHand"></div><div class="hand secHand"></div><div class="clockDot"></div></div><div class="clockDigital">20:20</div><p style="text-align:center;color:#9a9a9a;font-size:11px;margin:8px 0">Relógio salvo na imagem extraída do aparelho; não indica a hora do óbito.</p><div class="iosgroup" style="margin-top:24px"><div class="iosrow"><div class="main"><b>Alarmes</b><p>07:10 • dias úteis</p></div></div><div class="iosrow"><div class="main"><b>Timer</b><p>Nenhum timer ativo</p></div></div></div>`}
 function stopAmbientApps(){if("speechSynthesis" in window)window.speechSynthesis.cancel();clearInterval(snakeTimer);if(window._snakeKey){document.removeEventListener("keydown",window._snakeKey);window._snakeKey=null}}
 
+function renderChallenge(){const final=has(6);const items=final?["Auditoria complementar","Nota promissória","Registro digital autenticado","Reserva de hotel","Laudo definitivo e fotografia","Extrato de Ricardo"]:["Henrique reuniu quatro convidados.","Ricardo desconhecia a auditoria.","Helena e Henrique tinham questões patrimoniais pendentes.","Helena deixou o estabelecimento sozinha.","Marcelo conhecia Henrique desde a adolescência.","Beatriz cuidava dos assuntos jurídicos.","Marcelo nunca teve problemas financeiros com Henrique.","Beatriz não discutiu com Henrique."];return `<div class="notecard"><b>${final?'Selecione as três provas decisivas':'Selecione as quatro afirmações falsas'}</b>${items.map((x,i)=>`<p><label><input type="checkbox" name="challenge" value="${i+1}"> ${i+1}. ${x}</label></p>`).join('')}<button onclick="checkChallenge()">VALIDAR</button><p id="challengeResult"></p></div>`}function checkChallenge(){const got=[...document.querySelectorAll('[name=challenge]:checked')].map(x=>x.value).join('');const final=has(6);document.querySelector('#challengeResult').textContent=got===(final?'135':'2478')?'Código GrayKey: '+(final?'1357':'2478'):'Revise as evidências.'}function refreshChallenge(){document.querySelector('#recon-app-btn').style.display=has(1)&&(!has(2)||has(6)&&!has(7))?'':'none'}setInterval(refreshChallenge,300);
 function openApp(name){
  stopAmbientApps();
  appScreen.classList.remove('forensic');appTitle.textContent=name;
@@ -864,6 +601,7 @@ function openApp(name){
  else if(name==="Gravador") appBody.innerHTML=renderVoice();
  else if(name==="Arquivos") appBody.innerHTML=renderFiles();
  else if(name==="Terminal") appBody.innerHTML=renderTerminal();
+ else if(name==="Reconstrução") appBody.innerHTML=renderChallenge();
  else if(name==="Spotify") appBody.innerHTML=renderSpotify();
  else if(name==="Snake 97") appBody.innerHTML=renderSnake();
  else if(name==="Calculadora") appBody.innerHTML=renderCalc();
@@ -896,117 +634,10 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 
 
 
-<div id="recon-overlay" class="recon-overlay" style="display:none" aria-hidden="true">
- <div class="recon-shell">
-  <div class="recon-topbar">
-   <div><div class="recon-kicker">ARQUIVO DE TREINAMENTO</div><div class="recon-title">DESAFIO DE DEDUÇÃO</div></div>
-   <button type="button" class="recon-close" id="recon-close">×</button>
-  </div>
-
-  <div id="recon-intro">
-   <div class="recon-card recon-intro">
-    <div class="recon-badge">ARQUIVO 17</div>
-    <h2>O Envelope Desaparecido</h2>
-    <p>Quatro pessoas foram registradas em quatro setores diferentes, em horários diferentes. Um envelope confidencial desapareceu durante uma dessas movimentações.</p>
-    <p class="recon-muted">Reconstrua os quatro registros. Os horários já estão em ordem; descubra <strong>quem</strong> estava em cada local.</p>
-    <p class="recon-small">Tempo médio de resolução: 2–4 minutos.</p>
-    <button class="recon-primary" id="recon-start-btn">ABRIR ARQUIVO</button>
-   </div>
-  </div>
-
-  <div id="recon-game" style="display:none">
-   <div class="recon-layout">
-    <div class="recon-panel">
-     <h3>PISTAS DO ARQUIVO</h3>
-     <ol class="recon-clues">
-      <li><strong>Renato</strong> passou pelo Corredor.</li>
-      <li>O <strong>Corredor</strong> foi registrado às <strong>22:22</strong>.</li>
-      <li><strong>Clara</strong> foi registrada exatamente <strong>9 minutos depois</strong> de Mauro.</li>
-      <li><strong>Mauro</strong> não esteve no Escritório nem no Estoque.</li>
-      <li><strong>Bianca</strong> foi registrada depois de Clara.</li>
-      <li>Clara não esteve no <strong>Bar</strong> nem no <strong>Corredor</strong>.</li>
-      <li>O <strong>Estoque</strong> foi o último local registrado.</li>
-      <li>A pessoa que passou pelo <strong>Estoque</strong> estava com o envelope.</li>
-     </ol>
-     <div class="recon-note">Cada pessoa e cada local aparece uma única vez. Os horários já estão organizados em ordem cronológica.</div>
-    </div>
-
-    <div class="recon-panel">
-     <h3>RECONSTRUÇÃO DOS REGISTROS</h3>
-     <div class="recon-board-wrap">
-      <div class="recon-board">
-       <div class="recon-record" data-time="22:04">
-        <div class="recon-record-head">22:04</div>
-        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
-        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-       </div><div class="recon-record" data-time="22:13">
-        <div class="recon-record-head">22:13</div>
-        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
-        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-       </div><div class="recon-record" data-time="22:22">
-        <div class="recon-record-head">22:22</div>
-        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
-        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-       </div><div class="recon-record" data-time="22:31">
-        <div class="recon-record-head">22:31</div>
-        <div class="recon-field"><label>PESSOA</label><select class="r-person"><option value="">—</option><option>Bianca</option><option>Clara</option><option>Mauro</option><option>Renato</option></select></div>
-        <div class="recon-field"><label>LOCAL</label><select class="r-place"><option value="">—</option><option>Bar</option><option>Corredor</option><option>Escritório</option><option>Estoque</option></select></div>
-       </div>
-      </div>
-     </div>
-     <div class="recon-actions">
-      <button class="recon-secondary" id="recon-clear">LIMPAR</button>
-      <button class="recon-primary" id="recon-submit">VERIFICAR RECONSTRUÇÃO</button>
-     </div>
-     <div class="recon-feedback" id="recon-feedback"></div>
-    </div>
-   </div>
-  </div>
-
-  <div id="recon-done" style="display:none">
-   <div class="recon-card recon-done">
-    <div class="recon-badge">ARQUIVO 17 SOLUCIONADO</div>
-    <h2>Registro associado ao desaparecimento</h2>
-    <div class="recon-time">22<span>:</span>31</div>
-    <p>Utilize o registro para prosseguir na investigação principal.</p>
-    <p class="recon-muted">Digite o horário sem os dois-pontos.</p>
-    <button class="recon-primary" id="recon-finish">VOLTAR AO CELULAR</button>
-   </div>
-  </div>
- </div>
-</div>
-
-
-<script>
-(function(){
- const btn=document.getElementById('recon-app-btn'), overlay=document.getElementById('recon-overlay');
- if(!btn||!overlay)return;
- const intro=document.getElementById('recon-intro'),game=document.getElementById('recon-game'),done=document.getElementById('recon-done'),fb=document.getElementById('recon-feedback');
- function refresh(){try{const a=(typeof unlocked!=="undefined"&&Array.isArray(unlocked))?unlocked:[];btn.style.display=a.includes(4)?'':'none';}catch(e){btn.style.display='none';}}
- function show(x){intro.style.display=x==='intro'?'':'none';game.style.display=x==='game'?'':'none';done.style.display=x==='done'?'':'none';}
- function close(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true');}
- btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();refresh();if(btn.style.display==='none')return;overlay.style.display='';overlay.setAttribute('aria-hidden','false');show('intro');},true);
- document.getElementById('recon-close').onclick=close;document.getElementById('recon-finish').onclick=close;document.getElementById('recon-start-btn').onclick=()=>show('game');
- const recs=[...document.querySelectorAll('.recon-record')];
- document.getElementById('recon-clear').onclick=()=>{recs.forEach(r=>r.querySelectorAll('select').forEach(s=>s.value=''));fb.textContent='';};
- document.getElementById('recon-submit').onclick=()=>{
-   const got=recs.map(r=>[r.querySelector('.r-person').value,r.querySelector('.r-place').value]);
-   if(got.some(r=>r.some(v=>!v))){fb.textContent='Preencha pessoa e local nos quatro horários antes de verificar.';return;}
-   for(let c=0;c<2;c++){const vals=got.map(r=>r[c]);if(new Set(vals).size!==4){fb.textContent='Cada pessoa e cada local deve aparecer uma única vez.';return;}}
-   const sol=[['Mauro','Bar'],['Clara','Escritório'],['Renato','Corredor'],['Bianca','Estoque']];
-   const ok=got.every((r,i)=>r.every((v,j)=>v===sol[i][j]));
-   if(ok){fb.textContent='✓ Reconstrução consistente com todas as pistas.';setTimeout(()=>show('done'),650);}
-   else fb.textContent='✕ Há pelo menos uma contradição. Revise as pistas e tente novamente.';
- };
- refresh();new MutationObserver(refresh).observe(document.body,{childList:true,subtree:true,attributes:true});setInterval(refresh,1000);
-})();
-</script>
-
-
 <div id="dossier-overlay" class="dossier-overlay" style="display:none" aria-hidden="true">
  <div class="dossier-shell">
   <div class="dossier-top">
-   <div><div class="dossier-kicker">TEX PUB FORENSICS • CASO 06</div><div class="dossier-title">DOSSIÊ FINAL</div></div>
+   <div><div class="dossier-kicker">TEX PUB FORENSICS • CASO 07</div><div class="dossier-title">DOSSIÊ FINAL</div></div>
    <button type="button" class="dossier-close" id="dossier-close">×</button>
   </div>
 
@@ -1014,8 +645,8 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    <div class="dossier-stamp">RELATÓRIO DOS INVESTIGADORES</div>
    <h2>Reconstrução Final do Caso</h2>
    <div class="dossier-copy">
-    A investigação está completa. Vocês tiveram acesso ao material recuperado do Caso 06.
-    Reconstruam os acontecimentos e apresentem sua conclusão de forma suficientemente completa
+    A investigação está completa. Vocês tiveram acesso ao material recuperado do Caso 07.
+    Identifiquem o assassino, a causa da morte, a motivação, por que Ricardo parecia culpado e as três provas decisivas. Apresentem sua conclusão de forma suficientemente completa
     para que a sequência do crime possa ser compreendida.<br><br>
     <strong>Nenhuma informação adicional será fornecida.</strong>
    </div>
@@ -1062,27 +693,27 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  function refreshDossier(){
    try{
      const a=(typeof unlocked!=="undefined"&&Array.isArray(unlocked))?unlocked:[];
-     btn.style.display=a.includes(5)?'':'none';
+     btn.style.display=a.includes(7)?'':'none';
    }catch(e){btn.style.display='none';}
  }
  function closeDossier(){ov.style.display='none';ov.setAttribute('aria-hidden','true');}
  function saveDraft(){
    try{
-     localStorage.setItem('caso06_dossier_team',team.value);
-     localStorage.setItem('caso06_dossier_report',report.value);
+     localStorage.setItem('caso07_dossier_team',team.value);
+     localStorage.setItem('caso07_dossier_report',report.value);
      fb.textContent='Rascunho salvo neste dispositivo.';
    }catch(e){fb.textContent='Não foi possível salvar o rascunho neste dispositivo.';}
  }
  function loadDraft(){
    try{
-     team.value=localStorage.getItem('caso06_dossier_team')||'';
-     report.value=localStorage.getItem('caso06_dossier_report')||'';
+     team.value=localStorage.getItem('caso07_dossier_team')||'';
+     report.value=localStorage.getItem('caso07_dossier_report')||'';
      count.textContent=report.value.length;
    }catch(e){}
  }
  function protocol(){
    const n=Math.floor(1000+Math.random()*9000);
-   return 'CASO06-'+n;
+   return 'CASO07-'+n;
  }
 
  btn.addEventListener('click',function(e){
@@ -1104,8 +735,8 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    saveDraft();
    const p=protocol();
    try{
-     localStorage.setItem('caso06_dossier_protocol',p);
-     localStorage.setItem('caso06_dossier_submitted','1');
+     localStorage.setItem('caso07_dossier_protocol',p);
+     localStorage.setItem('caso07_dossier_submitted','1');
    }catch(e){}
    document.getElementById('dossier-receipt-team').textContent=t;
    document.getElementById('dossier-protocol').textContent=p;
@@ -1113,7 +744,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  };
 
  refreshDossier();
- new MutationObserver(refreshDossier).observe(document.body,{childList:true,subtree:true,attributes:true});
+ 
  setInterval(refreshDossier,1000);
 })();
 </script>
@@ -1122,7 +753,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 <div id="admin-overlay" class="admin-overlay" style="display:none">
  <div class="admin-shell">
   <div class="admin-top">
-   <div><div class="admin-kicker">CASO 06</div><div class="admin-title">PAINEL DO INVESTIGADOR</div></div>
+   <div><div class="admin-kicker">CASO 07</div><div class="admin-title">PAINEL DO INVESTIGADOR</div></div>
    <button class="admin-close" id="admin-close">×</button>
   </div>
   <div id="admin-login" class="admin-card admin-login">
@@ -1148,7 +779,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
 
 <script>
 (function(){
- const COLLECTION='caso06_dossiers';
+ const COLLECTION='caso07_dossiers';
  const ADMIN_PIN='1700';
  let db=null,unsubscribe=null,currentId=null,teamUnsub=null;
 
@@ -1156,21 +787,21 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    try{
      if(typeof firebase==='undefined') return null;
      if(firebase.apps && firebase.apps.length){db=firebase.firestore();return db;}
-     let cfg=window.CASO06_FIREBASE_CONFIG||null;
+     let cfg=window.CASO07_FIREBASE_CONFIG||null;
      if(!cfg){
-       try{const raw=localStorage.getItem('caso06_firebase_config');if(raw)cfg=JSON.parse(raw);}catch(e){}
+       try{const raw=localStorage.getItem('caso07_firebase_config');if(raw)cfg=JSON.parse(raw);}catch(e){}
      }
      if(cfg){firebase.initializeApp(cfg);db=firebase.firestore();return db;}
-   }catch(e){console.error('Caso06 Firebase:',e);}
+   }catch(e){console.error('Caso07 Firebase:',e);}
    return null;
  }
- window.caso06InitDB=initDB;
+ window.caso07InitDB=initDB;
 
  function teamDeviceId(){
-   let id=localStorage.getItem('caso06_device_id');
+   let id=localStorage.getItem('caso07_device_id');
    if(!id){
      id='dev_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9);
-     localStorage.setItem('caso06_device_id',id);
+     localStorage.setItem('caso07_device_id',id);
    }
    return id;
  }
@@ -1205,7 +836,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    if(!e.receipt||!box)return;
    e.form.style.display='none';
    e.receipt.style.display='';
-   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso06_dossier_team')||'Equipe';
+   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso07_dossier_team')||'Equipe';
    box.innerHTML='<strong>⏳ DOSSIÊ ENVIADO</strong><p>Aguardando validação do investigador responsável.</p>';
  }
 
@@ -1214,8 +845,8 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    if(!e.receipt||!box)return;
    e.form.style.display='none';
    e.receipt.style.display='';
-   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso06_dossier_team')||'Equipe';
-   box.innerHTML='<strong style="font-size:20px">✓ DOSSIÊ VALIDADO</strong><p style="font-size:18px"><b>CASO 06 — SOLUCIONADO</b></p><p>Reconstrução aceita pelo investigador responsável.</p>';
+   document.getElementById('dossier-receipt-team').textContent=x.team||localStorage.getItem('caso07_dossier_team')||'Equipe';
+   box.innerHTML='<strong style="font-size:20px">✓ DOSSIÊ VALIDADO</strong><p style="font-size:18px"><b>CASO 07 — SOLUCIONADO</b></p><p>Reconstrução aceita pelo investigador responsável.</p>';
  }
 
  function showRejected(x){
@@ -1247,7 +878,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  }
 
  async function restoreCurrentSubmission(){
-   const id=localStorage.getItem('caso06_dossier_doc');
+   const id=localStorage.getItem('caso07_dossier_doc');
    if(!id)return;
    const d=initDB(); if(!d)return;
    try{
@@ -1276,7 +907,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
      if(!d){e.fb.textContent='Firebase ainda não configurado neste site. O dossiê não foi enviado.';return;}
      e.fb.textContent='Enviando dossiê...';
      try{
-       const oldId=localStorage.getItem('caso06_dossier_doc');
+       const oldId=localStorage.getItem('caso07_dossier_doc');
        let ref;
        // Reenvio após "incompleto": atualiza o mesmo dossiê para manter uma única equipe no painel.
        if(oldId){
@@ -1297,10 +928,10 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
            updatedAt:firebase.firestore.FieldValue.serverTimestamp()
          });
        }
-       localStorage.setItem('caso06_dossier_doc',ref.id);
-       localStorage.setItem('caso06_dossier_team',t);
-       localStorage.setItem('caso06_dossier_report',r);
-       const p='CASO06-'+ref.id.slice(0,6).toUpperCase();
+       localStorage.setItem('caso07_dossier_doc',ref.id);
+       localStorage.setItem('caso07_dossier_team',t);
+       localStorage.setItem('caso07_dossier_report',r);
+       const p='CASO07-'+ref.id.slice(0,6).toUpperCase();
        document.getElementById('dossier-receipt-team').textContent=t;
        document.getElementById('dossier-protocol').textContent=p;
        e.fb.textContent='';

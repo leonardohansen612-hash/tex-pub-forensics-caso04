@@ -1,7 +1,7 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /caso05_dossiers/{docId} {
+    match /caso07_dossiers/{docId} {
       allow create: if request.resource.data.keys().hasAll(['team','report','status','deviceId'])
                     && request.resource.data.status == 'pending'
                     && request.resource.data.team is string
