@@ -451,8 +451,10 @@ window.CASO07_FIREBASE_CONFIG = {
 }
 </style>
 
-</head>
-<body>
+<style>
+#case-finale[hidden]{display:none!important}#case-finale{position:fixed;inset:0;z-index:2147483647;background:radial-gradient(ellipse at 50% 35%,#39236a 0,#130e23 42%,#08070c 80%);color:#ede1cc;display:grid;place-items:center;overflow:auto;font-family:system-ui,sans-serif;text-align:center;padding:24px;box-sizing:border-box}#case-finale *{box-sizing:border-box}.finale-panel{position:relative;z-index:2;width:min(100%,620px);margin:auto;padding:22px 10px;animation:finale-enter .8s ease both}.finale-logo{width:145px;height:90px;object-fit:contain}.finale-kicker{letter-spacing:.23em;font-size:11px;color:#c4a9ff;margin:12px 0}.finale-seal{width:100px;height:100px;border:2px solid #bba0ff;border-radius:50%;display:grid;place-items:center;margin:18px auto;font-size:58px;color:#e8d6ff;box-shadow:0 0 40px #7b46f888;animation:finale-enter .7s .25s both}.finale-title{font-size:clamp(38px,9vw,80px);line-height:.95;font-weight:950;letter-spacing:-.055em;margin:20px 0;color:#fff;text-shadow:0 0 35px #7b46f8}.finale-team{font-size:clamp(20px,5vw,32px);font-weight:800;overflow-wrap:anywhere}.finale-meta{border-block:1px solid #ffffff33;padding:15px;margin:22px 0;color:#d9c7f8;font-size:14px}.finale-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}.finale-actions button{font:inherit;font-weight:700;border:1px solid #a88aff;border-radius:10px;padding:12px 20px;background:#7b46f8;color:white;cursor:pointer}.finale-actions button+button{background:transparent}.finale-particle{position:absolute;top:-20px;width:8px;height:14px;animation:finale-fall 3.8s linear both;pointer-events:none}.finale-note{font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.finale-rejected .finale-seal{color:#ffb5b5;border-color:#ff7777;box-shadow:none}.finale-rejected .finale-title{font-size:clamp(30px,7vw,56px);text-shadow:none}@keyframes finale-enter{from{opacity:0;transform:translateY(20px) scale(.94)}to{opacity:1;transform:none}}@keyframes finale-fall{to{transform:translate(var(--drift),110vh) rotate(740deg);opacity:0}}@media(prefers-reduced-motion:reduce){.finale-panel,.finale-seal{animation:none}.finale-particle{display:none}}
+</style></head>
+<body><section id="case-finale" hidden role="dialog" aria-modal="true" aria-labelledby="finale-title"><div id="finale-particles" aria-hidden="true"></div><div class="finale-panel"><img class="finale-logo" src="assets/logo-tex-pub.png" alt="Tex Pub"><div class="finale-kicker">DETETIVE TEX PUB • CASO 07</div><div class="finale-seal" id="finale-seal" aria-hidden="true">✓</div><h1 class="finale-title" id="finale-title">CASO RESOLVIDO!</h1><p>O ÚLTIMO BRINDE</p><div class="finale-team" id="finale-team"></div><div class="finale-meta" id="finale-meta"></div><p class="finale-note" id="finale-note"></p><div class="finale-actions"><button id="finale-close">Voltar ao celular</button><button id="finale-sound">Ouvir efeito</button></div></div></section>
 <div id="boot"><img src="assets/logo-tex-pub.png"><b>TEX PUB FORENSICS</b><span id="bootText">Montando imagem...</span><div id="bootTrack"><i id="bootBar"></i></div></div>
 <div id="phoneWrap">
 <div class="phone">
@@ -861,11 +863,38 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    e.fb.innerHTML='<div class="dossier-result"><strong style="font-size:18px">✕ DOSSIÊ NÃO VALIDADO</strong><p>A reconstrução apresentada ainda possui inconsistências.</p><p><b>Retomem a investigação, corrijam o relatório e enviem novamente.</b></p></div>';
  }
 
- function applyStatus(x){
+
+ let finaleAudio=null;
+ function finaleSound(ok){try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;finaleAudio=finaleAudio||new A();const a=finaleAudio; a.resume().then(()=>{const now=a.currentTime;(ok?[392,523.25,659.25,783.99]:[330,220]).forEach((f,i)=>{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,now+i*.15);g.gain.linearRampToValueAtTime(.10,now+i*.15+.025);g.gain.exponentialRampToValueAtTime(.001,now+i*.15+.55);o.connect(g);g.connect(a.destination);o.start(now+i*.15);o.stop(now+i*.15+.56);});}).catch(()=>{});}catch(e){}}
+ document.addEventListener('pointerdown',()=>{try{const A=window.AudioContext||window.webkitAudioContext;if(A){finaleAudio=finaleAudio||new A();finaleAudio.resume().catch(()=>{});}}catch(e){}},{once:true});
+ function showFinale(x,id,force=false){
+   if(new URLSearchParams(location.search).get('investigador')==='1'||location.hash==='#investigador')return;
+   if(!id||!['approved','rejected'].includes(x.status))return;
+   const stamp=x.reviewedAt?.seconds||0, nano=x.reviewedAt?.nanoseconds||0;
+   const key='caso07_finale_'+id+'_'+x.status+'_'+stamp+'_'+nano;
+   if(!force&&localStorage.getItem(key))return;
+   localStorage.setItem(key,'1');
+   const ok=x.status==='approved', el=document.getElementById('case-finale');
+   el.classList.toggle('finale-rejected',!ok);
+   document.getElementById('finale-seal').textContent=ok?'✓':'!';
+   document.getElementById('finale-title').textContent=ok?'CASO RESOLVIDO!':'INVESTIGAÇÃO INCOMPLETA';
+   document.getElementById('finale-team').textContent=x.team||'Equipe';
+   document.getElementById('finale-meta').textContent=ok?'DOSSIÊ VALIDADO • INVESTIGAÇÃO CONCLUÍDA':'DOSSIÊ DEVOLVIDO • REVISEM AS EVIDÊNCIAS';
+   document.getElementById('finale-note').textContent=x.adminNote||(ok?'Parabéns, investigadores. A verdade veio à tona.':'Corrijam o relatório e enviem novamente.');
+   const particles=document.getElementById('finale-particles');particles.replaceChildren();
+   if(ok&&!matchMedia('(prefers-reduced-motion: reduce)').matches){for(let i=0;i<65;i++){const c=document.createElement('i');c.className='finale-particle';c.style.left=(Math.random()*100)+'%';c.style.background=['#7b46f8','#ede1cc','#d9b45e','#fff'][i%4];c.style.animationDelay=(Math.random()*1.5)+'s';c.style.setProperty('--drift',(Math.random()*220-110)+'px');particles.append(c);}}
+   el.hidden=false;document.getElementById('finale-close').focus();
+   document.getElementById('finale-close').onclick=()=>{el.hidden=true;particles.replaceChildren();if(!ok){const e=getEls();if(e.ov)e.ov.style.display='';}};
+   document.getElementById('finale-sound').onclick=()=>finaleSound(ok);
+   if(finaleAudio?.state==='running')finaleSound(ok);
+ }
+
+ function applyStatus(x,id){
    if(!x)return;
    if(x.status==='approved') showApproved(x);
    else if(x.status==='rejected') showRejected(x);
    else showPending(x);
+   showFinale(x,id||localStorage.getItem('caso07_dossier_doc'));
  }
 
  function watchTeamResult(id){
@@ -873,7 +902,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    if(teamUnsub){try{teamUnsub();}catch(e){}}
    teamUnsub=d.collection(COLLECTION).doc(id).onSnapshot(s=>{
      if(!s.exists)return;
-     applyStatus(s.data());
+     applyStatus(s.data(),id);
    },err=>console.error('Dossiê listener:',err));
  }
 
@@ -883,7 +912,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
    const d=initDB(); if(!d)return;
    try{
      const s=await d.collection(COLLECTION).doc(id).get();
-     if(s.exists)applyStatus(s.data());
+     if(s.exists)applyStatus(s.data(),id);
      watchTeamResult(id);
    }catch(e){console.error(e);}
  }
@@ -945,7 +974,7 @@ $('#backBtn').onclick=()=>{stopAmbientApps();appScreen.classList.remove('open','
  }
 
  // Restore listener after refresh.
- setTimeout(restoreCurrentSubmission,500);
+ setTimeout(()=>{if(new URLSearchParams(location.search).get('investigador')!=='1'&&location.hash!=='#investigador')restoreCurrentSubmission();},500);
 
  // Admin panel
  const abtn=document.getElementById('investigator-app-btn'),aov=document.getElementById('admin-overlay');
