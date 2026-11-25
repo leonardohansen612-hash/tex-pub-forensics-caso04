@@ -1,14 +1,13 @@
 rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /caso07_dossiers/{docId} {
-      allow create: if request.resource.data.keys().hasAll(['team','report','status','deviceId'])
-                    && request.resource.data.status == 'pending'
-                    && request.resource.data.team is string
-                    && request.resource.data.report is string;
-      allow read: if true;
-      allow update: if true;
-      allow delete: if false;
-    }
-  }
-}
+service cloud.firestore { match /databases/{database}/documents {
+ match /{collection}/{docId} {
+ allow create: if collection in ['caso05_dossiers','caso07_dossiers'] && request.resource.data.keys().hasAll(['team','report','status','deviceId']) && request.resource.data.status == 'pending' && request.resource.data.team is string && request.resource.data.report is string;
+ allow read, update: if collection in ['caso05_dossiers','caso07_dossiers'];
+ }
+ match /caso07_print_config/{id} { allow read: if request.auth != null; }
+ match /caso07_print_jobs/{id} {
+ allow get: if request.auth != null && id.matches(request.auth.uid + '_EV-[0-9]{3}');
+ allow list: if request.auth != null && resource.data.uid == request.auth.uid;
+ allow create: if request.auth != null && request.resource.data.keys().hasOnly(['uid','team','evidence','protocol','status','createdAt']) && request.resource.data.uid == request.auth.uid && id == request.auth.uid + '_' + request.resource.data.evidence && request.resource.data.evidence in ["EV-001", "EV-002", "EV-003", "EV-004", "EV-005", "EV-006", "EV-007", "EV-008", "EV-009", "EV-010", "EV-011", "EV-012", "EV-013", "EV-014", "EV-015", "EV-016", "EV-017", "EV-018", "EV-019"] && request.resource.data.team is string && request.resource.data.team.size() > 0 && request.resource.data.team.size() <= 80 && request.resource.data.protocol is string && request.resource.data.protocol.size() <= 40 && request.resource.data.status == 'pending' && request.resource.data.createdAt == request.time;
+ }
+} }
